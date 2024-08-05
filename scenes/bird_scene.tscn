@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsko2g7rl06b2"]
+
+[ext_resource type="Texture2D" uid="uid://0jicba2f4ur4" path="res://assets/bird/bird_placeholder.svg" id="1_b6tdm"]
+[ext_resource type="Script" path="res://scripts/bird.gd" id="1_xkqll"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6563w"]
+radius = 44.9922
+height = 216.0
+
+[node name="BirdScene" type="Node2D"]
+
+[node name="bird" type="CharacterBody2D" parent="."]
+position = Vector2(-34, 27)
+motion_mode = 1
+script = ExtResource("1_xkqll")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bird"]
+position = Vector2(-1, -0.999998)
+rotation = 1.5522
+shape = SubResource("CapsuleShape2D_6563w")
+
+[node name="BirdPlaceholder" type="Sprite2D" parent="bird/CollisionShape2D"]
+position = Vector2(-18.8061, -30.3079)
+rotation = -1.45448
+scale = Vector2(0.413125, 0.413125)
+texture = ExtResource("1_b6tdm")
+offset = Vector2(-120.44, -14.0551)

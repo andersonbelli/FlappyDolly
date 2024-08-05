@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://v4q202x1ai57"]
+
+[ext_resource type="PackedScene" uid="uid://dxmnq5nbpry3d" path="res://scenes/cloud_scene.tscn" id="1_aiyfo"]
+[ext_resource type="Texture2D" uid="uid://cuexylxhag02f" path="res://assets/background/sky_background.svg" id="1_rujd5"]
+[ext_resource type="PackedScene" uid="uid://bsko2g7rl06b2" path="res://scenes/bird_scene.tscn" id="3_u1fkb"]
+
+[node name="MainScene" type="Node2D"]
+
+[node name="SkyBackground" type="Sprite2D" parent="."]
+visibility_layer = 32
+position = Vector2(540, 960)
+texture = ExtResource("1_rujd5")
+metadata/_edit_lock_ = true
+
+[node name="CloudScene" parent="." instance=ExtResource("1_aiyfo")]
+
+[node name="BirdScene" parent="." instance=ExtResource("3_u1fkb")]
+position = Vector2(232, 955)

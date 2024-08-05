@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxmnq5nbpry3d"]
+
+[ext_resource type="Texture2D" uid="uid://di332lne2uw65" path="res://assets/background/cloud_1.svg" id="1_bsys4"]
+[ext_resource type="Texture2D" uid="uid://pkv3f8med3b6" path="res://assets/background/cloud_2.svg" id="2_e5xcs"]
+
+[node name="CloudScene" type="Node2D"]
+
+[node name="Cloud1" type="Sprite2D" parent="."]
+visibility_layer = 32
+position = Vector2(797, 1469)
+texture = ExtResource("1_bsys4")
+
+[node name="Cloud2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.545098)
+visibility_layer = 32
+position = Vector2(330, 1273)
+texture = ExtResource("2_e5xcs")
