@@ -13,6 +13,7 @@ texture = ExtResource("1_rujd5")
 metadata/_edit_lock_ = true
 
 [node name="CloudScene" parent="." instance=ExtResource("1_aiyfo")]
+position = Vector2(0, -15)
 
 [node name="BirdScene" parent="." instance=ExtResource("3_u1fkb")]
 position = Vector2(232, 955)

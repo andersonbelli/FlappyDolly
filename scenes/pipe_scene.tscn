@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://mq21yswxokgd"]
+
+[ext_resource type="Texture2D" uid="uid://c35gs0x1ucpou" path="res://assets/obstacles/pipe.svg" id="1_87isj"]
+
+[node name="PipeScene" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Pipe" type="Sprite2D" parent="Area2D"]
+position = Vector2(3, -1)
+texture = ExtResource("1_87isj")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-227, -388, -227, -280, -179, -272, -183, 268, -235, 286, -227, 388, 233, 388, 233, 282, 185, 272, 185, -276, 235, -280, 231, -390)
