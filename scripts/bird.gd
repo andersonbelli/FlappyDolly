@@ -18,9 +18,7 @@ func _physics_process(delta):
 		
 		rotation = bird_rotation
 	else:
-		var bird_rotation = clampf(1 * delta + rotation, -2, 1.2)
-		
-		print(bird_rotation)
+		var bird_rotation = clampf(delta + rotation, -2, 1.2)
 		rotation = bird_rotation
 
 	move_and_collide(velocity * delta)
