@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://scripts/pipe.gd" id="1_x8avo"]
 
 [node name="PipeScene" type="StaticBody2D"]
+disable_mode = 1
 collision_layer = 2
 script = ExtResource("1_x8avo")
 
