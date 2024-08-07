@@ -78,13 +78,13 @@ rotation = 0.0977384
 scale = Vector2(0.413, 0.413)
 script = ExtResource("1_l3g73")
 
+[node name="DeathAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vng6l")
+
 [node name="Bird" type="CharacterBody2D" parent="."]
 position = Vector2(-34, 27)
 motion_mode = 1
 script = ExtResource("2_vorm6")
-
-[node name="DeathAudio" type="AudioStreamPlayer" parent="Bird"]
-stream = ExtResource("3_vng6l")
 
 [node name="BirdPlaceholder" type="Sprite2D" parent="Bird"]
 rotation = 0.0977199
@@ -110,5 +110,4 @@ libraries = {
 }
 
 [connection signal="play_dead_animation" from="Bird" to="." method="_on_bird_play_dead_animation"]
-[connection signal="finished" from="Bird/DeathAudio" to="Bird" method="_on_death_audio_finished"]
 [connection signal="animation_finished" from="Dead/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

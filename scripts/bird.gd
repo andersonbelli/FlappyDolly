@@ -9,17 +9,12 @@ const FLAP_FORCE = 300.0
 
 var is_alive = true
 
-@onready var death_audio = $DeathAudio
+@onready var death_audio = $"../DeathAudio"
 
 func _process(delta):
 	if is_alive:
 		flap(delta)
-
-	var collision_with = move_and_collide(velocity * delta)
-
-	if collision_with != null:
-		print(collision_with.get_position())
-		die()
+		move_and_collide(velocity * delta)
 
 func _physics_process(delta):
 	# add gravity
@@ -43,7 +38,5 @@ func die():
 	if is_alive:
 		death_audio.play()
 		is_alive = false
-
-func _on_death_audio_finished():
-	play_dead_animation.emit()
-	queue_free()
+		play_dead_animation.emit()
+		queue_free()

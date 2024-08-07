@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://mq21yswxokgd"]
+[gd_scene load_steps=4 format=3 uid="uid://mq21yswxokgd"]
 
 [ext_resource type="Texture2D" uid="uid://c35gs0x1ucpou" path="res://assets/obstacles/pipe.svg" id="1_87isj"]
 [ext_resource type="Script" path="res://scripts/pipe.gd" id="1_x8avo"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s32en"]
+rough = true
+
 [node name="PipeScene" type="StaticBody2D"]
 disable_mode = 1
 collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_s32en")
 script = ExtResource("1_x8avo")
 
 [node name="Pipe" type="Sprite2D" parent="."]
