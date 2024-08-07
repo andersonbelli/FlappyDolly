@@ -7,13 +7,13 @@ const PipeScene = preload("res://scenes/pipe_scene.tscn")
 
 var speed_increased = false
 
-func _process(delta):
+func _process(_delta):
 	score_label.text = str(Globals.SCORE)
 	
-	if (Globals.SCORE % 5 == 0 && Globals.SCORE != 0):
+	# Increase game speed every 10 pipes
+	if (Globals.SCORE % 10 == 0 && Globals.SCORE != 0):
 		if not speed_increased:
 			speed_increased = true
-			print(str(Globals.SCORE) + " - ", Globals.SCORE % 5)
 			Globals.GAME_SPEED += 55
 			spawn_timer.wait_time -= 0.2
 	else:
@@ -21,5 +21,4 @@ func _process(delta):
 
 func _on_spawn_timer_timeout():
 	var pipe = PipeScene.instantiate() as PipeClass
-	
 	add_child(pipe)

@@ -15,7 +15,12 @@ func _physics_process(delta):
 			Globals.SCORE += 1
 			queue_free()
 	
-	move_and_collide(Vector2(1,0) * delta * Globals.GAME_SPEED * -1)
+	var collide_with = move_and_collide(Vector2(1,0) * delta * Globals.GAME_SPEED * -1)
+	
+	if collide_with != null:
+		if collide_with.get_collider().name == "Bird":
+			if collide_with.get_collider().get("is_alive") == true:
+				collide_with.get_collider().call("die")
 
 func _set_pipe_position():
 	position = up_spawn.position
