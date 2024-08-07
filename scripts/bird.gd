@@ -11,6 +11,18 @@ var is_alive = true
 
 @onready var death_audio = $"../DeathAudio"
 
+var slap_audio: AudioStreamPlayer
+
+@onready var slap_audio_1 = $"../Slap1"
+@onready var slap_audio_2 = $"../Slap2"
+@onready var slap_audio_3 = $"../Slap3"
+@onready var slap_audio_4 = $"../Slap4"
+
+var slaps = []
+
+func _ready():
+	slaps = [slap_audio_1, slap_audio_2, slap_audio_3, slap_audio_4]
+
 func _process(delta):
 	if is_alive:
 		flap(delta)
@@ -30,9 +42,15 @@ func flap(delta: float):
 		bird_rotation = clampf(bird_rotation, -0.45, 5)
 
 		rotation = bird_rotation
+		
+		slap_on_flap()
 	else:
 		var bird_rotation = clampf(delta + rotation, -2, 1.2)
 		rotation = bird_rotation
+
+func slap_on_flap():
+	var rand_slap = randi_range(0, 3)
+	(slaps[rand_slap] as AudioStreamPlayer).play()
 
 func die():
 	if is_alive:

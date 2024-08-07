@@ -1,10 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://bsko2g7rl06b2"]
+[gd_scene load_steps=14 format=3 uid="uid://bsko2g7rl06b2"]
 
 [ext_resource type="Texture2D" uid="uid://0jicba2f4ur4" path="res://assets/bird/bird_placeholder.svg" id="1_b6tdm"]
 [ext_resource type="Script" path="res://scripts/bird_manager.gd" id="1_l3g73"]
 [ext_resource type="Script" path="res://scripts/bird.gd" id="2_vorm6"]
+[ext_resource type="AudioStream" uid="uid://ca3kgsxhcyvd8" path="res://assets/sounds/flap/slap/slap_1.mp3" id="3_f7ls1"]
 [ext_resource type="AudioStream" uid="uid://crqkqny7v57b8" path="res://assets/sounds/die/ceci-uh.mp3" id="3_vng6l"]
+[ext_resource type="AudioStream" uid="uid://bqlkqb2ujbm12" path="res://assets/sounds/flap/slap/slap_4.mp3" id="3_yhtd4"]
+[ext_resource type="AudioStream" uid="uid://cppik8uyrbbs7" path="res://assets/sounds/flap/slap/slap_3.mp3" id="4_inovs"]
 [ext_resource type="Texture2D" uid="uid://csxf8ocupn14f" path="res://assets/bird/dead.svg" id="4_wrq7j"]
+[ext_resource type="AudioStream" uid="uid://lq5gjihbaly5" path="res://assets/sounds/flap/slap/slap_2.mp3" id="5_htfln"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6563w"]
 radius = 99.92
@@ -80,6 +84,18 @@ script = ExtResource("1_l3g73")
 
 [node name="DeathAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_vng6l")
+
+[node name="Slap4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_yhtd4")
+
+[node name="Slap3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_inovs")
+
+[node name="Slap2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_htfln")
+
+[node name="Slap1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_f7ls1")
 
 [node name="Bird" type="CharacterBody2D" parent="."]
 position = Vector2(-34, 27)
