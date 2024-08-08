@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2rx3mcycvs0q"
-path="res://.godot/imported/pipe.svg-31312f2ae37c3cc23b35562455b0f2ed.ctex"
+uid="uid://c6en5b7p7d6nc"
+path="res://.godot/imported/pressed_button.svg-a8bd84b2ddcbdba99eddfb01eb712681.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/obstacles/pipe.svg"
-dest_files=["res://.godot/imported/pipe.svg-31312f2ae37c3cc23b35562455b0f2ed.ctex"]
+source_file="res://assets/images/start_screen/start_button/pressed_button.svg"
+dest_files=["res://.godot/imported/pressed_button.svg-a8bd84b2ddcbdba99eddfb01eb712681.ctex"]
 
 [params]
 

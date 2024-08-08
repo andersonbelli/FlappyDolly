@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csxf8ocupn14f"
-path="res://.godot/imported/dead.svg-347896727ed50b90ae815358a7fbddce.ctex"
+uid="uid://b4sa18e5am2j2"
+path="res://.godot/imported/start_screen_bottom.svg-89d0969a315f45c59b7cf515529c261c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bird/dead.svg"
-dest_files=["res://.godot/imported/dead.svg-347896727ed50b90ae815358a7fbddce.ctex"]
+source_file="res://assets/images/start_screen/start_screen_bottom.svg"
+dest_files=["res://.godot/imported/start_screen_bottom.svg-89d0969a315f45c59b7cf515529c261c.ctex"]
 
 [params]
 

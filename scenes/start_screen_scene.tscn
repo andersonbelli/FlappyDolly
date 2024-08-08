@@ -1,0 +1,162 @@
+[gd_scene load_steps=21 format=3 uid="uid://hi6jmkihys67"]
+
+[ext_resource type="Texture2D" uid="uid://50fln8op53o3" path="res://assets/images/start_screen/dolly.svg" id="1_2clul"]
+[ext_resource type="Script" path="res://scripts/start_screen.gd" id="1_alvi8"]
+[ext_resource type="Texture2D" uid="uid://cuexylxhag02f" path="res://assets/images/background/sky_background.svg" id="1_f0ys8"]
+[ext_resource type="FontFile" uid="uid://d14s525nrgj5o" path="res://assets/fonts/Playon-reg.ttf" id="1_u8nbv"]
+[ext_resource type="Texture2D" uid="uid://bhcg05ysktsx5" path="res://assets/images/start_screen/flappy.svg" id="2_g37cm"]
+[ext_resource type="PackedScene" uid="uid://v4q202x1ai57" path="res://scenes/main_scene.tscn" id="2_snev3"]
+[ext_resource type="Texture2D" uid="uid://b4sa18e5am2j2" path="res://assets/images/start_screen/start_screen_bottom.svg" id="3_d52wj"]
+[ext_resource type="Texture2D" uid="uid://dxcmcq2waih7n" path="res://assets/images/start_screen/bird/bird.svg" id="4_8mbej"]
+[ext_resource type="PackedScene" uid="uid://dxmnq5nbpry3d" path="res://scenes/cloud_scene.tscn" id="5_xnuco"]
+[ext_resource type="StyleBox" uid="uid://cmwlqs2da44no" path="res://scenes/button_style/button_style_normal.tres" id="8_3wj7d"]
+[ext_resource type="Texture2D" uid="uid://c6en5b7p7d6nc" path="res://assets/images/start_screen/start_button/pressed_button.svg" id="9_3ug7r"]
+
+[sub_resource type="Animation" id="Animation_hsqbc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1322, 5)]
+}
+
+[sub_resource type="Animation" id="Animation_vyhp8"]
+resource_name = "moving_clouds"
+length = 15.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1800, 5), Vector2(-1400, 5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6a0h8"]
+_data = {
+"RESET": SubResource("Animation_hsqbc"),
+"moving_clouds": SubResource("Animation_vyhp8")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r78en"]
+content_margin_bottom = 70.0
+texture = ExtResource("9_3ug7r")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_myhof"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_ve76k"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="InputEventKey" id="InputEventKey_5so86"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_70j72"]
+events = [SubResource("InputEventKey_ve76k"), SubResource("InputEventKey_5so86")]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5aopc"]
+content_margin_top = 14.0
+
+[node name="StartScreenScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_alvi8")
+main_game = ExtResource("2_snev3")
+
+[node name="SkyBackground" type="Sprite2D" parent="."]
+visibility_layer = 32
+position = Vector2(540, 960)
+texture = ExtResource("1_f0ys8")
+
+[node name="Dolly" type="Sprite2D" parent="."]
+position = Vector2(567, 836)
+scale = Vector2(0.829897, 0.829897)
+texture = ExtResource("1_2clul")
+
+[node name="Flappy" type="Sprite2D" parent="."]
+position = Vector2(533, 387)
+scale = Vector2(0.925, 0.925)
+texture = ExtResource("2_g37cm")
+
+[node name="StartScreenBottom" type="Sprite2D" parent="."]
+position = Vector2(539.5, 985.5)
+scale = Vector2(0.927101, 0.919783)
+texture = ExtResource("3_d52wj")
+metadata/_edit_lock_ = true
+
+[node name="Bird" type="Sprite2D" parent="."]
+position = Vector2(841, 626)
+texture = ExtResource("4_8mbej")
+
+[node name="CloudScene" parent="." instance=ExtResource("5_xnuco")]
+modulate = Color(1, 1, 1, 0.12549)
+position = Vector2(1322, 5)
+skew = 0.174533
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CloudScene"]
+libraries = {
+"": SubResource("AnimationLibrary_6a0h8")
+}
+autoplay = "moving_clouds"
+
+[node name="Button" type="Button" parent="."]
+top_level = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -520.0
+offset_top = -477.0
+offset_right = -80.0
+offset_bottom = -242.0
+grow_horizontal = 0
+grow_vertical = 0
+tooltip_text = "Start Game"
+theme_override_colors/font_color = Color(0.986387, 0.716492, 0, 1)
+theme_override_fonts/font = ExtResource("1_u8nbv")
+theme_override_font_sizes/font_size = 116
+theme_override_styles/normal = ExtResource("8_3wj7d")
+theme_override_styles/hover = ExtResource("8_3wj7d")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_r78en")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_myhof")
+shortcut = SubResource("Shortcut_70j72")
+text = "START"
+
+[node name="Label" type="Label" parent="Button"]
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 119.0
+grow_horizontal = 2
+pivot_offset = Vector2(134, -1)
+theme_override_colors/font_color = Color(0.988235, 0.717647, 0, 1)
+theme_override_fonts/font = ExtResource("1_u8nbv")
+theme_override_font_sizes/font_size = 121
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5aopc")
+text = "START"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

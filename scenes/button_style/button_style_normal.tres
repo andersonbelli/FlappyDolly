@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://cmwlqs2da44no"]
+
+[ext_resource type="Texture2D" uid="uid://btrnkb6xce847" path="res://assets/images/start_screen/start_button/unpressed_button.svg" id="1_87j7s"]
+
+[resource]
+content_margin_left = 60.0
+content_margin_right = 60.0
+content_margin_bottom = 115.0
+texture = ExtResource("1_87j7s")
+expand_margin_top = 20.0

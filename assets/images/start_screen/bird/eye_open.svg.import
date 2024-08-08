@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2rx3mcycvs0q"
-path="res://.godot/imported/pipe.svg-31312f2ae37c3cc23b35562455b0f2ed.ctex"
+uid="uid://88ey0afirosp"
+path="res://.godot/imported/eye_open.svg-6f43299b9e772cdb0d188daf98a7e716.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/obstacles/pipe.svg"
-dest_files=["res://.godot/imported/pipe.svg-31312f2ae37c3cc23b35562455b0f2ed.ctex"]
+source_file="res://assets/images/start_screen/bird/eye_open.svg"
+dest_files=["res://.godot/imported/eye_open.svg-6f43299b9e772cdb0d188daf98a7e716.ctex"]
 
 [params]
 

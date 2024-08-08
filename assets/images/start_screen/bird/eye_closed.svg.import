@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://di332lne2uw65"
-path="res://.godot/imported/cloud_1.svg-8b9de27aab99a8debae7cb57fdd0042c.ctex"
+uid="uid://c41jfl8bnbyjm"
+path="res://.godot/imported/eye_closed.svg-ff1cd420b345eb71cd845c1f4bcc1397.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background/cloud_1.svg"
-dest_files=["res://.godot/imported/cloud_1.svg-8b9de27aab99a8debae7cb57fdd0042c.ctex"]
+source_file="res://assets/images/start_screen/bird/eye_closed.svg"
+dest_files=["res://.godot/imported/eye_closed.svg-ff1cd420b345eb71cd845c1f4bcc1397.ctex"]
 
 [params]
 

@@ -1,17 +1,44 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxmnq5nbpry3d"]
+[gd_scene load_steps=6 format=3 uid="uid://dxmnq5nbpry3d"]
 
-[ext_resource type="Texture2D" uid="uid://di332lne2uw65" path="res://assets/background/cloud_1.svg" id="1_bsys4"]
-[ext_resource type="Texture2D" uid="uid://pkv3f8med3b6" path="res://assets/background/cloud_2.svg" id="2_e5xcs"]
+[ext_resource type="Texture2D" uid="uid://di332lne2uw65" path="res://assets/images/background/cloud_1.svg" id="1_bsys4"]
+[ext_resource type="Shader" path="res://scenes/shaders/wind_shader.gdshader" id="1_oqwir"]
+[ext_resource type="Texture2D" uid="uid://pkv3f8med3b6" path="res://assets/images/background/cloud_2.svg" id="2_e5xcs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4mb3i"]
+shader = ExtResource("1_oqwir")
+shader_parameter/speed = 1.85
+shader_parameter/minStrength = 0.111
+shader_parameter/maxStrength = 0.045
+shader_parameter/strengthScale = 100.105
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.08
+shader_parameter/distortion = 0.104
+shader_parameter/heightOffset = 0.078
+shader_parameter/offset = 0.055
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_576fi"]
+shader = ExtResource("1_oqwir")
+shader_parameter/speed = 2.5
+shader_parameter/minStrength = 0.233
+shader_parameter/maxStrength = 0.053
+shader_parameter/strengthScale = 100.355
+shader_parameter/interval = 4.595
+shader_parameter/detail = 1.0
+shader_parameter/distortion = null
+shader_parameter/heightOffset = null
+shader_parameter/offset = 0.0
 
 [node name="CloudScene" type="Node2D"]
 
 [node name="Cloud1" type="Sprite2D" parent="."]
 visibility_layer = 32
+material = SubResource("ShaderMaterial_4mb3i")
 position = Vector2(797, 1469)
 texture = ExtResource("1_bsys4")
 
 [node name="Cloud2" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.545098)
 visibility_layer = 32
+material = SubResource("ShaderMaterial_576fi")
 position = Vector2(330, 1273)
 texture = ExtResource("2_e5xcs")

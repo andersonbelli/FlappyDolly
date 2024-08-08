@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cuexylxhag02f"
-path="res://.godot/imported/sky_background.svg-97fa8923a18fcd6225180d7a5b9bd572.ctex"
+uid="uid://btrnkb6xce847"
+path="res://.godot/imported/unpressed_button.svg-cb1d09759bc2b7dca97fe2eafd6943b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background/sky_background.svg"
-dest_files=["res://.godot/imported/sky_background.svg-97fa8923a18fcd6225180d7a5b9bd572.ctex"]
+source_file="res://assets/images/start_screen/start_button/unpressed_button.svg"
+dest_files=["res://.godot/imported/unpressed_button.svg-cb1d09759bc2b7dca97fe2eafd6943b4.ctex"]
 
 [params]
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://v4q202x1ai57"]
+[gd_scene load_steps=8 format=3 uid="uid://v4q202x1ai57"]
 
 [ext_resource type="PackedScene" uid="uid://dxmnq5nbpry3d" path="res://scenes/cloud_scene.tscn" id="1_aiyfo"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_p71cs"]
-[ext_resource type="Texture2D" uid="uid://cuexylxhag02f" path="res://assets/background/sky_background.svg" id="1_rujd5"]
+[ext_resource type="Texture2D" uid="uid://cuexylxhag02f" path="res://assets/images/background/sky_background.svg" id="2_qlqvd"]
 [ext_resource type="PackedScene" uid="uid://bsko2g7rl06b2" path="res://scenes/bird_scene.tscn" id="3_u1fkb"]
 [ext_resource type="FontFile" uid="uid://d14s525nrgj5o" path="res://assets/fonts/Playon-reg.ttf" id="5_53p8v"]
+[ext_resource type="PackedScene" uid="uid://61ihymdab77s" path="res://scenes/transition_scene.tscn" id="6_026it"]
 
 [sub_resource type="Theme" id="Theme_dunyb"]
 default_font = ExtResource("5_53p8v")
@@ -16,7 +17,7 @@ script = ExtResource("1_p71cs")
 [node name="SkyBackground" type="Sprite2D" parent="."]
 visibility_layer = 32
 position = Vector2(540, 960)
-texture = ExtResource("1_rujd5")
+texture = ExtResource("2_qlqvd")
 metadata/_edit_lock_ = true
 
 [node name="CloudScene" parent="." instance=ExtResource("1_aiyfo")]
@@ -42,5 +43,8 @@ theme_override_colors/font_shadow_color = Color(0.0313726, 0.0196078, 0.0352941,
 theme_override_colors/font_outline_color = Color(0.818412, 0.674562, 0.409966, 1)
 theme_override_font_sizes/font_size = 106
 text = "10"
+
+[node name="TransitionScene" parent="." instance=ExtResource("6_026it")]
+top_level = true
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
