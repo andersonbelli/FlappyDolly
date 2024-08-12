@@ -10,7 +10,3 @@ position = Vector2(1376, 237)
 
 [node name="BottomSpawn" type="Marker2D" parent="."]
 position = Vector2(1376, 1764)
-
-[node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true

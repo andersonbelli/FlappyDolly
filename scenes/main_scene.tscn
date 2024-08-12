@@ -26,10 +26,6 @@ position = Vector2(0, -15)
 [node name="BirdScene" parent="." instance=ExtResource("3_u1fkb")]
 position = Vector2(232, 955)
 
-[node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true
-
 [node name="ScoreLabel" type="Label" parent="."]
 top_level = true
 offset_left = 73.0
@@ -46,5 +42,3 @@ text = "10"
 
 [node name="TransitionScene" parent="." instance=ExtResource("6_026it")]
 top_level = true
-
-[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
