@@ -1,11 +1,14 @@
 extends Node2D
 
-const PipeScene = preload("res://scenes/pipe_scene.tscn")
+const PipesManager = preload("res://scenes/pipes_manager.tscn")
 
 @onready var spawn_timer = $SpawnTimer
 @onready var score_label = $ScoreLabel
 
 var speed_increased = false
+
+func _ready():
+	add_child(PipesManager.instantiate())
 
 func _process(_delta):
 	score_label.text = str(Globals.SCORE)
@@ -18,7 +21,3 @@ func _process(_delta):
 			spawn_timer.wait_time -= 0.2
 	else:
 		speed_increased = false
-
-func _on_spawn_timer_timeout():
-	var pipe = PipeScene.instantiate() as PipeClass
-	add_child(pipe)

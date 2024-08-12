@@ -17,9 +17,3 @@ texture = ExtResource("2_txmwn")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-221, -535, -227, -387, -183, -367, -183, 368, -231, 393, -222, 529, 217, 534, 221, 377, 184, 369, 183, -368, 221, -379, 212, -536)
-
-[node name="UpSpawn" type="Marker2D" parent="."]
-position = Vector2(1376, 237)
-
-[node name="BottomSpawn" type="Marker2D" parent="."]
-position = Vector2(1376, 1764)
