@@ -2,6 +2,8 @@ extends Node2D
 
 class_name BirdManagerClass
 
+signal bird_is_dead
+
 const SPEED = 420.0
 const FLAP_FORCE = 300.0
 
@@ -17,3 +19,4 @@ func _on_bird_play_dead_animation():
 
 func _on_animation_player_animation_finished(_anim_name):
 	dead.queue_free()
+	bird_is_dead.emit()

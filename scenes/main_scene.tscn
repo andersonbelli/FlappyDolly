@@ -1,11 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://v4q202x1ai57"]
+[gd_scene load_steps=10 format=3 uid="uid://v4q202x1ai57"]
 
 [ext_resource type="PackedScene" uid="uid://dxmnq5nbpry3d" path="res://scenes/cloud_scene.tscn" id="1_aiyfo"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_p71cs"]
+[ext_resource type="PackedScene" uid="uid://b5iwqfly4tjmw" path="res://scenes/pipes_manager.tscn" id="2_gnu55"]
 [ext_resource type="Texture2D" uid="uid://cuexylxhag02f" path="res://assets/images/background/sky_background.svg" id="2_qlqvd"]
 [ext_resource type="PackedScene" uid="uid://bsko2g7rl06b2" path="res://scenes/bird_scene.tscn" id="3_u1fkb"]
 [ext_resource type="FontFile" uid="uid://d14s525nrgj5o" path="res://assets/fonts/Playon-reg.ttf" id="5_53p8v"]
 [ext_resource type="PackedScene" uid="uid://61ihymdab77s" path="res://scenes/transition_scene.tscn" id="6_026it"]
+[ext_resource type="PackedScene" uid="uid://cusaqs3eivr6g" path="res://scenes/game_over_scene.tscn" id="8_17iql"]
 
 [sub_resource type="Theme" id="Theme_dunyb"]
 default_font = ExtResource("5_53p8v")
@@ -21,6 +23,7 @@ texture = ExtResource("2_qlqvd")
 metadata/_edit_lock_ = true
 
 [node name="CloudScene" parent="." instance=ExtResource("1_aiyfo")]
+visible = false
 position = Vector2(0, -15)
 
 [node name="BirdScene" parent="." instance=ExtResource("3_u1fkb")]
@@ -41,4 +44,12 @@ theme_override_font_sizes/font_size = 106
 text = "10"
 
 [node name="TransitionScene" parent="." instance=ExtResource("6_026it")]
+visible = false
 top_level = true
+
+[node name="PipesManager" parent="." instance=ExtResource("2_gnu55")]
+
+[node name="GameOverScene" parent="." instance=ExtResource("8_17iql")]
+visible = false
+
+[connection signal="bird_is_dead" from="BirdScene" to="." method="_on_bird_scene_bird_is_dead"]

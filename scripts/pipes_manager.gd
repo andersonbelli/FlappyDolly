@@ -9,18 +9,25 @@ const PipeScene = preload("res://scenes/pipe_scene.tscn")
 
 var is_bottom = true if (randi_range(0, 1) % 2 == 0) else false
 
+var can_spawn := true
+
 func _ready():
+	can_spawn = true
 	spawn_pipe()
 
 func _physics_process(delta):
-	var pipes = get_tree().get_nodes_in_group("pipes")
-	
-	if not pipes.is_empty():
-		var first_pipe = get_tree().get_nodes_in_group("pipes").front() as PipeClass
-		var pipes_counter = get_tree().get_nodes_in_group("pipes").size()
+	if can_spawn:
+		var pipes = get_tree().get_nodes_in_group("pipes")
 		
-		if (pipes_counter < 2 and first_pipe.position.x < first_pipe_position):
-			spawn_pipe()
+		if not pipes.is_empty():
+			var first_pipe = get_tree().get_nodes_in_group("pipes").front() as PipeClass
+			var pipes_counter = get_tree().get_nodes_in_group("pipes").size()
+			
+			if (pipes_counter < 2 and first_pipe.position.x < first_pipe_position):
+				spawn_pipe()
+
+func stop_spawn():
+	can_spawn = false
 
 func spawn_pipe():
 	var pipe_position := set_spawn_position()
