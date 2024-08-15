@@ -30,8 +30,8 @@ func _on_bird_scene_bird_is_dead():
 	pipes_manager.stop_spawn()
 	score_label.visible = false
 	
-	#game_over_scene.get_node("ScoreLabel").text = score_label.text
-	#game_over_scene.visible = true
+	game_over_scene.get_node("ScoreLabel").text = score_label.text
+	game_over_scene.visible = true
 
 func reset_score():
 	### Implement High score

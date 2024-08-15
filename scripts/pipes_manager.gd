@@ -6,6 +6,7 @@ const PipeScene = preload("res://scenes/pipe_scene.tscn")
 const PipeDollyScene = preload("res://scenes/pipe_dolly_scene.tscn")
 
 @export var first_pipe_position = 400
+@export var pipe_disaper_at = 650
 
 @onready var up_spawn = $UpSpawn
 @onready var bottom_spawn = $BottomSpawn
@@ -17,8 +18,7 @@ var can_spawn := true
 
 func _ready():
 	can_spawn = true
-	#spawn_pipe()
-	spawn_dolly_pipe()
+	spawn_pipe()
 
 func _physics_process(delta):
 	if can_spawn:
@@ -29,19 +29,15 @@ func _physics_process(delta):
 			var pipes_counter = get_tree().get_nodes_in_group("pipes").size()
 			
 			if (pipes_counter < 2 and first_pipe.position.x < first_pipe_position):
-				#spawn_dolly_pipe()
-				print("spawn")
-				#spawn_pipe()
 				
-				#if Globals.SCORE > 3:
-					#if pipe_or_dolly:
-						#print("dolly!!!!")
-						#spawn_dolly_pipe()
-					#else:
-						#spawn_pipe()
-				#else:
-					#spawn_pipe()
-
+				if Globals.SCORE > 3:
+					if pipe_or_dolly:
+						print("dolly!!!!")
+						spawn_dolly_pipe()
+					else:
+						spawn_pipe()
+				else:
+					spawn_pipe()
 
 func stop_spawn():
 	can_spawn = false
@@ -62,10 +58,12 @@ func spawn_dolly_pipe():
 	
 	if pipe_position != null:
 		pipe.position = pipe_position
-		pipe.position.x -= 450
+		pipe.position.x -= pipe_disaper_at
 		add_child(pipe)
 
 func set_spawn_position() -> Vector2:
+	pipe_or_dolly = true if (randi_range(0, 1) % 2 == 0) else false
+	
 	var spawn_at_position = up_spawn.position
 	
 	if Globals.REPEAT_PIPE_COUNT > 3:
@@ -80,12 +78,22 @@ func set_spawn_position() -> Vector2:
 	else:
 		Globals.REPEAT_PIPE_COUNT += 1
 	
+	var pipe_offset = offset_variation(pipe_or_dolly)
+	
 	if is_bottom:
 		Globals.LAST_PIPE_IS_BOTTOM = true
 		spawn_at_position = bottom_spawn.position
-		spawn_at_position.y += randi_range(0, 250)
+		spawn_at_position.y += randi_range(0, pipe_offset)
 	else:
 		Globals.LAST_PIPE_IS_BOTTOM = false
-		spawn_at_position.y -= randi_range(0, -250)
+		spawn_at_position.y -= randi_range(0, -pipe_offset)
 		
 	return spawn_at_position
+
+func offset_variation(is_dolly: bool) -> int:
+	var new_offset = 250
+	
+	if(is_dolly):
+		new_offset = 100
+	
+	return new_offset

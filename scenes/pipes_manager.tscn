@@ -6,7 +6,7 @@
 script = ExtResource("1_cbpm5")
 
 [node name="UpSpawn" type="Marker2D" parent="."]
-position = Vector2(1376, 237)
+position = Vector2(1876, 237)
 
 [node name="BottomSpawn" type="Marker2D" parent="."]
-position = Vector2(1376, 1764)
+position = Vector2(1876, 1764)

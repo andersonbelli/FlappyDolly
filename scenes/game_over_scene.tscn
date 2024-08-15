@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cusaqs3eivr6g"]
+[gd_scene load_steps=22 format=3 uid="uid://cusaqs3eivr6g"]
 
 [ext_resource type="Script" path="res://scripts/game_over.gd" id="1_j3vhw"]
 [ext_resource type="Texture2D" uid="uid://ok5jkf5injp8" path="res://assets/images/game_over_screen/gameover.png" id="2_b0w6r"]
@@ -91,6 +91,14 @@ shader_parameter/detail = 1.0
 shader_parameter/distortion = null
 shader_parameter/heightOffset = null
 shader_parameter/offset = 0.0
+
+[sub_resource type="InputEventKey" id="InputEventKey_co8p8"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_v5755"]
+events = [SubResource("InputEventKey_co8p8")]
 
 [node name="GameOverScene" type="Control"]
 top_level = true
@@ -234,6 +242,7 @@ offset_right = 488.0
 offset_bottom = -457.0
 grow_horizontal = 2
 grow_vertical = 0
+shortcut = SubResource("Shortcut_v5755")
 texture_normal = ExtResource("13_qp02y")
 texture_pressed = ExtResource("14_gpggc")
 ignore_texture_size = true

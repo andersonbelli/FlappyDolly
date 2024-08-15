@@ -11,8 +11,8 @@
 [ext_resource type="AudioStream" uid="uid://lq5gjihbaly5" path="res://assets/sounds/flap/slap/slap_2.mp3" id="5_htfln"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6563w"]
-radius = 99.92
-height = 376.925
+radius = 71.977
+height = 272.54
 
 [sub_resource type="Animation" id="Animation_2wwd2"]
 length = 0.001
@@ -103,13 +103,13 @@ motion_mode = 1
 script = ExtResource("2_vorm6")
 
 [node name="BirdPlaceholder" type="Sprite2D" parent="Bird"]
-rotation = 0.0977199
+rotation = -0.22513
 texture = ExtResource("1_b6tdm")
 offset = Vector2(-30.5444, -24.5066)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bird"]
-position = Vector2(11.4625, 40.8986)
-rotation = 1.5522
+position = Vector2(47.1362, 32.535)
+rotation = 1.14955
 shape = SubResource("CapsuleShape2D_6563w")
 
 [node name="Dead" type="Sprite2D" parent="."]

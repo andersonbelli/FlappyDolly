@@ -58,3 +58,6 @@ func die():
 		is_alive = false
 		play_dead_animation.emit()
 		queue_free()
+
+func hit():
+	position += Vector2(0, 100)
