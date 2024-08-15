@@ -23,7 +23,6 @@ texture = ExtResource("2_qlqvd")
 metadata/_edit_lock_ = true
 
 [node name="CloudScene" parent="." instance=ExtResource("1_aiyfo")]
-visible = false
 position = Vector2(0, -15)
 
 [node name="BirdScene" parent="." instance=ExtResource("3_u1fkb")]
@@ -51,5 +50,9 @@ top_level = true
 
 [node name="GameOverScene" parent="." instance=ExtResource("8_17iql")]
 visible = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(989, 955)
+zoom = Vector2(0.5, 0.5)
 
 [connection signal="bird_is_dead" from="BirdScene" to="." method="_on_bird_scene_bird_is_dead"]

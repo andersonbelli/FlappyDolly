@@ -4,6 +4,9 @@ class_name PipeClass
 
 var collided = false
 
+func _ready():
+	print("pipe posiiton", position)
+
 func _physics_process(delta):
 	var collide_with = move_and_collide(Vector2(1,0) * delta * Globals.GAME_SPEED * -1)
 	

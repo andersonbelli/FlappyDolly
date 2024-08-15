@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2xsdd3ihs3id"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_cgwhv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_67jlj"]
+radius = 0.53899
+height = 1.07798
+
+[node name="Bottle" type="RigidBody2D"]
+
+[node name="BottleSprite" type="Sprite2D" parent="."]
+modulate = Color(0.039358, 0.554916, 0, 1)
+scale = Vector2(75.3, 41.9)
+texture = SubResource("CanvasTexture_cgwhv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_67jlj")

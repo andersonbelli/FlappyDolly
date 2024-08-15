@@ -1,6 +1,9 @@
 extends Node2D
 
+class_name PipesManagerClass
+
 const PipeScene = preload("res://scenes/pipe_scene.tscn")
+const PipeDollyScene = preload("res://scenes/pipe_dolly_scene.tscn")
 
 @export var first_pipe_position = 400
 
@@ -8,23 +11,37 @@ const PipeScene = preload("res://scenes/pipe_scene.tscn")
 @onready var bottom_spawn = $BottomSpawn
 
 var is_bottom = true if (randi_range(0, 1) % 2 == 0) else false
+var pipe_or_dolly = true if (randi_range(0, 1) % 2 == 0) else false
 
 var can_spawn := true
 
 func _ready():
 	can_spawn = true
-	spawn_pipe()
+	#spawn_pipe()
+	spawn_dolly_pipe()
 
 func _physics_process(delta):
 	if can_spawn:
 		var pipes = get_tree().get_nodes_in_group("pipes")
 		
 		if not pipes.is_empty():
-			var first_pipe = get_tree().get_nodes_in_group("pipes").front() as PipeClass
+			var first_pipe = get_tree().get_nodes_in_group("pipes").front()
 			var pipes_counter = get_tree().get_nodes_in_group("pipes").size()
 			
 			if (pipes_counter < 2 and first_pipe.position.x < first_pipe_position):
-				spawn_pipe()
+				#spawn_dolly_pipe()
+				print("spawn")
+				#spawn_pipe()
+				
+				#if Globals.SCORE > 3:
+					#if pipe_or_dolly:
+						#print("dolly!!!!")
+						#spawn_dolly_pipe()
+					#else:
+						#spawn_pipe()
+				#else:
+					#spawn_pipe()
+
 
 func stop_spawn():
 	can_spawn = false
@@ -36,6 +53,16 @@ func spawn_pipe():
 	
 	if pipe_position != null:
 		pipe.position = pipe_position
+		add_child(pipe)
+
+func spawn_dolly_pipe():
+	var pipe_position := set_spawn_position()
+	var pipe = PipeDollyScene.instantiate() as PipeDollyClass
+	pipe.add_to_group("pipes")
+	
+	if pipe_position != null:
+		pipe.position = pipe_position
+		pipe.position.x -= 450
 		add_child(pipe)
 
 func set_spawn_position() -> Vector2:
