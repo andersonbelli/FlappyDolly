@@ -4,7 +4,7 @@ class_name PipeDollyClass
 
 var BottleScene = preload("res://scenes/bottle_scene.tscn")
 
-@export var throw_force := 1250
+@export var throw_force := 2000
 
 ## Left arm
 @onready var marker_left = $MarkerLeft as Marker2D
@@ -62,21 +62,15 @@ func _ready():
 	animation_player.play("throw_bottle")
 
 func _process(delta):
-	if not force_applied and (arm_sprite.rotation_degrees < -36.2 or arm_sprite.rotation_degrees > 36.2):
-		var direction = global_position.direction_to(Globals.BIRD_POSITION) - Vector2(1,0)
-		var impulse = direction * throw_force
-		
-		var bottleScene = BottleScene.instantiate() as RigidBody2D
-		
-		bottleScene.global_position = marker.position
-		bottle.queue_free()
-		add_child(bottleScene)
+	if not force_applied:
+		if arm_sprite.rotation_degrees < -36.2 or arm_sprite.rotation_degrees > 36.2:
+			var direction = global_position.direction_to(Globals.BIRD_POSITION) - Vector2(1,0)
+			var impulse = direction * throw_force
 
-		bottleScene.apply_impulse(impulse)
-
-		force_applied = true
-	else:
-		if not force_applied:
+			bottle.global_position = marker_arm.global_position
+			bottle.apply_impulse(impulse, bottle.global_position)
+			force_applied = true
+		else:
 			bottle.global_position = marker_arm.global_position
 			bottle.rotation_degrees += 65
 

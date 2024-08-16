@@ -1,22 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://bm3n4ytgm5cmh"]
+[gd_scene load_steps=11 format=3 uid="uid://bm3n4ytgm5cmh"]
 
 [ext_resource type="Script" path="res://scripts/pipe_dolly.gd" id="1_ccv0c"]
 [ext_resource type="Texture2D" uid="uid://chql0qi8xmnck" path="res://assets/obstacles/dolly/dolly.svg" id="2_lp42o"]
 [ext_resource type="Texture2D" uid="uid://2rx3mcycvs0q" path="res://assets/obstacles/pipe.svg" id="3_sgqn2"]
 [ext_resource type="Texture2D" uid="uid://byxa848afoekp" path="res://assets/obstacles/dolly/dolly-arm.svg" id="4_1n8u0"]
+[ext_resource type="PackedScene" uid="uid://b2xsdd3ihs3id" path="res://scenes/bottle_scene.tscn" id="5_7be0m"]
 [ext_resource type="Texture2D" uid="uid://dimd2yns4f286" path="res://assets/obstacles/dolly/arm-line.svg" id="5_g6sp1"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_sxh7u"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pflnv"]
-radius = 0.53899
-height = 1.07798
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_50vhd"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w5gqg"]
-radius = 0.53899
-height = 1.07798
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5lruy"]
 radius = 204.0
@@ -113,17 +102,9 @@ offset = Vector2(144.855, -57.5549)
 [node name="MarkerArmLeft" type="Marker2D" parent="DollyArmLeft"]
 position = Vector2(257, -144)
 
-[node name="Bottle" type="RigidBody2D" parent="DollyArmLeft"]
+[node name="Bottle" parent="DollyArmLeft" instance=ExtResource("5_7be0m")]
 position = Vector2(263.312, -144.346)
 rotation = 0.275762
-
-[node name="BottleSprite" type="Sprite2D" parent="DollyArmLeft/Bottle"]
-modulate = Color(0.039358, 0.554916, 0, 1)
-scale = Vector2(75.3, 41.9)
-texture = SubResource("CanvasTexture_sxh7u")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DollyArmLeft/Bottle"]
-shape = SubResource("CapsuleShape2D_pflnv")
 
 [node name="DollyArmRight" type="Sprite2D" parent="."]
 position = Vector2(-116.25, -902.333)
@@ -134,17 +115,9 @@ flip_h = true
 [node name="MarkerArmRight" type="Marker2D" parent="DollyArmRight"]
 position = Vector2(-295, -128)
 
-[node name="Bottle" type="RigidBody2D" parent="DollyArmRight"]
+[node name="Bottle" parent="DollyArmRight" instance=ExtResource("5_7be0m")]
 position = Vector2(-288.688, -128.346)
-rotation = 0.275762
-
-[node name="BottleSprite" type="Sprite2D" parent="DollyArmRight/Bottle"]
-modulate = Color(0.039358, 0.554916, 0, 1)
-scale = Vector2(75.3, 41.9)
-texture = SubResource("CanvasTexture_50vhd")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DollyArmRight/Bottle"]
-shape = SubResource("CapsuleShape2D_w5gqg")
+rotation = -3.56745
 
 [node name="Arm-line" type="Sprite2D" parent="."]
 position = Vector2(110.75, -956.333)

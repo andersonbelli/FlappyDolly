@@ -2,8 +2,11 @@ extends Node2D
 
 class_name PipesManagerClass
 
-const PipeScene = preload("res://scenes/pipe_scene.tscn")
-const PipeDollyScene = preload("res://scenes/pipe_dolly_scene.tscn")
+#const PipeScene = preload("res://scenes/pipe_scene.tscn")
+#const PipeDollyScene = preload("res://scenes/pipe_dolly_scene.tscn")
+
+@export var PipeScene: PackedScene
+@export var PipeDollyScene: PackedScene
 
 @export var first_pipe_position = 400
 @export var pipe_disaper_at = 650
@@ -30,13 +33,14 @@ func _physics_process(delta):
 			
 			if (pipes_counter < 2 and first_pipe.position.x < first_pipe_position):
 				
-				if Globals.SCORE > 3:
-					if is_pipe_dolly:
-						spawn_dolly_pipe()
-					else:
-						spawn_pipe()
-				else:
-					spawn_pipe()
+				spawn_dolly_pipe()
+				#if Globals.SCORE > 3:
+					#if is_pipe_dolly:
+						#spawn_dolly_pipe()
+					#else:
+						#spawn_pipe()
+				#else:
+					#spawn_pipe()
 
 func stop_spawn():
 	can_spawn = false

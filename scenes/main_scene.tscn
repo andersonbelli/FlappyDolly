@@ -66,7 +66,7 @@ rotation = 3.14159
 shape = SubResource("WorldBoundaryShape2D_klwqp")
 
 [node name="BottomWorldBoundary" type="CollisionShape2D" parent="WorldBoundary"]
-position = Vector2(1064, 1922)
+position = Vector2(574, 1922)
 shape = SubResource("WorldBoundaryShape2D_klwqp")
 
 [connection signal="bird_is_dead" from="BirdScene" to="." method="_on_bird_scene_bird_is_dead"]
