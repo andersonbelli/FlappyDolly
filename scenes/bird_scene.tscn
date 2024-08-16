@@ -84,18 +84,23 @@ script = ExtResource("1_l3g73")
 
 [node name="DeathAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_vng6l")
+bus = &"SFX"
 
 [node name="Slap4" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_yhtd4")
+bus = &"SFX"
 
 [node name="Slap3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_inovs")
+bus = &"SFX"
 
 [node name="Slap2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_htfln")
+bus = &"SFX"
 
 [node name="Slap1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_f7ls1")
+bus = &"SFX"
 
 [node name="Bird" type="CharacterBody2D" parent="."]
 position = Vector2(-34, 27)

@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://cecpeoc7bsylc"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_jw6sh"]
+[ext_resource type="Texture2D" uid="uid://cuexylxhag02f" path="res://assets/images/background/sky_background.svg" id="1_kr357"]
+[ext_resource type="PackedScene" uid="uid://dxmnq5nbpry3d" path="res://scenes/cloud_scene.tscn" id="2_80ei6"]
+[ext_resource type="PackedScene" uid="uid://bsko2g7rl06b2" path="res://scenes/bird_scene.tscn" id="3_e3ykb"]
+[ext_resource type="FontFile" uid="uid://d14s525nrgj5o" path="res://assets/fonts/Playon-reg.ttf" id="4_kct05"]
+[ext_resource type="PackedScene" uid="uid://61ihymdab77s" path="res://scenes/transition_scene.tscn" id="5_1leyw"]
+[ext_resource type="PackedScene" uid="uid://b5iwqfly4tjmw" path="res://scenes/pipes_manager.tscn" id="6_b5yu3"]
+[ext_resource type="PackedScene" uid="uid://cusaqs3eivr6g" path="res://scenes/game_over_scene.tscn" id="7_jpunb"]
+
+[sub_resource type="Theme" id="Theme_vb7me"]
+default_font = ExtResource("4_kct05")
+default_font_size = 35
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jv78b"]
+distance = 5.0
+
+[node name="GameScene" type="Node2D"]
+script = ExtResource("1_jw6sh")
+
+[node name="SkyBackground" type="Sprite2D" parent="."]
+visibility_layer = 32
+position = Vector2(540, 960)
+texture = ExtResource("1_kr357")
+metadata/_edit_lock_ = true
+
+[node name="CloudScene" parent="." instance=ExtResource("2_80ei6")]
+position = Vector2(0, -15)
+
+[node name="BirdScene" parent="." instance=ExtResource("3_e3ykb")]
+position = Vector2(232, 955)
+
+[node name="ScoreLabel" type="Label" parent="."]
+top_level = true
+offset_left = 73.0
+offset_top = 82.0
+offset_right = 195.0
+offset_bottom = 228.0
+pivot_offset = Vector2(59, 76)
+theme = SubResource("Theme_vb7me")
+theme_override_colors/font_color = Color(0.772549, 0.866667, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.0313726, 0.0196078, 0.0352941, 1)
+theme_override_colors/font_outline_color = Color(0.818412, 0.674562, 0.409966, 1)
+theme_override_font_sizes/font_size = 106
+text = "10"
+
+[node name="TransitionScene" parent="." instance=ExtResource("5_1leyw")]
+visible = false
+top_level = true
+
+[node name="PipesManager" parent="." instance=ExtResource("6_b5yu3")]
+
+[node name="GameOverScene" parent="." instance=ExtResource("7_jpunb")]
+visible = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(540, 960)
+
+[node name="WorldBoundary" type="StaticBody2D" parent="."]
+collision_layer = 16
+
+[node name="TopWorldBoundary" type="CollisionShape2D" parent="WorldBoundary"]
+position = Vector2(508, -93)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_jv78b")
+
+[node name="BottomWorldBoundary" type="CollisionShape2D" parent="WorldBoundary"]
+position = Vector2(574, 1992)
+shape = SubResource("WorldBoundaryShape2D_jv78b")
+
+[connection signal="bird_is_dead" from="BirdScene" to="." method="_on_bird_scene_bird_is_dead"]
