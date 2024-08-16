@@ -1,20 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://mq21yswxokgd"]
+[gd_scene load_steps=3 format=3 uid="uid://mq21yswxokgd"]
 
-[ext_resource type="Script" path="res://scripts/pipe.gd" id="1_x8avo"]
-[ext_resource type="Texture2D" uid="uid://c35gs0x1ucpou" path="res://assets/images/obstacles/pipe.svg" id="2_txmwn"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s32en"]
-rough = true
+[ext_resource type="Script" path="res://scripts/pipe.gd" id="1_f2h8d"]
+[ext_resource type="Texture2D" uid="uid://2rx3mcycvs0q" path="res://assets/obstacles/pipe.svg" id="1_nxll8"]
 
 [node name="PipeScene" type="StaticBody2D"]
 scale = Vector2(0.9, 1.2)
 disable_mode = 1
 collision_layer = 2
-physics_material_override = SubResource("PhysicsMaterial_s32en")
-script = ExtResource("1_x8avo")
+script = ExtResource("1_f2h8d")
 
 [node name="Pipe" type="Sprite2D" parent="."]
-texture = ExtResource("2_txmwn")
+texture = ExtResource("1_nxll8")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-221, -535, -227, -387, -183, -367, -183, 368, -231, 393, -222, 529, 217, 534, 221, 377, 184, 369, 183, -368, 221, -379, 212, -536)
