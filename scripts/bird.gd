@@ -63,4 +63,4 @@ func die():
 		queue_free()
 
 func hit():
-	position += Vector2(0, 100)
+	position += Vector2(0, 150)

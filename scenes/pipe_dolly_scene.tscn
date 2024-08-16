@@ -20,7 +20,7 @@ height = 1.07798
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5lruy"]
 radius = 204.0
-height = 2070.0
+height = 2652.0
 
 [sub_resource type="Animation" id="Animation_2nmut"]
 length = 0.001
@@ -94,7 +94,8 @@ position = Vector2(-5.24973, -1040.33)
 texture = ExtResource("2_lp42o")
 
 [node name="Pipe" type="Sprite2D" parent="."]
-scale = Vector2(1.1, 1.4)
+position = Vector2(0, 310)
+scale = Vector2(1.25, 1.97222)
 texture = ExtResource("3_sgqn2")
 
 [node name="MarkerLeft" type="Marker2D" parent="."]
@@ -151,7 +152,7 @@ rotation = -0.0750805
 texture = ExtResource("5_g6sp1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-8.33333, -390)
+position = Vector2(-8, -96)
 shape = SubResource("CapsuleShape2D_5lruy")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
