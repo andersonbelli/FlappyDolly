@@ -11,8 +11,6 @@ var is_alive = true
 
 @onready var death_audio = $"../DeathAudio"
 
-var slap_audio: AudioStreamPlayer
-
 @onready var slap_audio_1 = $"../Slap1"
 @onready var slap_audio_2 = $"../Slap2"
 @onready var slap_audio_3 = $"../Slap3"
@@ -26,9 +24,14 @@ func _ready():
 func _process(delta):
 	if is_alive:
 		flap(delta)
+		
 		var collision = move_and_collide(velocity * delta)
 		if collision != null:
-			print("BIRD: ", collision.get_collider().name)
+			if collision.get_collider().name == "WorldBoundary":
+				die()
+			elif collision.get_collider().name == "Bottle":
+				var bottle = collision.get_collider() as BottleClass
+				hit(bottle.impulse_force)
 
 func _physics_process(delta):
 	# add gravity
@@ -62,5 +65,5 @@ func die():
 		play_dead_animation.emit()
 		queue_free()
 
-func hit():
-	position += Vector2(0, 150)
+func hit(impulse_force: int):
+	position += Vector2(0, impulse_force)

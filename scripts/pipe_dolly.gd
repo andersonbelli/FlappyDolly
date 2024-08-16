@@ -23,13 +23,13 @@ var BottleScene = preload("res://scenes/bottle_scene.tscn")
 @onready var dolly_sprite = $DollySprite
 @onready var pipe_sprite = $Pipe
 
-var bottle: RigidBody2D
+var bottle: BottleClass
 var marker: Marker2D
 var marker_arm: Marker2D
 var arm_sprite: Sprite2D
 
 var collided = false
-var force_applied = false
+var impulse_applied = false
 
 var disapear_at
 var is_bottom
@@ -62,14 +62,14 @@ func _ready():
 	animation_player.play("throw_bottle")
 
 func _process(delta):
-	if not force_applied:
+	if not impulse_applied:
 		if arm_sprite.rotation_degrees < -36.2 or arm_sprite.rotation_degrees > 36.2:
-			var direction = global_position.direction_to(Globals.BIRD_POSITION) - Vector2(1,0)
-			var impulse = direction * throw_force
-
+			var impulse = throw_bottle_randomization(global_position.direction_to(Globals.BIRD_POSITION))
+			bottle.impulse_force = impulse.y / 10
+			
 			bottle.global_position = marker_arm.global_position
 			bottle.apply_impulse(impulse, bottle.global_position)
-			force_applied = true
+			impulse_applied = true
 		else:
 			bottle.global_position = marker_arm.global_position
 			bottle.rotation_degrees += 65
@@ -88,3 +88,12 @@ func _physics_process(delta):
 		if collided == false:
 			Globals.SCORE += 1
 		queue_free()
+
+func throw_bottle_randomization(direction: Vector2, ) -> Vector2:
+	direction -= Vector2(randi_range(0, 2), 0)
+	
+	var impulse := direction * throw_force
+	impulse.x += randi_range(1, 1000)
+	impulse.x -= randi_range(1, 1000)
+	
+	return impulse
