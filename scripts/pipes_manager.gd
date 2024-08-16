@@ -12,7 +12,7 @@ const PipeDollyScene = preload("res://scenes/pipe_dolly_scene.tscn")
 @onready var bottom_spawn = $BottomSpawn
 
 var is_bottom = true if (randi_range(0, 1) % 2 == 0) else false
-var pipe_or_dolly = true if (randi_range(0, 1) % 2 == 0) else false
+var is_pipe_dolly = true if (randi_range(0, 1) % 2 == 0) else false
 
 var can_spawn := true
 
@@ -31,8 +31,7 @@ func _physics_process(delta):
 			if (pipes_counter < 2 and first_pipe.position.x < first_pipe_position):
 				
 				if Globals.SCORE > 3:
-					if pipe_or_dolly:
-						print("dolly!!!!")
+					if is_pipe_dolly:
 						spawn_dolly_pipe()
 					else:
 						spawn_pipe()
@@ -62,7 +61,7 @@ func spawn_dolly_pipe():
 		add_child(pipe)
 
 func set_spawn_position() -> Vector2:
-	pipe_or_dolly = true if (randi_range(0, 1) % 2 == 0) else false
+	is_pipe_dolly = true if (randi_range(0, 1) % 2 == 0) else false
 	
 	var spawn_at_position = up_spawn.position
 	
@@ -78,7 +77,7 @@ func set_spawn_position() -> Vector2:
 	else:
 		Globals.REPEAT_PIPE_COUNT += 1
 	
-	var pipe_offset = offset_variation(pipe_or_dolly)
+	var pipe_offset = offset_variation()
 	
 	if is_bottom:
 		Globals.LAST_PIPE_IS_BOTTOM = true
@@ -90,10 +89,10 @@ func set_spawn_position() -> Vector2:
 		
 	return spawn_at_position
 
-func offset_variation(is_dolly: bool) -> int:
+func offset_variation() -> int:
 	var new_offset = 250
 	
-	if(is_dolly):
-		new_offset = 100
+	if is_pipe_dolly:
+		new_offset = 20
 	
 	return new_offset

@@ -99,6 +99,7 @@ stream = ExtResource("3_f7ls1")
 
 [node name="Bird" type="CharacterBody2D" parent="."]
 position = Vector2(-34, 27)
+collision_mask = 22
 motion_mode = 1
 script = ExtResource("2_vorm6")
 

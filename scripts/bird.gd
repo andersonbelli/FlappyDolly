@@ -5,7 +5,7 @@ class_name BirdClass
 signal play_dead_animation
 
 const SPEED = 420.0
-const FLAP_FORCE = 300.0
+const FLAP_FORCE = 350.0
 
 var is_alive = true
 
@@ -26,7 +26,9 @@ func _ready():
 func _process(delta):
 	if is_alive:
 		flap(delta)
-		move_and_collide(velocity * delta)
+		var collision = move_and_collide(velocity * delta)
+		if collision != null:
+			print("BIRD: ", collision.get_collider().name)
 
 func _physics_process(delta):
 	# add gravity
@@ -46,6 +48,7 @@ func flap(delta: float):
 		slap_on_flap()
 	else:
 		var bird_rotation = clampf(delta + rotation, -2, 1.2)
+		velocity.y += 5
 		rotation = bird_rotation
 
 func slap_on_flap():

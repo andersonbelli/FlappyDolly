@@ -4,9 +4,6 @@ class_name BirdManagerClass
 
 signal bird_is_dead
 
-const SPEED = 420.0
-const FLAP_FORCE = 300.0
-
 var is_alive = true
 
 @onready var dead = $Dead

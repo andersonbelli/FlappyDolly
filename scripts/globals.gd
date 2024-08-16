@@ -1,6 +1,6 @@
 extends Node
 
-var GAME_SPEED = 750
+var GAME_SPEED = 650
 var SCORE = 0
 
 # Pipes

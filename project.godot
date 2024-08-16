@@ -57,10 +57,12 @@ flap={
 2d_render/layer_1="bird"
 2d_render/layer_2="enemies"
 2d_render/layer_3="projectiles"
+2d_render/layer_5="world"
 2d_render/layer_6="background"
 2d_physics/layer_1="bird"
 2d_physics/layer_2="enemies"
 2d_physics/layer_3="projectiles"
+2d_physics/layer_5="world"
 
 [rendering]
 

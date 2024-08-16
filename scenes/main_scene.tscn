@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://v4q202x1ai57"]
+[gd_scene load_steps=11 format=3 uid="uid://v4q202x1ai57"]
 
 [ext_resource type="PackedScene" uid="uid://dxmnq5nbpry3d" path="res://scenes/cloud_scene.tscn" id="1_aiyfo"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_p71cs"]
@@ -12,6 +12,9 @@
 [sub_resource type="Theme" id="Theme_dunyb"]
 default_font = ExtResource("5_53p8v")
 default_font_size = 35
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_klwqp"]
+distance = 5.0
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_p71cs")
@@ -52,6 +55,18 @@ top_level = true
 visible = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(540, 963)
+position = Vector2(540, 960)
+
+[node name="WorldBoundary" type="StaticBody2D" parent="."]
+collision_layer = 16
+
+[node name="TopWorldBoundary" type="CollisionShape2D" parent="WorldBoundary"]
+position = Vector2(513, 2)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_klwqp")
+
+[node name="BottomWorldBoundary" type="CollisionShape2D" parent="WorldBoundary"]
+position = Vector2(1064, 1922)
+shape = SubResource("WorldBoundaryShape2D_klwqp")
 
 [connection signal="bird_is_dead" from="BirdScene" to="." method="_on_bird_scene_bird_is_dead"]
