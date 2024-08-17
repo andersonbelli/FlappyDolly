@@ -61,11 +61,11 @@ func _ready():
 		arm_sprite = dolly_arm_right
 	animation_player.play("throw_bottle")
 
-func _process(delta):
+func _process(_delta):
 	if not impulse_applied:
 		if arm_sprite.rotation_degrees < -36.2 or arm_sprite.rotation_degrees > 36.2:
 			var impulse = throw_bottle_randomization(global_position.direction_to(Globals.BIRD_POSITION))
-			bottle.impulse_force = impulse.y / 10
+			bottle.impulse_force = impulse.y
 			
 			bottle.global_position = marker_arm.global_position
 			bottle.apply_impulse(impulse, bottle.global_position)
