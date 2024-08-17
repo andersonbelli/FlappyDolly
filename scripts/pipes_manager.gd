@@ -23,7 +23,7 @@ func _ready():
 	can_spawn = true
 	spawn_pipe()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if can_spawn:
 		var pipes = get_tree().get_nodes_in_group("pipes")
 		
@@ -32,15 +32,13 @@ func _physics_process(delta):
 			var pipes_counter = get_tree().get_nodes_in_group("pipes").size()
 			
 			if (pipes_counter < 2 and first_pipe.position.x < first_pipe_position):
-				
-				spawn_dolly_pipe()
-				#if Globals.SCORE > 3:
-					#if is_pipe_dolly:
-						#spawn_dolly_pipe()
-					#else:
-						#spawn_pipe()
-				#else:
-					#spawn_pipe()
+				if Globals.SCORE > 3:
+					if is_pipe_dolly:
+						spawn_dolly_pipe()
+					else:
+						spawn_pipe()
+				else:
+					spawn_pipe()
 
 func stop_spawn():
 	can_spawn = false
