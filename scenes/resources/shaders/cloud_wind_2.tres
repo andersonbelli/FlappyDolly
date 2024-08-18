@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://eqri8j5pyarh"]
+
+[ext_resource type="Shader" path="res://scenes/resources/shaders/wind_shader.gdshader" id="1_ih1nt"]
+
+[resource]
+shader = ExtResource("1_ih1nt")
+shader_parameter/speed = 2.5
+shader_parameter/minStrength = 0.233
+shader_parameter/maxStrength = 0.053
+shader_parameter/strengthScale = 100.355
+shader_parameter/interval = 4.595
+shader_parameter/detail = 1.0
+shader_parameter/distortion = null
+shader_parameter/heightOffset = null
+shader_parameter/offset = 0.0

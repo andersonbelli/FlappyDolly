@@ -1,12 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://v4q202x1ai57"]
+[gd_scene load_steps=6 format=3 uid="uid://bf87aqcygvqp0"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_p71cs"]
-[ext_resource type="PackedScene" uid="uid://hi6jmkihys67" path="res://scenes/start_screen_scene.tscn" id="2_61nvj"]
+[ext_resource type="Texture2D" uid="uid://dqkwqknbmebpn" path="res://assets/images/background/sky_background.png" id="2_1nuqv"]
+[ext_resource type="PackedScene" uid="uid://r3wrdg7oci0u" path="res://scenes/ui/start_screen_scene.tscn" id="2_61nvj"]
 [ext_resource type="Texture2D" uid="uid://drvob3mk5txyv" path="res://assets/images/settings/sound/sound.svg" id="2_bobji"]
 [ext_resource type="Texture2D" uid="uid://4c32hmp50hry" path="res://assets/images/settings/sound/soundX.svg" id="3_urci1"]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_p71cs")
+
+[node name="SkyBackground" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -462.0
+offset_top = 6.0
+offset_right = 1698.0
+offset_bottom = 1926.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(1081, 977)
+size_flags_horizontal = 4
+texture = ExtResource("2_1nuqv")
+stretch_mode = 5
 
 [node name="AudioButton" type="TextureButton" parent="."]
 top_level = true

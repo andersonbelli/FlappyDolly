@@ -1,0 +1,311 @@
+[gd_scene load_steps=26 format=3 uid="uid://dpdrvmamgu0eg"]
+
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_j3vhw"]
+[ext_resource type="Texture2D" uid="uid://ok5jkf5injp8" path="res://assets/images/game_over_screen/gameover.png" id="2_b0w6r"]
+[ext_resource type="PackedScene" uid="uid://cosawlifrhcf3" path="res://scenes/elements/cloud_scene.tscn" id="4_1ei3t"]
+[ext_resource type="FontFile" uid="uid://d14s525nrgj5o" path="res://assets/fonts/Playon-reg.ttf" id="4_u1yi4"]
+[ext_resource type="Material" uid="uid://eqri8j5pyarh" path="res://scenes/resources/shaders/cloud_wind_2.tres" id="6_inf6n"]
+[ext_resource type="Texture2D" uid="uid://bj622vb8ax6ft" path="res://assets/images/game_over_screen/scoreboard.png" id="8_5tivy"]
+[ext_resource type="Shader" path="res://scenes/resources/shaders/wind_shader.gdshader" id="8_o5cf5"]
+[ext_resource type="Material" uid="uid://cesr8kpkci14j" path="res://scenes/resources/shaders/cloud_wind_1.tres" id="8_uosdv"]
+[ext_resource type="Texture2D" uid="uid://dxflg281hc6q5" path="res://assets/images/game_over_screen/try_again_sign.svg" id="9_0ey2x"]
+[ext_resource type="Texture2D" uid="uid://b7ye18qi15ivo" path="res://assets/images/game_over_screen/grass/3-grass.svg" id="9_bx1ki"]
+[ext_resource type="Texture2D" uid="uid://cnw5tutxgn0c1" path="res://assets/images/game_over_screen/grass/2-grass.svg" id="10_afh0x"]
+[ext_resource type="Texture2D" uid="uid://c88h500syw2fh" path="res://assets/images/game_over_screen/try_again.svg" id="11_4jf1d"]
+[ext_resource type="Texture2D" uid="uid://clohmfk7fgnf7" path="res://assets/images/game_over_screen/grass/1-grass.svg" id="12_kq8br"]
+
+[sub_resource type="Animation" id="Animation_hsqbc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1322, 5)]
+}
+
+[sub_resource type="Animation" id="Animation_vyhp8"]
+resource_name = "moving_clouds"
+length = 15.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1800, 5), Vector2(-1400, 5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6a0h8"]
+_data = {
+"RESET": SubResource("Animation_hsqbc"),
+"moving_clouds": SubResource("Animation_vyhp8")
+}
+
+[sub_resource type="Theme" id="Theme_4pl6y"]
+default_font = ExtResource("4_u1yi4")
+default_font_size = 35
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xjjam"]
+shader = ExtResource("8_o5cf5")
+shader_parameter/speed = 2.405
+shader_parameter/minStrength = 0.075
+shader_parameter/maxStrength = 0.679
+shader_parameter/strengthScale = 101.74
+shader_parameter/interval = 3.15
+shader_parameter/detail = 1.0
+shader_parameter/distortion = null
+shader_parameter/heightOffset = null
+shader_parameter/offset = 0.0
+
+[sub_resource type="InputEventKey" id="InputEventKey_co8p8"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_ustrg"]
+events = [SubResource("InputEventKey_co8p8")]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_273uv"]
+load_path = "res://.godot/imported/umpressed_restart.svg-31b2118d396349601ed10ea28e04409f.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bvcpb"]
+load_path = "res://.godot/imported/pressed_restart.svg-7514d48ea87619da4601f5b545576190.ctex"
+
+[sub_resource type="Shortcut" id="Shortcut_uf8l1"]
+events = [SubResource("InputEventKey_co8p8")]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a6uo3"]
+load_path = "res://.godot/imported/umpressed_restart.svg-31b2118d396349601ed10ea28e04409f.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_505sy"]
+load_path = "res://.godot/imported/pressed_restart.svg-7514d48ea87619da4601f5b545576190.ctex"
+
+[node name="GameOverScene" type="Control"]
+top_level = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_j3vhw")
+metadata/_edit_lock_ = true
+
+[node name="Gameover" type="TextureRect" parent="."]
+top_level = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -31.0
+offset_top = 527.0
+offset_right = -576.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_b0w6r")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.478431)
+metadata/_edit_lock_ = true
+
+[node name="CloudScene" parent="." instance=ExtResource("4_1ei3t")]
+modulate = Color(1, 1, 1, 0.12549)
+position = Vector2(1322, 5)
+skew = 0.174533
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CloudScene"]
+libraries = {
+"": SubResource("AnimationLibrary_6a0h8")
+}
+autoplay = "moving_clouds"
+
+[node name="ScoreLabel" type="Label" parent="."]
+top_level = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 32.0
+offset_top = 279.0
+offset_right = 288.0
+offset_bottom = 525.0
+grow_horizontal = 2
+pivot_offset = Vector2(126, 115)
+theme = SubResource("Theme_4pl6y")
+theme_override_colors/font_color = Color(0.772549, 0.866667, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.0313726, 0.0196078, 0.0352941, 1)
+theme_override_colors/font_outline_color = Color(0.818412, 0.674562, 0.409966, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_outline_size = 45
+theme_override_font_sizes/font_size = 251
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Scoreboard" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 397.0
+offset_top = 74.0
+offset_right = 1023.0
+offset_bottom = 675.0
+texture = ExtResource("8_5tivy")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="grass1" type="TextureRect" parent="."]
+material = ExtResource("6_inf6n")
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -576.0
+offset_top = -1856.0
+offset_right = 572.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("9_bx1ki")
+metadata/_edit_lock_ = true
+
+[node name="grass2" type="TextureRect" parent="."]
+material = ExtResource("8_uosdv")
+layout_mode = 0
+offset_left = -46.0
+offset_right = 1119.0
+offset_bottom = 1920.0
+texture = ExtResource("10_afh0x")
+metadata/_edit_lock_ = true
+
+[node name="Sign" type="TextureButton" parent="."]
+top_level = true
+layout_mode = 0
+offset_left = 458.0
+offset_top = 857.0
+offset_right = 1258.0
+offset_bottom = 2292.0
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("9_0ey2x")
+
+[node name="grass3" type="TextureRect" parent="."]
+top_level = true
+material = SubResource("ShaderMaterial_xjjam")
+layout_mode = 0
+offset_left = -39.0
+offset_right = 1109.0
+offset_bottom = 1920.0
+texture = ExtResource("12_kq8br")
+metadata/_edit_lock_ = true
+
+[node name="RestartButton" type="TextureButton" parent="."]
+top_level = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -831.0
+offset_right = 458.0
+offset_bottom = -699.0
+grow_horizontal = 2
+grow_vertical = 0
+shortcut = SubResource("Shortcut_ustrg")
+texture_normal = SubResource("CompressedTexture2D_273uv")
+texture_pressed = SubResource("CompressedTexture2D_bvcpb")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="RestartButton"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_u1yi4")
+theme_override_font_sizes/font_size = 86
+text = "RESTART"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="RankingButton" type="TextureButton" parent="."]
+top_level = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -645.0
+offset_right = 458.0
+offset_bottom = -513.0
+grow_horizontal = 2
+grow_vertical = 0
+shortcut = SubResource("Shortcut_uf8l1")
+texture_normal = SubResource("CompressedTexture2D_a6uo3")
+texture_pressed = SubResource("CompressedTexture2D_505sy")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="RankingButton"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_u1yi4")
+theme_override_font_sizes/font_size = 86
+text = "RANKING"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="TryAgain" type="TextureRect" parent="."]
+top_level = true
+layout_mode = 0
+offset_left = 516.0
+offset_top = 908.0
+offset_right = 1177.0
+offset_bottom = 1118.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("11_4jf1d")
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_texture_button_pressed"]

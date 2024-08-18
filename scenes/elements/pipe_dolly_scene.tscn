@@ -1,0 +1,137 @@
+[gd_scene load_steps=11 format=3 uid="uid://bm3n4ytgm5cmh"]
+
+[ext_resource type="Script" path="res://scripts/pipe_dolly.gd" id="1_ccv0c"]
+[ext_resource type="Texture2D" uid="uid://chql0qi8xmnck" path="res://assets/images/obstacles/dolly/dolly.svg" id="2_lp42o"]
+[ext_resource type="Texture2D" uid="uid://2rx3mcycvs0q" path="res://assets/images/obstacles/pipe.svg" id="3_sgqn2"]
+[ext_resource type="Texture2D" uid="uid://byxa848afoekp" path="res://assets/images/obstacles/dolly/dolly-arm.svg" id="4_1n8u0"]
+[ext_resource type="PackedScene" uid="uid://b2xsdd3ihs3id" path="res://scenes/elements/bottle_scene.tscn" id="5_7be0m"]
+[ext_resource type="Texture2D" uid="uid://dimd2yns4f286" path="res://assets/images/obstacles/dolly/arm-line.svg" id="5_g6sp1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5lruy"]
+radius = 204.0
+height = 2652.0
+
+[sub_resource type="Animation" id="Animation_2nmut"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DollyArmLeft:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.214463]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DollyArmRight:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_gxxm7"]
+resource_name = "throw_bottle"
+length = 1.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DollyArmLeft:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.214463, -0.316426, -0.974535]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DollyArmRight:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.315905, 0.973894]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8op1n"]
+_data = {
+"RESET": SubResource("Animation_2nmut"),
+"throw_bottle": SubResource("Animation_gxxm7")
+}
+
+[node name="PipeDollyScene" type="StaticBody2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+script = ExtResource("1_ccv0c")
+
+[node name="DollySprite" type="Sprite2D" parent="."]
+position = Vector2(-5.24973, -1040.33)
+texture = ExtResource("2_lp42o")
+
+[node name="Pipe" type="Sprite2D" parent="."]
+position = Vector2(0, 310)
+scale = Vector2(1.25, 1.97222)
+texture = ExtResource("3_sgqn2")
+
+[node name="MarkerLeft" type="Marker2D" parent="."]
+position = Vector2(281.417, -1217.67)
+
+[node name="MarkerRight" type="Marker2D" parent="."]
+position = Vector2(-276.916, -1179.33)
+
+[node name="DollyArmLeft" type="Sprite2D" parent="."]
+position = Vector2(156.75, -947.333)
+rotation = 0.214463
+texture = ExtResource("4_1n8u0")
+offset = Vector2(144.855, -57.5549)
+
+[node name="MarkerArmLeft" type="Marker2D" parent="DollyArmLeft"]
+position = Vector2(257, -144)
+
+[node name="Bottle" parent="DollyArmLeft" instance=ExtResource("5_7be0m")]
+position = Vector2(263.312, -144.346)
+rotation = 0.275762
+
+[node name="DollyArmRight" type="Sprite2D" parent="."]
+position = Vector2(-116.25, -902.333)
+texture = ExtResource("4_1n8u0")
+offset = Vector2(-169.873, -50.71)
+flip_h = true
+
+[node name="MarkerArmRight" type="Marker2D" parent="DollyArmRight"]
+position = Vector2(-295, -128)
+
+[node name="Bottle" parent="DollyArmRight" instance=ExtResource("5_7be0m")]
+position = Vector2(-288.688, -128.346)
+rotation = -3.56745
+
+[node name="Arm-line" type="Sprite2D" parent="."]
+position = Vector2(110.75, -956.333)
+rotation = -0.0750805
+texture = ExtResource("5_g6sp1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8, -96)
+shape = SubResource("CapsuleShape2D_5lruy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8op1n")
+}
+speed_scale = 2.0
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

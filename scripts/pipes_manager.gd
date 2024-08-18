@@ -2,9 +2,6 @@ extends Node2D
 
 class_name PipesManagerClass
 
-#const PipeScene = preload("res://scenes/pipe_scene.tscn")
-#const PipeDollyScene = preload("res://scenes/pipe_dolly_scene.tscn")
-
 @export var PipeScene: PackedScene
 @export var PipeDollyScene: PackedScene
 

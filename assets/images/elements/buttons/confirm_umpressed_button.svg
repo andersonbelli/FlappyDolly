@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="991.07324"
+   height="290.35016"
+   viewBox="0 0 991.07324 290.35018"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   sodipodi:docname="buttons.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="false"
+     inkscape:deskcolor="#3d3d3d"
+     inkscape:document-units="px"
+     inkscape:zoom="0.1911398"
+     inkscape:cx="117.71489"
+     inkscape:cy="1127.447"
+     inkscape:window-width="1366"
+     inkscape:window-height="715"
+     inkscape:window-x="1358"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g7" />
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient5"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#287528;stop-opacity:1;"
+         offset="0"
+         id="stop4" />
+      <stop
+         style="stop-color:#2e872e;stop-opacity:1;"
+         offset="1"
+         id="stop5" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient2"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#39ab39;stop-opacity:1;"
+         offset="0"
+         id="stop2" />
+      <stop
+         style="stop-color:#39ab39;stop-opacity:0.64587158;"
+         offset="1"
+         id="stop3" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5"
+       id="linearGradient3"
+       x1="51.97781"
+       y1="917.4566"
+       x2="1043.0511"
+       y2="917.4566"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2"
+       id="linearGradient4"
+       gradientUnits="userSpaceOnUse"
+       x1="51.97781"
+       y1="917.4566"
+       x2="1043.0511"
+       y2="917.4566" />
+  </defs>
+  <g
+     id="g15"
+     inkscape:label="confirm"
+     transform="translate(-51.97781,-76.455785)">
+    <g
+       inkscape:label="umpressed"
+       inkscape:groupmode="layer"
+       id="layer1"
+       inkscape:export-filename="..\..\FlapDolly\assets\images\elements\buttons\confirm_umpressed_button.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       transform="translate(0,-695.82577)">
+      <rect
+         style="fill:url(#linearGradient3);stroke-width:5.8;stroke-linecap:round;stroke-linejoin:round"
+         id="rect2"
+         width="991.07324"
+         height="290.35016"
+         x="51.97781"
+         y="772.28156"
+         ry="116.14007" />
+      <rect
+         style="fill:#14da00;fill-opacity:1;stroke-width:5.8;stroke-linecap:round;stroke-linejoin:round"
+         id="rect1"
+         width="954.45087"
+         height="258.95953"
+         x="70.289017"
+         y="787.97687"
+         ry="103.58382" />
+    </g>
+    <g
+       inkscape:label="pressed"
+       inkscape:groupmode="layer"
+       id="g7"
+       transform="translate(0,-366.22409)"
+       style="display:inline"
+       inkscape:export-filename="confirm_pressed_button.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <rect
+         style="fill:url(#linearGradient4);fill-opacity:1;stroke-width:5.8;stroke-linecap:round;stroke-linejoin:round"
+         id="rect6"
+         width="991.07324"
+         height="290.35016"
+         x="51.97781"
+         y="772.28156"
+         ry="116.14007" />
+      <rect
+         style="fill:#14d700;fill-opacity:1;stroke-width:5.8;stroke-linecap:round;stroke-linejoin:round"
+         id="rect7"
+         width="902.13312"
+         height="232.80067"
+         x="96.447884"
+         y="801.05627"
+         ry="93.12027" />
+    </g>
+  </g>
+</svg>

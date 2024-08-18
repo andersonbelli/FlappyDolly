@@ -2,7 +2,7 @@ extends StaticBody2D
 
 class_name PipeDollyClass
 
-var BottleScene = preload("res://scenes/bottle_scene.tscn")
+var BottleScene = preload("res://scenes/elements/bottle_scene.tscn")
 
 @export var throw_force := 2000
 

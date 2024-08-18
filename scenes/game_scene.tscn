@@ -1,14 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://cecpeoc7bsylc"]
+[gd_scene load_steps=11 format=3 uid="uid://dlkdfhpco6jjk"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_jw6sh"]
-[ext_resource type="Texture2D" uid="uid://cuexylxhag02f" path="res://assets/images/background/sky_background.svg" id="1_kr357"]
-[ext_resource type="PackedScene" uid="uid://dxmnq5nbpry3d" path="res://scenes/cloud_scene.tscn" id="2_80ei6"]
-[ext_resource type="PackedScene" uid="uid://bsko2g7rl06b2" path="res://scenes/bird_scene.tscn" id="3_e3ykb"]
+[ext_resource type="PackedScene" uid="uid://cosawlifrhcf3" path="res://scenes/elements/cloud_scene.tscn" id="2_80ei6"]
+[ext_resource type="PackedScene" uid="uid://bsko2g7rl06b2" path="res://scenes/elements/bird_scene.tscn" id="3_e3ykb"]
 [ext_resource type="FontFile" uid="uid://d14s525nrgj5o" path="res://assets/fonts/Playon-reg.ttf" id="4_kct05"]
-[ext_resource type="PackedScene" uid="uid://61ihymdab77s" path="res://scenes/transition_scene.tscn" id="5_1leyw"]
-[ext_resource type="PackedScene" uid="uid://b5iwqfly4tjmw" path="res://scenes/pipes_manager.tscn" id="6_b5yu3"]
-[ext_resource type="PackedScene" uid="uid://cusaqs3eivr6g" path="res://scenes/game_over_scene.tscn" id="7_jpunb"]
-[ext_resource type="PackedScene" uid="uid://bwwpepovp64f4" path="res://scenes/save_score_scene.tscn" id="8_q57ci"]
+[ext_resource type="PackedScene" uid="uid://61ihymdab77s" path="res://scenes/ui/transition_scene.tscn" id="5_1leyw"]
+[ext_resource type="PackedScene" uid="uid://b5iwqfly4tjmw" path="res://scenes/elements/pipes_manager.tscn" id="6_b5yu3"]
+[ext_resource type="PackedScene" uid="uid://dpdrvmamgu0eg" path="res://scenes/ui/game_over_scene.tscn" id="7_jpunb"]
+[ext_resource type="PackedScene" uid="uid://bwwpepovp64f4" path="res://scenes/ui/save_score_scene.tscn" id="8_q57ci"]
 
 [sub_resource type="Theme" id="Theme_vb7me"]
 default_font = ExtResource("4_kct05")
@@ -20,14 +19,7 @@ distance = 5.0
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_jw6sh")
 
-[node name="SkyBackground" type="Sprite2D" parent="."]
-visibility_layer = 32
-position = Vector2(540, 960)
-texture = ExtResource("1_kr357")
-metadata/_edit_lock_ = true
-
 [node name="CloudScene" parent="." instance=ExtResource("2_80ei6")]
-position = Vector2(0, -15)
 
 [node name="BirdScene" parent="." instance=ExtResource("3_e3ykb")]
 position = Vector2(232, 955)
@@ -56,17 +48,7 @@ top_level = true
 [node name="PipesManager" parent="." instance=ExtResource("6_b5yu3")]
 
 [node name="SaveScoreScene" parent="." instance=ExtResource("8_q57ci")]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 540.0
-offset_top = 894.0
-offset_right = 540.0
-offset_bottom = 894.0
-pivot_offset = Vector2(-22, 1)
+pivot_offset = Vector2(542, 932)
 
 [node name="GameOverScene" parent="." instance=ExtResource("7_jpunb")]
 visible = false
