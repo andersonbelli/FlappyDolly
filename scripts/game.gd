@@ -3,10 +3,11 @@ extends Node2D
 class_name GameClass
 
 @onready var transition_scene: Control = $TransitionScene
+@onready var game_over_scene = $GameOverScene
+@onready var save_score_scene = $SaveScoreScene
 
 @onready var pipes_manager = $PipesManager
 @onready var score_label = $ScoreLabel
-@onready var game_over_scene = $GameOverScene
 @onready var bird = $BirdScene
 
 # Guarantees that the speed will increase only once every 10 pipes
@@ -35,10 +36,13 @@ func _on_bird_scene_bird_is_dead():
 	pipes_manager.stop_spawn()
 	score_label.visible = false
 	
-	game_over_scene.get_node("ScoreLabel").text = score_label.text
-	game_over_scene.visible = true
+	if Globals.PLAYER_NAME != "":
+		game_over_scene.get_node("ScoreLabel").text = score_label.text
+		game_over_scene.visible = true
 	
-	SilentWolf.Scores.save_score("player_name", Globals.SCORE)
+		SilentWolf.Scores.save_score(Globals.PLAYER_NAME, Globals.SCORE)
+	else:
+		save_score_scene.visible = true
 
 func reset_score():
 	### Implement High score

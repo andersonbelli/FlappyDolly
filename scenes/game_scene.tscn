@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cecpeoc7bsylc"]
+[gd_scene load_steps=12 format=3 uid="uid://cecpeoc7bsylc"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_jw6sh"]
 [ext_resource type="Texture2D" uid="uid://cuexylxhag02f" path="res://assets/images/background/sky_background.svg" id="1_kr357"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://61ihymdab77s" path="res://scenes/transition_scene.tscn" id="5_1leyw"]
 [ext_resource type="PackedScene" uid="uid://b5iwqfly4tjmw" path="res://scenes/pipes_manager.tscn" id="6_b5yu3"]
 [ext_resource type="PackedScene" uid="uid://cusaqs3eivr6g" path="res://scenes/game_over_scene.tscn" id="7_jpunb"]
+[ext_resource type="PackedScene" uid="uid://bwwpepovp64f4" path="res://scenes/save_score_scene.tscn" id="8_q57ci"]
 
 [sub_resource type="Theme" id="Theme_vb7me"]
 default_font = ExtResource("4_kct05")
@@ -53,6 +54,19 @@ visible = false
 top_level = true
 
 [node name="PipesManager" parent="." instance=ExtResource("6_b5yu3")]
+
+[node name="SaveScoreScene" parent="." instance=ExtResource("8_q57ci")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 540.0
+offset_top = 894.0
+offset_right = 540.0
+offset_bottom = 894.0
+pivot_offset = Vector2(-22, 1)
 
 [node name="GameOverScene" parent="." instance=ExtResource("7_jpunb")]
 visible = false
