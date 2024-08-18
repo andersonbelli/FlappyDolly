@@ -42,6 +42,9 @@ theme = SubResource("Theme_vb7me")
 theme_override_colors/font_color = Color(0.772549, 0.866667, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.0313726, 0.0196078, 0.0352941, 1)
 theme_override_colors/font_outline_color = Color(0.818412, 0.674562, 0.409966, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 25
 theme_override_font_sizes/font_size = 106
 text = "10"
 

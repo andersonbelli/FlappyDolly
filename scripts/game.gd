@@ -37,6 +37,8 @@ func _on_bird_scene_bird_is_dead():
 	
 	game_over_scene.get_node("ScoreLabel").text = score_label.text
 	game_over_scene.visible = true
+	
+	SilentWolf.Scores.save_score("player_name", Globals.SCORE)
 
 func reset_score():
 	### Implement High score
