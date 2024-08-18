@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2rx3mcycvs0q"
-path="res://.godot/imported/pipe.svg-50e8f20093f4be6920440291dce89341.ctex"
+uid="uid://dimd2yns4f286"
+path="res://.godot/imported/arm-line.svg-d8a1259edbce09746c9c79ed106b8405.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/obstacles/pipe.svg"
-dest_files=["res://.godot/imported/pipe.svg-50e8f20093f4be6920440291dce89341.ctex"]
+source_file="res://assets/images/obstacles/dolly/arm-line.svg"
+dest_files=["res://.godot/imported/arm-line.svg-d8a1259edbce09746c9c79ed106b8405.ctex"]
 
 [params]
 

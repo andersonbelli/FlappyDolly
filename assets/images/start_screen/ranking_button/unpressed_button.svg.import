@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chql0qi8xmnck"
-path="res://.godot/imported/dolly.svg-ffedd435f9ae7742751953f91acf74b7.ctex"
+uid="uid://btrnkb6xce847"
+path="res://.godot/imported/unpressed_button.svg-e70778d642a58c4ff84494002c675939.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/obstacles/dolly/dolly.svg"
-dest_files=["res://.godot/imported/dolly.svg-ffedd435f9ae7742751953f91acf74b7.ctex"]
+source_file="res://assets/images/start_screen/ranking_button/unpressed_button.svg"
+dest_files=["res://.godot/imported/unpressed_button.svg-e70778d642a58c4ff84494002c675939.ctex"]
 
 [params]
 

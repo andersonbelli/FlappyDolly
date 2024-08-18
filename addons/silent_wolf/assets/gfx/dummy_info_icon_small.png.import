@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dimd2yns4f286"
-path="res://.godot/imported/arm-line.svg-943822632322b879988881d22120ca72.ctex"
+uid="uid://gdw18po2h7hb"
+path="res://.godot/imported/dummy_info_icon_small.png-dbbedcd89d38767ae4fbec73495e5426.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/obstacles/dolly/arm-line.svg"
-dest_files=["res://.godot/imported/arm-line.svg-943822632322b879988881d22120ca72.ctex"]
+source_file="res://addons/silent_wolf/assets/gfx/dummy_info_icon_small.png"
+dest_files=["res://.godot/imported/dummy_info_icon_small.png-dbbedcd89d38767ae4fbec73495e5426.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

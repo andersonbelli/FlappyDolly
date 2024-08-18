@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Globals="*res://scripts/globals.gd"
+SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
 
 [display]
 
@@ -26,6 +27,10 @@ window/size/viewport_height=1920
 window/size/mode=2
 window/stretch/mode="canvas_items"
 window/handheld/orientation=1
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/silent_wolf/plugin.cfg", "res://addons/supabase/plugin.cfg")
 
 [input]
 
@@ -80,10 +85,3 @@ flap={
 
 renderer/rendering_method="mobile"
 viewport/hdr_2d=true
-
-[shader_globals]
-
-game_speed={
-"type": "int",
-"value": 20
-}

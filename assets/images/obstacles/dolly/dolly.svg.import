@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs5v6vsnqhga4"
-path="res://.godot/imported/bottle_sprite.svg-5caaee95ffedba66eeeca68e67825494.ctex"
+uid="uid://chql0qi8xmnck"
+path="res://.godot/imported/dolly.svg-bacfa811b8231e594e79c141ad526535.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/obstacles/bottle/bottle_sprite.svg"
-dest_files=["res://.godot/imported/bottle_sprite.svg-5caaee95ffedba66eeeca68e67825494.ctex"]
+source_file="res://assets/images/obstacles/dolly/dolly.svg"
+dest_files=["res://.godot/imported/dolly.svg-bacfa811b8231e594e79c141ad526535.ctex"]
 
 [params]
 
