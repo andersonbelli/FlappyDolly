@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://btrnkb6xce847" path="res://assets/images/start_screen/start_button/unpressed_button.svg" id="1_kygtc"]
 
 [resource]
-content_margin_top = 20.0
+content_margin_top = 15.0
 content_margin_bottom = 80.0
 texture = ExtResource("1_kygtc")
 expand_margin_top = 15.0

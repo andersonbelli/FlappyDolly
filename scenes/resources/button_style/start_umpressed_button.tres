@@ -1,0 +1,11 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://dwmpjm5uva26y"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qiwnr"]
+load_path = "res://.godot/imported/confirm_umpressed_button.svg-7d1e3befc02f942f439bf9cb84e4aa64.ctex"
+
+[resource]
+content_margin_left = 100.0
+content_margin_top = 35.0
+content_margin_right = 100.0
+content_margin_bottom = 20.0
+texture = SubResource("CompressedTexture2D_qiwnr")

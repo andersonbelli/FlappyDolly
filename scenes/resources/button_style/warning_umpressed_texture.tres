@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://uwe3pi627kdc"]
+
+[ext_resource type="Texture2D" uid="uid://dktjxchvfqhok" path="res://assets/images/elements/buttons/warning_umpressed_button.svg" id="1_jk3xh"]
+
+[resource]
+content_margin_left = 100.0
+content_margin_top = 35.0
+content_margin_right = 100.0
+content_margin_bottom = 20.0
+texture = ExtResource("1_jk3xh")

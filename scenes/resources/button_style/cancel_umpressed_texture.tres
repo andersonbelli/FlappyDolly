@@ -1,0 +1,6 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://duq0akd88ik3u"]
+
+[ext_resource type="Texture2D" uid="uid://blmrp8edi0wh1" path="res://assets/images/elements/buttons/cancel_umpressed_button.svg" id="1_f17ri"]
+
+[resource]
+texture = ExtResource("1_f17ri")
