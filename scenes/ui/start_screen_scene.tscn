@@ -90,6 +90,7 @@ position = Vector2(841, 626)
 texture = ExtResource("4_8mbej")
 
 [node name="CloudScene" parent="." instance=ExtResource("5_xnuco")]
+visible = false
 modulate = Color(1, 1, 1, 0.12549)
 position = Vector2(1322, 5)
 skew = 0.174533

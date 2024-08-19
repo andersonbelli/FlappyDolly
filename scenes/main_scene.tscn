@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bf87aqcygvqp0"]
+[gd_scene load_steps=11 format=3 uid="uid://bf87aqcygvqp0"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_p71cs"]
 [ext_resource type="Texture2D" uid="uid://dqkwqknbmebpn" path="res://assets/images/background/sky_background.png" id="2_1nuqv"]
@@ -6,6 +6,45 @@
 [ext_resource type="Texture2D" uid="uid://drvob3mk5txyv" path="res://assets/images/settings/sound/sound.svg" id="2_bobji"]
 [ext_resource type="Texture2D" uid="uid://4c32hmp50hry" path="res://assets/images/settings/sound/soundX.svg" id="3_urci1"]
 [ext_resource type="PackedScene" uid="uid://bwwpepovp64f4" path="res://scenes/ui/add_your_name_scene.tscn" id="5_475qg"]
+[ext_resource type="PackedScene" uid="uid://cosawlifrhcf3" path="res://scenes/elements/cloud_scene.tscn" id="7_higxg"]
+
+[sub_resource type="Animation" id="Animation_c4omv"]
+resource_name = "moving_clouds"
+length = 25.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 7.13333, 16.6, 24.9333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-1230, -937), Vector2(-104.554, -937), Vector2(657.967, -937), Vector2(3919, -937)]
+}
+
+[sub_resource type="Animation" id="Animation_kqk8a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1230, 101)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_au5lo"]
+_data = {
+"RESET": SubResource("Animation_kqk8a"),
+"moving_clouds": SubResource("Animation_c4omv")
+}
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_p71cs")
@@ -42,12 +81,17 @@ texture_normal = ExtResource("2_bobji")
 texture_pressed = ExtResource("3_urci1")
 texture_disabled = ExtResource("3_urci1")
 
-[node name="StartScreenScene" parent="." instance=ExtResource("2_61nvj")]
+[node name="CloudScene" parent="." instance=ExtResource("7_higxg")]
+modulate = Color(1, 1, 1, 0.12549)
+position = Vector2(-1230, 101)
+scale = Vector2(1.125, 1.125)
+skew = 0.174533
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(540, 960)
-position_smoothing_enabled = true
-metadata/_edit_lock_ = true
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CloudScene"]
+libraries = {
+"": SubResource("AnimationLibrary_au5lo")
+}
+autoplay = "moving_clouds"
 
 [node name="AddYourNameControl" type="Control" parent="."]
 layout_mode = 3
@@ -65,6 +109,13 @@ size_flags_vertical = 3
 [node name="AddYourNameScene" parent="AddYourNameControl" instance=ExtResource("5_475qg")]
 layout_mode = 1
 
+[node name="StartScreenScene" parent="." instance=ExtResource("2_61nvj")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(540, 960)
+position_smoothing_enabled = true
+metadata/_edit_lock_ = true
+
 [connection signal="toggled" from="AudioButton" to="." method="_on_audio_button_toggled"]
-[connection signal="ranking_pressed" from="StartScreenScene" to="." method="_on_start_screen_scene_ranking_pressed"]
 [connection signal="close_pressed" from="AddYourNameControl/AddYourNameScene" to="." method="_on_add_your_name_scene_close_pressed"]
+[connection signal="ranking_pressed" from="StartScreenScene" to="." method="_on_start_screen_scene_ranking_pressed"]

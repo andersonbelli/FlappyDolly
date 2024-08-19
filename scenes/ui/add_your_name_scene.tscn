@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://bwwpepovp64f4"]
+[gd_scene load_steps=19 format=3 uid="uid://bwwpepovp64f4"]
 
 [ext_resource type="Script" path="res://scripts/add_your_name.gd" id="1_hgrj2"]
+[ext_resource type="PackedScene" uid="uid://cosawlifrhcf3" path="res://scenes/elements/cloud_scene.tscn" id="2_iakma"]
 [ext_resource type="PackedScene" uid="uid://car212v4oekif" path="res://scenes/elements/grass_scene.tscn" id="3_vxjhe"]
 [ext_resource type="Texture2D" uid="uid://bur0uwpn8wifc" path="res://assets/images/score_leaderboard/leaderboard_sign.svg" id="4_7solo"]
 [ext_resource type="FontFile" uid="uid://b0saslnjrd1oj" path="res://assets/fonts/Caveat-Regular.ttf" id="5_gggmu"]
@@ -35,9 +36,9 @@ texture = ExtResource("8_oxlvi")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xunii"]
 shader = ExtResource("10_vgtqc")
-shader_parameter/speed = 2.405
+shader_parameter/speed = 2.265
 shader_parameter/minStrength = 0.075
-shader_parameter/maxStrength = 0.679
+shader_parameter/maxStrength = 0.362
 shader_parameter/strengthScale = 101.74
 shader_parameter/interval = 3.15
 shader_parameter/detail = 1.0
@@ -55,6 +56,11 @@ grow_vertical = 2
 pivot_offset = Vector2(543, 848)
 script = ExtResource("1_hgrj2")
 metadata/_edit_use_anchors_ = true
+
+[node name="CloudScene" parent="." instance=ExtResource("2_iakma")]
+modulate = Color(1, 1, 1, 0.156863)
+position = Vector2(-360, -561)
+scale = Vector2(1.26, 1.26)
 
 [node name="GrassScene" parent="." instance=ExtResource("3_vxjhe")]
 layout_mode = 1
@@ -192,11 +198,6 @@ offset_bottom = 206.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("11_c7v1q")
-
-[node name="Container" type="Container" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [connection signal="pressed" from="SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
