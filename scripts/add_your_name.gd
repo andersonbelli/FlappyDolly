@@ -7,7 +7,7 @@ signal close_pressed
 func _on_save_button_pressed() -> void:
 	if line_edit.text.length() > 0:
 		Globals.PLAYER_NAME = line_edit.text
-		visible = false
+	close_pressed.emit()
 
 func _on_close_button_pressed() -> void:
 	close_pressed.emit()

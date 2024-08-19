@@ -146,20 +146,22 @@ theme_override_constants/margin_bottom = 90
 
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
 theme = SubResource("Theme_ah0ot")
 theme_override_colors/caret_color = Color(0, 0.630015, 0.872592, 1)
 theme_override_colors/font_placeholder_color = Color(0.560955, 0.560955, 0.560955, 1)
 theme_override_colors/font_selected_color = Color(0.476075, 0.720807, 0.990092, 0.811765)
 theme_override_colors/font_color = Color(0.93, 0.8835, 0, 1)
-theme_override_constants/outline_size = 90
+theme_override_constants/outline_size = 60
+theme_override_constants/caret_width = 15
 theme_override_styles/focus = SubResource("StyleBoxEmpty_vebvq")
 theme_override_styles/normal = SubResource("StyleBoxTexture_573fi")
-text = "assaa"
-placeholder_text = "joe"
 alignment = 1
 max_length = 5
 caret_blink = true
 caret_force_displayed = true
+caret_mid_grapheme = true
 
 [node name="SaveButton" parent="." instance=ExtResource("9_chw64")]
 layout_mode = 0
