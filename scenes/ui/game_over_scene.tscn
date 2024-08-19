@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://bj622vb8ax6ft" path="res://assets/images/game_over_screen/scoreboard.png" id="8_5tivy"]
 [ext_resource type="Shader" path="res://scenes/resources/shaders/wind_shader.gdshader" id="8_o5cf5"]
 [ext_resource type="Texture2D" uid="uid://dxflg281hc6q5" path="res://assets/images/game_over_screen/try_again_sign.svg" id="9_0ey2x"]
+[ext_resource type="Texture2D" uid="uid://b7ye18qi15ivo" path="res://assets/images/game_over_screen/grass/3-grass.svg" id="10_b40g4"]
 [ext_resource type="Texture2D" uid="uid://c88h500syw2fh" path="res://assets/images/game_over_screen/try_again.svg" id="11_4jf1d"]
-[ext_resource type="Texture2D" uid="uid://clohmfk7fgnf7" path="res://assets/images/game_over_screen/grass/1-grass.svg" id="12_kq8br"]
 
 [sub_resource type="Animation" id="Animation_hsqbc"]
 length = 0.001
@@ -54,18 +54,6 @@ _data = {
 default_font = ExtResource("4_u1yi4")
 default_font_size = 35
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xjjam"]
-shader = ExtResource("8_o5cf5")
-shader_parameter/speed = 2.405
-shader_parameter/minStrength = 0.075
-shader_parameter/maxStrength = 0.679
-shader_parameter/strengthScale = 101.74
-shader_parameter/interval = 3.15
-shader_parameter/detail = 1.0
-shader_parameter/distortion = null
-shader_parameter/heightOffset = null
-shader_parameter/offset = 0.0
-
 [sub_resource type="InputEventKey" id="InputEventKey_co8p8"]
 device = -1
 keycode = 32
@@ -88,6 +76,18 @@ load_path = "res://.godot/imported/umpressed_restart.svg-31b2118d396349601ed10ea
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_505sy"]
 load_path = "res://.godot/imported/pressed_restart.svg-7514d48ea87619da4601f5b545576190.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b5k0u"]
+shader = ExtResource("8_o5cf5")
+shader_parameter/speed = 2.405
+shader_parameter/minStrength = 0.075
+shader_parameter/maxStrength = 0.679
+shader_parameter/strengthScale = 101.74
+shader_parameter/interval = 3.15
+shader_parameter/detail = 1.0
+shader_parameter/distortion = null
+shader_parameter/heightOffset = null
+shader_parameter/offset = 0.0
 
 [node name="GameOverScene" type="Control"]
 top_level = true
@@ -188,16 +188,6 @@ offset_bottom = 2292.0
 scale = Vector2(0.75, 0.75)
 texture_normal = ExtResource("9_0ey2x")
 
-[node name="grass3" type="TextureRect" parent="."]
-top_level = true
-material = SubResource("ShaderMaterial_xjjam")
-layout_mode = 0
-offset_left = -39.0
-offset_right = 1109.0
-offset_bottom = 1920.0
-texture = ExtResource("12_kq8br")
-metadata/_edit_lock_ = true
-
 [node name="RestartButton" type="TextureButton" parent="."]
 top_level = true
 layout_mode = 1
@@ -281,5 +271,22 @@ offset_right = 1177.0
 offset_bottom = 1118.0
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("11_4jf1d")
+
+[node name="grass3" type="TextureRect" parent="."]
+top_level = true
+material = SubResource("ShaderMaterial_b5k0u")
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -836.0
+offset_top = -125.0
+offset_right = 880.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("10_b40g4")
 
 [connection signal="pressed" from="RestartButton" to="." method="_on_texture_button_pressed"]

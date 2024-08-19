@@ -12,9 +12,8 @@ func _on_audio_button_toggled(toggled_on: bool) -> void:
 
 
 func _on_start_screen_scene_ranking_pressed() -> void:
-	camera.position.x = 540
-
+	camera.position.x = 2169
 
 func _on_add_your_name_scene_close_pressed() -> void:
-	camera.position.x = 2169
+	camera.position.x = 540
 	

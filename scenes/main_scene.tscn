@@ -21,6 +21,7 @@ grow_vertical = 2
 pivot_offset = Vector2(1081, 977)
 size_flags_horizontal = 4
 texture = ExtResource("2_1nuqv")
+metadata/_edit_lock_ = true
 
 [node name="AudioButton" type="TextureButton" parent="."]
 top_level = true
@@ -41,19 +42,29 @@ texture_normal = ExtResource("2_bobji")
 texture_pressed = ExtResource("3_urci1")
 texture_disabled = ExtResource("3_urci1")
 
-[node name="AddYourNameScene" parent="." instance=ExtResource("5_475qg")]
-anchors_preset = -1
-grow_horizontal = 1
-grow_vertical = 1
-
 [node name="StartScreenScene" parent="." instance=ExtResource("2_61nvj")]
-offset_left = 1630.0
-offset_right = 1630.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(2169, 960)
+position = Vector2(540, 960)
 position_smoothing_enabled = true
+metadata/_edit_lock_ = true
+
+[node name="AddYourNameControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1629.0
+offset_right = 2709.0
+offset_bottom = 1920.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AddYourNameScene" parent="AddYourNameControl" instance=ExtResource("5_475qg")]
+layout_mode = 1
 
 [connection signal="toggled" from="AudioButton" to="." method="_on_audio_button_toggled"]
-[connection signal="close_pressed" from="AddYourNameScene" to="." method="_on_add_your_name_scene_close_pressed"]
 [connection signal="ranking_pressed" from="StartScreenScene" to="." method="_on_start_screen_scene_ranking_pressed"]
+[connection signal="close_pressed" from="AddYourNameControl/AddYourNameScene" to="." method="_on_add_your_name_scene_close_pressed"]
