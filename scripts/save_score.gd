@@ -7,6 +7,5 @@ func _on_save_button_pressed() -> void:
 		Globals.PLAYER_NAME = line_edit.text
 		visible = false
 
-
 func _on_close_button_pressed() -> void:
 	pass # Replace with function body.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bwwpepovp64f4"]
+[gd_scene load_steps=19 format=3 uid="uid://bwwpepovp64f4"]
 
 [ext_resource type="Script" path="res://scripts/save_score.gd" id="1_7f43m"]
 [ext_resource type="Texture2D" uid="uid://dqkwqknbmebpn" path="res://assets/images/background/sky_background.png" id="2_h3qne"]
@@ -8,14 +8,31 @@
 [ext_resource type="FontFile" uid="uid://d4kabkagmfeq" path="res://addons/silent_wolf/assets/fonts/Comfortaa-Bold.ttf" id="4_favh6"]
 [ext_resource type="Shader" path="res://scenes/resources/shaders/wind_shader.gdshader" id="5_6o8jc"]
 [ext_resource type="FontFile" uid="uid://mfkkows78cac" path="res://assets/fonts/Jersey10-Regular.ttf" id="6_j6eoq"]
+[ext_resource type="Texture2D" uid="uid://dbrnla7lqit8e" path="res://assets/images/score_leaderboard/add_your_name_texture.svg" id="8_1p2re"]
 [ext_resource type="PackedScene" uid="uid://c6fr60rxsiw4d" path="res://scenes/ui/button_scene.tscn" id="8_vupdc"]
 [ext_resource type="Texture2D" uid="uid://b7ye18qi15ivo" path="res://assets/images/game_over_screen/grass/3-grass.svg" id="10_rw1r6"]
 
 [sub_resource type="Theme" id="Theme_vixhm"]
 default_font = ExtResource("4_25j0a")
+default_font_size = 190
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jra3h"]
 content_margin_top = 49.0
+
+[sub_resource type="FontVariation" id="FontVariation_vmqad"]
+base_font = ExtResource("6_j6eoq")
+spacing_glyph = 145
+
+[sub_resource type="Theme" id="Theme_ah0ot"]
+default_font = SubResource("FontVariation_vmqad")
+default_font_size = 145
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vebvq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_573fi"]
+content_margin_top = 15.0
+content_margin_bottom = 20.0
+texture = ExtResource("8_1p2re")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xunii"]
 shader = ExtResource("5_6o8jc")
@@ -83,6 +100,29 @@ pivot_offset = Vector2(580.667, 854.667)
 texture = ExtResource("3_rtwv0")
 metadata/_edit_lock_ = true
 
+[node name="save your score" type="Label" parent="."]
+top_level = true
+layout_mode = 2
+offset_left = 1.32172
+offset_top = 206.38
+offset_right = 1081.32
+offset_bottom = 777.38
+rotation = -0.0925025
+pivot_offset = Vector2(554.195, 278.131)
+theme = SubResource("Theme_vixhm")
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0.98, 0.0196, 0.0196, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0.42, 0.42, 0.729412)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 15
+theme_override_constants/shadow_outline_size = 100
+text = "save your
+SCORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 top_level = true
 layout_mode = 1
@@ -90,31 +130,15 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 20.0
-offset_top = -968.0
-offset_right = 20.0
-offset_bottom = -3.0
+offset_left = 32.3217
+offset_top = -709.62
+offset_right = 32.3218
+offset_bottom = 255.38
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.76678, 0.76678)
 pivot_offset = Vector2(548, 1155)
 alignment = 1
-
-[node name="save your score" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-theme = SubResource("Theme_vixhm")
-theme_override_colors/font_color = Color(0.8, 0.695467, 0.016, 1)
-theme_override_colors/font_shadow_color = Color(0.0313726, 0.0196078, 0.0352941, 1)
-theme_override_colors/font_outline_color = Color(0.31, 0.301113, 0.0434, 1)
-theme_override_constants/shadow_offset_x = 5
-theme_override_constants/shadow_offset_y = 5
-theme_override_constants/outline_size = 10
-theme_override_constants/shadow_outline_size = 40
-theme_override_font_sizes/font_size = 216
-text = "save your
-SCORE"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="add your name" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -137,42 +161,30 @@ layout_mode = 2
 theme_override_constants/margin_top = 35
 theme_override_constants/margin_bottom = 90
 
-[node name="LineEdit2" type="LineEdit" parent="VBoxContainer/MarginContainer"]
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
+theme = SubResource("Theme_ah0ot")
 theme_override_colors/caret_color = Color(0, 0.630015, 0.872592, 1)
 theme_override_colors/font_placeholder_color = Color(0.560955, 0.560955, 0.560955, 1)
 theme_override_colors/font_selected_color = Color(0.476075, 0.720807, 0.990092, 0.811765)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 0
-theme_override_fonts/font = ExtResource("6_j6eoq")
-theme_override_font_sizes/font_size = 155
+theme_override_colors/font_color = Color(0.93, 0.8835, 0, 1)
+theme_override_constants/outline_size = 90
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vebvq")
+theme_override_styles/normal = SubResource("StyleBoxTexture_573fi")
+text = "assaa"
 placeholder_text = "joe"
 alignment = 1
 max_length = 5
 caret_blink = true
 caret_force_displayed = true
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/MarginContainer"]
-visible = false
-layout_mode = 2
-theme_override_colors/selection_color = Color(0.4, 0.588235, 0.996078, 0.670588)
-theme_override_colors/caret_color = Color(0.255554, 0.475734, 1, 1)
-theme_override_colors/font_placeholder_color = Color(0.394353, 0.394353, 0.394353, 1)
-theme_override_colors/font_color = Color(0.938341, 0.887586, 0.230012, 0.85098)
-theme_override_constants/outline_size = 35
-theme_override_fonts/font = ExtResource("6_j6eoq")
-theme_override_font_sizes/font_size = 140
-placeholder_text = "joe"
-alignment = 1
-max_length = 5
-
 [node name="SaveButton" parent="." instance=ExtResource("8_vupdc")]
 top_level = true
 layout_mode = 0
-offset_left = 575.0
-offset_top = 960.0
-offset_right = 975.0
-offset_bottom = 1110.0
+offset_left = 580.322
+offset_top = 1056.38
+offset_right = 980.322
+offset_bottom = 1206.38
 text = "save"
 
 [node name="CloseButton" parent="." instance=ExtResource("8_vupdc")]
@@ -183,10 +195,10 @@ anchor_left = -0.037037
 anchor_top = -0.0145833
 anchor_right = -0.037037
 anchor_bottom = -0.0145833
-offset_left = 186.0
-offset_top = 988.0
-offset_right = 586.0
-offset_bottom = 1138.0
+offset_left = 191.322
+offset_top = 1084.38
+offset_right = 591.322
+offset_bottom = 1234.38
 text = "close"
 button_type = 1
 
