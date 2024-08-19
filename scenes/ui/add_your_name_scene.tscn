@@ -1,26 +1,26 @@
 [gd_scene load_steps=19 format=3 uid="uid://bwwpepovp64f4"]
 
-[ext_resource type="Script" path="res://scripts/save_score.gd" id="1_7f43m"]
-[ext_resource type="Texture2D" uid="uid://dqkwqknbmebpn" path="res://assets/images/background/sky_background.png" id="2_h3qne"]
-[ext_resource type="Texture2D" uid="uid://bur0uwpn8wifc" path="res://assets/images/score_leaderboard/leaderboard_sign.svg" id="3_rtwv0"]
-[ext_resource type="PackedScene" uid="uid://car212v4oekif" path="res://scenes/elements/grass_scene.tscn" id="4_1uj5r"]
-[ext_resource type="FontFile" uid="uid://b0saslnjrd1oj" path="res://assets/fonts/Caveat-Regular.ttf" id="4_25j0a"]
-[ext_resource type="FontFile" uid="uid://d4kabkagmfeq" path="res://addons/silent_wolf/assets/fonts/Comfortaa-Bold.ttf" id="4_favh6"]
-[ext_resource type="Shader" path="res://scenes/resources/shaders/wind_shader.gdshader" id="5_6o8jc"]
-[ext_resource type="FontFile" uid="uid://mfkkows78cac" path="res://assets/fonts/Jersey10-Regular.ttf" id="6_j6eoq"]
-[ext_resource type="Texture2D" uid="uid://dbrnla7lqit8e" path="res://assets/images/score_leaderboard/add_your_name_texture.svg" id="8_1p2re"]
-[ext_resource type="PackedScene" uid="uid://c6fr60rxsiw4d" path="res://scenes/ui/button_scene.tscn" id="8_vupdc"]
-[ext_resource type="Texture2D" uid="uid://b7ye18qi15ivo" path="res://assets/images/game_over_screen/grass/3-grass.svg" id="10_rw1r6"]
+[ext_resource type="Script" path="res://scripts/add_your_name.gd" id="1_hgrj2"]
+[ext_resource type="Texture2D" uid="uid://dqkwqknbmebpn" path="res://assets/images/background/sky_background.png" id="2_nkg1u"]
+[ext_resource type="PackedScene" uid="uid://car212v4oekif" path="res://scenes/elements/grass_scene.tscn" id="3_vxjhe"]
+[ext_resource type="Texture2D" uid="uid://bur0uwpn8wifc" path="res://assets/images/score_leaderboard/leaderboard_sign.svg" id="4_7solo"]
+[ext_resource type="FontFile" uid="uid://b0saslnjrd1oj" path="res://assets/fonts/Caveat-Regular.ttf" id="5_gggmu"]
+[ext_resource type="FontFile" uid="uid://d4kabkagmfeq" path="res://addons/silent_wolf/assets/fonts/Comfortaa-Bold.ttf" id="6_cs7y4"]
+[ext_resource type="FontFile" uid="uid://mfkkows78cac" path="res://assets/fonts/Jersey10-Regular.ttf" id="7_aw6y0"]
+[ext_resource type="Texture2D" uid="uid://dbrnla7lqit8e" path="res://assets/images/score_leaderboard/add_your_name_texture.svg" id="8_oxlvi"]
+[ext_resource type="PackedScene" uid="uid://c6fr60rxsiw4d" path="res://scenes/ui/button_scene.tscn" id="9_chw64"]
+[ext_resource type="Shader" path="res://scenes/resources/shaders/wind_shader.gdshader" id="10_vgtqc"]
+[ext_resource type="Texture2D" uid="uid://b7ye18qi15ivo" path="res://assets/images/game_over_screen/grass/3-grass.svg" id="11_c7v1q"]
 
 [sub_resource type="Theme" id="Theme_vixhm"]
-default_font = ExtResource("4_25j0a")
+default_font = ExtResource("5_gggmu")
 default_font_size = 190
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jra3h"]
 content_margin_top = 49.0
 
 [sub_resource type="FontVariation" id="FontVariation_vmqad"]
-base_font = ExtResource("6_j6eoq")
+base_font = ExtResource("7_aw6y0")
 spacing_glyph = 145
 
 [sub_resource type="Theme" id="Theme_ah0ot"]
@@ -32,10 +32,10 @@ default_font_size = 145
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_573fi"]
 content_margin_top = 15.0
 content_margin_bottom = 20.0
-texture = ExtResource("8_1p2re")
+texture = ExtResource("8_oxlvi")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xunii"]
-shader = ExtResource("5_6o8jc")
+shader = ExtResource("10_vgtqc")
 shader_parameter/speed = 2.405
 shader_parameter/minStrength = 0.075
 shader_parameter/maxStrength = 0.679
@@ -46,7 +46,7 @@ shader_parameter/distortion = null
 shader_parameter/heightOffset = null
 shader_parameter/offset = 0.0
 
-[node name="SaveScoreScene" type="Control"]
+[node name="AddYourNameScene" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,12 +56,13 @@ grow_vertical = 2
 pivot_offset = Vector2(550, 930)
 size_flags_horizontal = 6
 size_flags_vertical = 6
-script = ExtResource("1_7f43m")
+script = ExtResource("1_hgrj2")
 metadata/_edit_use_anchors_ = true
 
 [node name="SkyBackground" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(543, 956)
-texture = ExtResource("2_h3qne")
+texture = ExtResource("2_nkg1u")
 metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -73,9 +74,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.478431)
-metadata/_edit_lock_ = true
 
-[node name="GrassScene" parent="." instance=ExtResource("4_1uj5r")]
+[node name="GrassScene" parent="." instance=ExtResource("3_vxjhe")]
 top_level = true
 layout_mode = 1
 offset_left = -8.0
@@ -97,8 +97,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.06202, 0.893635)
 pivot_offset = Vector2(580.667, 854.667)
-texture = ExtResource("3_rtwv0")
-metadata/_edit_lock_ = true
+texture = ExtResource("4_7solo")
 
 [node name="save your score" type="Label" parent="."]
 top_level = true
@@ -149,7 +148,7 @@ theme_override_colors/font_outline_color = Color(0.819608, 0.67451, 0.411765, 1)
 theme_override_constants/shadow_offset_x = 5
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/shadow_outline_size = 40
-theme_override_fonts/font = ExtResource("4_favh6")
+theme_override_fonts/font = ExtResource("6_cs7y4")
 theme_override_font_sizes/font_size = 66
 theme_override_styles/normal = SubResource("StyleBoxEmpty_jra3h")
 text = "add your name"
@@ -178,7 +177,7 @@ max_length = 5
 caret_blink = true
 caret_force_displayed = true
 
-[node name="SaveButton" parent="." instance=ExtResource("8_vupdc")]
+[node name="SaveButton" parent="." instance=ExtResource("9_chw64")]
 top_level = true
 layout_mode = 0
 offset_left = 580.322
@@ -187,7 +186,7 @@ offset_right = 980.322
 offset_bottom = 1206.38
 text = "save"
 
-[node name="CloseButton" parent="." instance=ExtResource("8_vupdc")]
+[node name="CloseButton" parent="." instance=ExtResource("9_chw64")]
 top_level = true
 layout_mode = 1
 anchors_preset = -1
@@ -217,7 +216,7 @@ offset_right = 798.0
 offset_bottom = 236.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("10_rw1r6")
+texture = ExtResource("11_c7v1q")
 
 [connection signal="pressed" from="SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

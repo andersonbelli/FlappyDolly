@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://61ihymdab77s" path="res://scenes/ui/transition_scene.tscn" id="5_1leyw"]
 [ext_resource type="PackedScene" uid="uid://b5iwqfly4tjmw" path="res://scenes/elements/pipes_manager.tscn" id="6_b5yu3"]
 [ext_resource type="PackedScene" uid="uid://dpdrvmamgu0eg" path="res://scenes/ui/game_over_scene.tscn" id="7_jpunb"]
-[ext_resource type="PackedScene" uid="uid://bwwpepovp64f4" path="res://scenes/ui/save_score_scene.tscn" id="8_q57ci"]
+[ext_resource type="PackedScene" uid="uid://bwwpepovp64f4" path="res://scenes/ui/add_your_name_scene.tscn" id="8_q57ci"]
 
 [sub_resource type="Theme" id="Theme_vb7me"]
 default_font = ExtResource("4_kct05")
