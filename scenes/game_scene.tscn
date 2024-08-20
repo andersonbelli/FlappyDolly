@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dlkdfhpco6jjk"]
+[gd_scene load_steps=12 format=3 uid="uid://dlkdfhpco6jjk"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_jw6sh"]
 [ext_resource type="PackedScene" uid="uid://cosawlifrhcf3" path="res://scenes/elements/cloud_scene.tscn" id="2_80ei6"]
@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://61ihymdab77s" path="res://scenes/ui/transition_scene.tscn" id="5_1leyw"]
 [ext_resource type="PackedScene" uid="uid://b5iwqfly4tjmw" path="res://scenes/elements/pipes_manager.tscn" id="6_b5yu3"]
 [ext_resource type="PackedScene" uid="uid://dpdrvmamgu0eg" path="res://scenes/ui/game_over_scene.tscn" id="7_jpunb"]
+[ext_resource type="PackedScene" uid="uid://bwwpepovp64f4" path="res://scenes/ui/ranking_scene.tscn" id="8_he2gj"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_67vrm"]
+load_path = "res://.godot/imported/sky_background.png-46c1f5a2bc74c7a3c9e6d65ba010d37a.ctex"
 
 [sub_resource type="Theme" id="Theme_vb7me"]
 default_font = ExtResource("4_kct05")
@@ -17,6 +21,18 @@ distance = 5.0
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_jw6sh")
+
+[node name="SkyBackground" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 4779.0
+offset_bottom = 1920.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(1081, 977)
+size_flags_horizontal = 4
+texture = SubResource("CompressedTexture2D_67vrm")
 
 [node name="CloudScene" parent="." instance=ExtResource("2_80ei6")]
 
@@ -47,10 +63,29 @@ top_level = true
 [node name="PipesManager" parent="." instance=ExtResource("6_b5yu3")]
 
 [node name="GameOverScene" parent="." instance=ExtResource("7_jpunb")]
-visible = false
+offset_left = 1629.0
+offset_right = 1629.0
+
+[node name="AddYourNameControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3041.0
+offset_top = 150.0
+offset_right = 4121.0
+offset_bottom = 2070.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RankingScene" parent="AddYourNameControl" instance=ExtResource("8_he2gj")]
+layout_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(540, 960)
+position = Vector2(540.125, 960)
+position_smoothing_enabled = true
 
 [node name="WorldBoundary" type="StaticBody2D" parent="."]
 collision_layer = 16
@@ -65,3 +100,5 @@ position = Vector2(574, 1992)
 shape = SubResource("WorldBoundaryShape2D_jv78b")
 
 [connection signal="bird_is_dead" from="BirdScene" to="." method="_on_bird_scene_bird_is_dead"]
+[connection signal="ranked_pressed" from="GameOverScene" to="." method="_on_game_over_scene_ranked_pressed"]
+[connection signal="close_pressed" from="AddYourNameControl/RankingScene" to="." method="_on_ranking_scene_close_pressed"]

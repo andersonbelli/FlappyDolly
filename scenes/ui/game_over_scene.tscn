@@ -100,10 +100,19 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_j3vhw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.478431)
 metadata/_edit_lock_ = true
 
 [node name="Gameover" type="TextureRect" parent="."]
-top_level = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -117,22 +126,12 @@ grow_vertical = 2
 texture = ExtResource("2_b0w6r")
 expand_mode = 1
 stretch_mode = 4
-
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.478431)
 metadata/_edit_lock_ = true
 
 [node name="CloudScene" parent="." instance=ExtResource("4_1ei3t")]
 modulate = Color(1, 1, 1, 0.12549)
 position = Vector2(1322, 5)
 skew = 0.174533
-metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CloudScene"]
 libraries = {
@@ -140,8 +139,21 @@ libraries = {
 }
 autoplay = "moving_clouds"
 
+[node name="GrassScene" parent="." instance=ExtResource("5_0tbj3")]
+layout_mode = 1
+offset_left = -102.0
+offset_right = 4.0
+
+[node name="Scoreboard" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 397.0
+offset_top = 74.0
+offset_right = 1023.0
+offset_bottom = 675.0
+texture = ExtResource("8_5tivy")
+expand_mode = 1
+
 [node name="ScoreLabel" type="Label" parent="."]
-top_level = true
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -163,23 +175,8 @@ theme_override_font_sizes/font_size = 251
 text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_lock_ = true
-
-[node name="GrassScene" parent="." instance=ExtResource("5_0tbj3")]
-layout_mode = 1
-
-[node name="Scoreboard" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 397.0
-offset_top = 74.0
-offset_right = 1023.0
-offset_bottom = 675.0
-texture = ExtResource("8_5tivy")
-expand_mode = 1
-metadata/_edit_lock_ = true
 
 [node name="Sign" type="TextureButton" parent="."]
-top_level = true
 layout_mode = 0
 offset_left = 458.0
 offset_top = 857.0
@@ -189,7 +186,6 @@ scale = Vector2(0.75, 0.75)
 texture_normal = ExtResource("9_0ey2x")
 
 [node name="RestartButton" type="TextureButton" parent="."]
-top_level = true
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -226,7 +222,6 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="RankingButton" type="TextureButton" parent="."]
-top_level = true
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -263,7 +258,6 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="TryAgain" type="TextureRect" parent="."]
-top_level = true
 layout_mode = 0
 offset_left = 516.0
 offset_top = 908.0
@@ -273,7 +267,7 @@ scale = Vector2(0.7, 0.7)
 texture = ExtResource("11_4jf1d")
 
 [node name="grass3" type="TextureRect" parent="."]
-top_level = true
+z_index = 15
 material = SubResource("ShaderMaterial_hlgyl")
 layout_mode = 1
 anchors_preset = 7
@@ -281,12 +275,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -844.0
+offset_left = -598.0
 offset_top = -133.0
-offset_right = 872.0
-offset_bottom = 262.0
+offset_right = 864.0
+offset_bottom = 206.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("10_b40g4")
 
-[connection signal="pressed" from="RestartButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="RankingButton" to="." method="_on_ranking_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bf87aqcygvqp0"]
+[gd_scene load_steps=13 format=3 uid="uid://bf87aqcygvqp0"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_p71cs"]
 [ext_resource type="Texture2D" uid="uid://dqkwqknbmebpn" path="res://assets/images/background/sky_background.png" id="2_1nuqv"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://4c32hmp50hry" path="res://assets/images/settings/sound/soundX.svg" id="3_urci1"]
 [ext_resource type="PackedScene" uid="uid://bwwpepovp64f4" path="res://scenes/ui/ranking_scene.tscn" id="5_475qg"]
 [ext_resource type="PackedScene" uid="uid://cosawlifrhcf3" path="res://scenes/elements/cloud_scene.tscn" id="7_higxg"]
+[ext_resource type="PackedScene" uid="uid://61ihymdab77s" path="res://scenes/ui/transition_scene.tscn" id="8_cb6dv"]
 
 [sub_resource type="Animation" id="Animation_kqk8a"]
 length = 0.001
@@ -45,6 +46,20 @@ _data = {
 "RESET": SubResource("Animation_kqk8a"),
 "moving_clouds": SubResource("Animation_c4omv")
 }
+
+[sub_resource type="GDScript" id="GDScript_vcugw"]
+script/source = "extends Control
+
+@onready var animation_player = $AnimationPlayer
+
+func _ready():
+	animation_player.play(\"transition\")
+	print(\":D\")
+
+func _on_animation_player_animation_finished(_anim_name):
+	#queue_free()
+	visible = false
+"
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_p71cs")
@@ -115,6 +130,11 @@ layout_mode = 1
 position = Vector2(540, 960)
 position_smoothing_enabled = true
 metadata/_edit_lock_ = true
+
+[node name="TransitionScene" parent="." instance=ExtResource("8_cb6dv")]
+visible = false
+top_level = true
+script = SubResource("GDScript_vcugw")
 
 [connection signal="toggled" from="AudioButton" to="." method="_on_audio_button_toggled"]
 [connection signal="close_pressed" from="AddYourNameControl/RankingScene" to="." method="_on_ranking_scene_close_pressed"]

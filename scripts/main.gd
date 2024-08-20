@@ -1,10 +1,15 @@
 extends Node2D
 
 @onready var camera = $Camera2D
+
 @onready var rankingScene = $AddYourNameControl/RankingScene
 @onready var addYourNameLineEdit: LineEdit = $AddYourNameControl/RankingScene/SaveYourScore/VBoxContainer/MarginContainer/LineEdit as LineEdit
 
+@onready var transition_scene: Control = $TransitionScene
+
 func _ready() -> void:
+	transition_scene.visible = true
+	
 	if OS.is_debug_build():
 		_on_audio_button_toggled(true)
 

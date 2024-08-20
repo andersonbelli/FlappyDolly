@@ -35,8 +35,7 @@ func _ready() -> void:
 
 func get_player_nick():
 	var player_file = FileAccess.open('res://player.data', FileAccess.WRITE_READ)
+	
 	if player_file != null:
 		PLAYER_NAME = player_file.get_line()
-		if PLAYER_NAME == "" or PLAYER_NAME == null:
-			PLAYER_NAME = null
 	player_file.close()

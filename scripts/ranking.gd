@@ -20,7 +20,10 @@ var list_index = 0
 func _ready() -> void:
 	render_ranking.connect(_on_render_ranking)
 	
-	if Globals.PLAYER_NAME != null and Globals.PLAYER_NAME != "":
+	print(Globals.PLAYER_NAME, " ---- player")
+	
+	if Globals.PLAYER_NAME == null or Globals.PLAYER_NAME == "":
+		ranking.visible = false
 		save_your_score.visible = true
 	else:
 		load_ranking()
@@ -32,19 +35,18 @@ func _on_save_button_pressed() -> void:
 	if line_edit.text.length() > 0:
 		Globals.PLAYER_NAME = line_edit.text
 		var player_file = FileAccess.open("player.data", FileAccess.WRITE)
-		player_file.store_line(Globals.PLAYER_NAME)
+		player_file.store_string(Globals.PLAYER_NAME)
 		player_file.close()
-	close_pressed.emit()
-	close_pressed.get_object()
+	save_your_score.queue_free()
+	ranking.visible = true
+	load_ranking()
 
 func _on_close_button_pressed() -> void:
 	close_pressed.emit()
 
 # Ranking
 func load_ranking():
-	print("load_ranking ")
 	add_loading_scores_message()
-
 	render_board()
 
 func render_board(scores: Array = []) -> void:
@@ -54,20 +56,20 @@ func render_board(scores: Array = []) -> void:
 	if scores.is_empty():
 		add_no_scores_message()
 	else:
+		ranking_list_label.text = ""
 		if len(scores) > 1 and scores[0].score > scores[-1].score:
 			scores.reverse()
 		for i in range(len(scores)):
 			var score = scores[i]
 			add_item(score.player_name, str(int(score.score)))
-		print("RANKING --> ", scores)
 
 func _on_render_ranking(scores: Array = []) -> void:
-	if Globals.SCORES_RANKING != null:
-		ranking_list_label.text = ""
 	clear_board()
 	render_board(scores)
 
 func clear_board():
+	if Globals.SCORES_RANKING != null:
+		ranking_list_label.text = ""
 	list_index = 0
 	if vbox_container.get_child_count():
 		for child in vbox_container.get_children():
@@ -78,7 +80,6 @@ func add_item(player_name: String, score_value: String) -> void:
 	list_index += 1
 	item.get_node("PlayerName").text = str(list_index) + str(". ") + player_name
 	item.get_node("Score").text = score_value
-	#item.offset_top = list_index * 170
 	vbox_container.add_child(item)
 
 func add_no_scores_message():
