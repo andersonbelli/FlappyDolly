@@ -153,7 +153,8 @@ func _on_GetScores_request_completed(result, response_code, headers, body) -> vo
 		else:
 			SWLogger.error("SilentWolf get scores failure: " + str(json_body.error))
 		
-		print("SCORES - RESULT - ", sw_result)
+		print_debug("Scores: ", sw_result)
+		
 		Globals.SCORES_RANKING = sw_result["scores"]
 		sw_get_scores_complete.emit(sw_result)
 

@@ -12,7 +12,8 @@ var ScoreItem = preload("res://scenes/ui/score_item.tscn")
 
 # Ranking
 @onready var ranking: Control = $Ranking
-@onready var ranking_list_label: Label = $Ranking/VBoxContainer/rankingListLabel
+@onready var vbox_container: VBoxContainer = $Ranking/ScrollContainer/VBoxContainer
+@onready var ranking_list_label: Label = $Ranking/ScrollContainer/VBoxContainer/rankingListLabel
 
 var list_index = 0
 
@@ -53,7 +54,6 @@ func render_board(scores: Array = []) -> void:
 	if scores.is_empty():
 		add_no_scores_message()
 	else:
-		ranking_list_label.text = ""
 		if len(scores) > 1 and scores[0].score > scores[-1].score:
 			scores.reverse()
 		for i in range(len(scores)):
@@ -62,15 +62,24 @@ func render_board(scores: Array = []) -> void:
 		print("RANKING --> ", scores)
 
 func _on_render_ranking(scores: Array = []) -> void:
+	if Globals.SCORES_RANKING != null:
+		ranking_list_label.text = ""
+	clear_board()
 	render_board(scores)
+
+func clear_board():
+	list_index = 0
+	if vbox_container.get_child_count():
+		for child in vbox_container.get_children():
+			vbox_container.remove_child(child)
 
 func add_item(player_name: String, score_value: String) -> void:
 	var item = ScoreItem.instantiate()
 	list_index += 1
 	item.get_node("PlayerName").text = str(list_index) + str(". ") + player_name
 	item.get_node("Score").text = score_value
-	item.offset_top = list_index * 170
-	ranking_list_label.add_child(item)
+	#item.offset_top = list_index * 170
+	vbox_container.add_child(item)
 
 func add_no_scores_message():
 	ranking_list_label.text = "No scores yet!"
