@@ -58,6 +58,7 @@ var wrTopScoreByPlayer = null
 var wrWipeLeaderboard = null
 var wrDeleteScore = null
 
+var scores_result = []
 
 # metadata, if included should be a dictionary
 # The score attribute could be either a score_value (int) or score_id (String)
@@ -151,8 +152,15 @@ func _on_GetScores_request_completed(result, response_code, headers, body) -> vo
 			sw_result["ld_name"] = ld_name
 		else:
 			SWLogger.error("SilentWolf get scores failure: " + str(json_body.error))
+		
+		print("SCORES - RESULT - ", sw_result)
+		Globals.SCORES_RANKING = sw_result["scores"]
 		sw_get_scores_complete.emit(sw_result)
 
+func get_score_result():
+	var asd = sw_get_scores_complete
+	print("result = ", scores_result)
+	return scores_result
 
 func get_scores_by_player(player_name: String, maximum: int=10, ldboard_name: String="main", period_offset: int=0) -> Node:
 	if player_name == null:

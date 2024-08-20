@@ -10,8 +10,10 @@ var BIRD_POSITION: Vector2 = Vector2(232, 955)
 
 var PLAYER_NAME = ""
 
+var SCORES_RANKING = []
+
 func _ready() -> void:
-	player_file()
+	get_player_nick()
 	
 	var env_file = FileAccess.open('res://.env', FileAccess.READ)
 	var apiKey = env_file.get_line()
@@ -22,16 +24,19 @@ func _ready() -> void:
 		"game_id": "FlappyDolly",
 		"log_level": 1
 	})
+	
+	await SilentWolf.check_sw_ready()
+	await SilentWolf.check_scores_ready()
+	RankingScores.get_scores()
 
-	SilentWolf.configure_scores({
-		"open_scene_on_close": "res://scenes/main_scene.tscn"
-	})
+	#SilentWolf.configure_scores({
+		#"open_scene_on_close": "res://scenes/main_scene.tscn"
+	#})
 
-func player_file(player_name: String = ""):
+func get_player_nick():
 	var player_file = FileAccess.open('res://player.data', FileAccess.WRITE_READ)
 	if player_file != null:
 		PLAYER_NAME = player_file.get_line()
-	else:
-		PLAYER_NAME = player_name
-		player_file.store_var(player_name)
+		if PLAYER_NAME == "" or PLAYER_NAME == null:
+			PLAYER_NAME = null
 	player_file.close()

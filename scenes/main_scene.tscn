@@ -5,8 +5,23 @@
 [ext_resource type="PackedScene" uid="uid://r3wrdg7oci0u" path="res://scenes/ui/start_screen_scene.tscn" id="2_61nvj"]
 [ext_resource type="Texture2D" uid="uid://drvob3mk5txyv" path="res://assets/images/settings/sound/sound.svg" id="2_bobji"]
 [ext_resource type="Texture2D" uid="uid://4c32hmp50hry" path="res://assets/images/settings/sound/soundX.svg" id="3_urci1"]
-[ext_resource type="PackedScene" uid="uid://bwwpepovp64f4" path="res://scenes/ui/add_your_name_scene.tscn" id="5_475qg"]
+[ext_resource type="PackedScene" uid="uid://bwwpepovp64f4" path="res://scenes/ui/ranking_scene.tscn" id="5_475qg"]
 [ext_resource type="PackedScene" uid="uid://cosawlifrhcf3" path="res://scenes/elements/cloud_scene.tscn" id="7_higxg"]
+
+[sub_resource type="Animation" id="Animation_kqk8a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1230, -937)]
+}
 
 [sub_resource type="Animation" id="Animation_c4omv"]
 resource_name = "moving_clouds"
@@ -23,21 +38,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-1230, -937), Vector2(-104.554, -937), Vector2(657.967, -937), Vector2(3919, -937)]
-}
-
-[sub_resource type="Animation" id="Animation_kqk8a"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-1230, 101)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_au5lo"]
@@ -83,7 +83,7 @@ texture_disabled = ExtResource("3_urci1")
 
 [node name="CloudScene" parent="." instance=ExtResource("7_higxg")]
 modulate = Color(1, 1, 1, 0.12549)
-position = Vector2(-1230, 101)
+position = Vector2(-1230, -937)
 scale = Vector2(1.125, 1.125)
 skew = 0.174533
 
@@ -106,7 +106,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="AddYourNameScene" parent="AddYourNameControl" instance=ExtResource("5_475qg")]
+[node name="RankingScene" parent="AddYourNameControl" instance=ExtResource("5_475qg")]
 layout_mode = 1
 
 [node name="StartScreenScene" parent="." instance=ExtResource("2_61nvj")]
@@ -117,5 +117,5 @@ position_smoothing_enabled = true
 metadata/_edit_lock_ = true
 
 [connection signal="toggled" from="AudioButton" to="." method="_on_audio_button_toggled"]
-[connection signal="close_pressed" from="AddYourNameControl/AddYourNameScene" to="." method="_on_add_your_name_scene_close_pressed"]
+[connection signal="close_pressed" from="AddYourNameControl/RankingScene" to="." method="_on_ranking_scene_close_pressed"]
 [connection signal="ranking_pressed" from="StartScreenScene" to="." method="_on_start_screen_scene_ranking_pressed"]

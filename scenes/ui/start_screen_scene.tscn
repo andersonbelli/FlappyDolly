@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dlkdfhpco6jjk" path="res://scenes/game_scene.tscn" id="2_5qsik"]
 [ext_resource type="Texture2D" uid="uid://bhcg05ysktsx5" path="res://assets/images/start_screen/flappy.svg" id="2_g37cm"]
 [ext_resource type="Texture2D" uid="uid://b4sa18e5am2j2" path="res://assets/images/start_screen/start_screen_bottom.svg" id="3_d52wj"]
-[ext_resource type="PackedScene" uid="uid://bwwpepovp64f4" path="res://scenes/ui/add_your_name_scene.tscn" id="3_f41em"]
+[ext_resource type="PackedScene" uid="uid://bwwpepovp64f4" path="res://scenes/ui/ranking_scene.tscn" id="3_f41em"]
 [ext_resource type="Texture2D" uid="uid://dxcmcq2waih7n" path="res://assets/images/start_screen/bird/bird.svg" id="4_8mbej"]
 [ext_resource type="PackedScene" uid="uid://cosawlifrhcf3" path="res://scenes/elements/cloud_scene.tscn" id="5_xnuco"]
 [ext_resource type="PackedScene" uid="uid://c6fr60rxsiw4d" path="res://scenes/ui/button_scene.tscn" id="9_ar5l5"]

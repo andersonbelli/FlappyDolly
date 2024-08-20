@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://bwwpepovp64f4"]
 
-[ext_resource type="Script" path="res://scripts/add_your_name.gd" id="1_hgrj2"]
+[ext_resource type="Script" path="res://scripts/ranking.gd" id="1_xb5gn"]
 [ext_resource type="PackedScene" uid="uid://cosawlifrhcf3" path="res://scenes/elements/cloud_scene.tscn" id="2_iakma"]
 [ext_resource type="PackedScene" uid="uid://car212v4oekif" path="res://scenes/elements/grass_scene.tscn" id="3_vxjhe"]
 [ext_resource type="Texture2D" uid="uid://bur0uwpn8wifc" path="res://assets/images/score_leaderboard/leaderboard_sign.svg" id="4_7solo"]
@@ -46,7 +46,7 @@ shader_parameter/distortion = null
 shader_parameter/heightOffset = null
 shader_parameter/offset = 0.0
 
-[node name="AddYourNameScene" type="Control"]
+[node name="RankingScene" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -54,7 +54,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(543, 848)
-script = ExtResource("1_hgrj2")
+script = ExtResource("1_xb5gn")
 metadata/_edit_use_anchors_ = true
 
 [node name="CloudScene" parent="." instance=ExtResource("2_iakma")]
@@ -85,12 +85,21 @@ scale = Vector2(0.994484, 0.822404)
 pivot_offset = Vector2(580.667, 854.667)
 texture = ExtResource("4_7solo")
 
-[node name="save your score" type="Label" parent="."]
+[node name="SaveYourScore" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="save your score" type="Label" parent="SaveYourScore"]
 layout_mode = 2
-offset_left = 1.32172
-offset_top = 206.38
-offset_right = 1081.32
-offset_bottom = 777.38
+offset_left = -12.0
+offset_top = 230.0
+offset_right = 1068.0
+offset_bottom = 801.0
 rotation = -0.0925025
 pivot_offset = Vector2(554.195, 278.131)
 theme = SubResource("Theme_vixhm")
@@ -107,23 +116,20 @@ SCORE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="SaveYourScore"]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 32.3217
-offset_top = -709.62
-offset_right = 32.3218
-offset_bottom = 255.38
+offset_left = 35.0
+offset_top = 711.0
+offset_right = 35.0
+offset_bottom = 1155.0
 grow_horizontal = 2
-grow_vertical = 2
 scale = Vector2(0.76678, 0.76678)
-pivot_offset = Vector2(548, 1155)
+pivot_offset = Vector2(532.35, 200.359)
 alignment = 1
 
-[node name="add your name" type="Label" parent="VBoxContainer"]
+[node name="add your name" type="Label" parent="SaveYourScore/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_vixhm")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -139,12 +145,12 @@ text = "add your name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="SaveYourScore/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 35
 theme_override_constants/margin_bottom = 90
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/MarginContainer"]
+[node name="LineEdit" type="LineEdit" parent="SaveYourScore/VBoxContainer/MarginContainer"]
 layout_mode = 2
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
@@ -163,25 +169,104 @@ caret_blink = true
 caret_force_displayed = true
 caret_mid_grapheme = true
 
-[node name="SaveButton" parent="." instance=ExtResource("9_chw64")]
-layout_mode = 0
-offset_left = 580.322
-offset_top = 1056.38
-offset_right = 980.322
-offset_bottom = 1206.38
+[node name="HBoxContainer" type="HBoxContainer" parent="SaveYourScore"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 151.0
+offset_top = 131.0
+offset_right = -76.0
+offset_bottom = 264.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 45
+
+[node name="CloseButton" parent="SaveYourScore/HBoxContainer" instance=ExtResource("9_chw64")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "close"
+button_type = 1
+
+[node name="SaveButton" parent="SaveYourScore/HBoxContainer" instance=ExtResource("9_chw64")]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "save"
 
-[node name="CloseButton" parent="." instance=ExtResource("9_chw64")]
+[node name="Ranking" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.037037
-anchor_top = -0.0145833
-anchor_right = -0.037037
-anchor_bottom = -0.0145833
-offset_left = 191.322
-offset_top = 1084.38
-offset_right = 591.322
-offset_bottom = 1234.38
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RankingLabel" type="Label" parent="Ranking"]
+layout_mode = 2
+offset_left = 241.0
+offset_top = 271.0
+offset_right = 767.0
+offset_bottom = 511.0
+rotation = -0.0925025
+pivot_offset = Vector2(280.203, 111.162)
+theme = SubResource("Theme_vixhm")
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0.98, 0.0196, 0.0196, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0.42, 0.42, 0.729412)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 15
+theme_override_constants/shadow_outline_size = 100
+text = "Ranking"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Ranking"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 479.0
+offset_right = 20.0
+offset_bottom = 1189.0
+grow_horizontal = 2
+scale = Vector2(0.76678, 0.76678)
+pivot_offset = Vector2(532.35, 200.359)
+
+[node name="rankingListLabel" type="Label" parent="Ranking/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_vixhm")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.819608, 0.67451, 0.411765, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_outline_size = 40
+theme_override_fonts/font = ExtResource("6_cs7y4")
+theme_override_font_sizes/font_size = 66
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jra3h")
+text = "No scores yet!"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Ranking"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -818.0
+offset_right = 161.0
+offset_bottom = -685.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="CloseButton" parent="Ranking/HBoxContainer" instance=ExtResource("9_chw64")]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "close"
 button_type = 1
 
@@ -201,5 +286,6 @@ grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("11_c7v1q")
 
-[connection signal="pressed" from="SaveButton" to="." method="_on_save_button_pressed"]
-[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="SaveYourScore/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="SaveYourScore/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="Ranking/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
