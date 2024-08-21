@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dlkdfhpco6jjk"]
+[gd_scene load_steps=17 format=3 uid="uid://dlkdfhpco6jjk"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_jw6sh"]
 [ext_resource type="PackedScene" uid="uid://cosawlifrhcf3" path="res://scenes/elements/cloud_scene.tscn" id="2_80ei6"]
@@ -6,8 +6,13 @@
 [ext_resource type="FontFile" uid="uid://d14s525nrgj5o" path="res://assets/fonts/Playon-reg.ttf" id="4_kct05"]
 [ext_resource type="PackedScene" uid="uid://61ihymdab77s" path="res://scenes/ui/transition_scene.tscn" id="5_1leyw"]
 [ext_resource type="PackedScene" uid="uid://b5iwqfly4tjmw" path="res://scenes/elements/pipes_manager.tscn" id="6_b5yu3"]
+[ext_resource type="Texture2D" uid="uid://livgxe6r2b1n" path="res://assets/images/background/terrain_background_back.png" id="7_clsfu"]
 [ext_resource type="PackedScene" uid="uid://dpdrvmamgu0eg" path="res://scenes/ui/game_over_scene.tscn" id="7_jpunb"]
 [ext_resource type="PackedScene" uid="uid://bwwpepovp64f4" path="res://scenes/ui/ranking_scene.tscn" id="8_he2gj"]
+[ext_resource type="Texture2D" uid="uid://kahsgka6qxyr" path="res://assets/images/background/terrain_details.svg" id="8_r1iwv"]
+[ext_resource type="Texture2D" uid="uid://c3rhpio2sx4lm" path="res://assets/images/background/grass_terrain.svg" id="9_6tnwl"]
+[ext_resource type="Texture2D" uid="uid://c4i4u1630twtx" path="res://assets/images/background/terrain_sticks.svg" id="10_1ub6n"]
+[ext_resource type="PackedScene" uid="uid://car212v4oekif" path="res://scenes/elements/grass_scene.tscn" id="13_qfako"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_67vrm"]
 load_path = "res://.godot/imported/sky_background.png-46c1f5a2bc74c7a3c9e6d65ba010d37a.ctex"
@@ -62,29 +67,103 @@ top_level = true
 
 [node name="PipesManager" parent="." instance=ExtResource("6_b5yu3")]
 
+[node name="TerrainBackground" type="TextureRect" parent="."]
+offset_top = 1920.0
+offset_right = 4779.0
+offset_bottom = 3840.0
+texture = ExtResource("7_clsfu")
+
+[node name="TerrainFront" type="TextureRect" parent="."]
+offset_left = -307.0
+offset_top = 2819.0
+offset_right = 1708.0
+offset_bottom = 3726.0
+texture = ExtResource("8_r1iwv")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="TerrainFront2" type="TextureRect" parent="."]
+offset_left = 663.0
+offset_top = 2916.0
+offset_right = 2678.0
+offset_bottom = 3823.0
+rotation = -0.0275752
+texture = ExtResource("8_r1iwv")
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 571.0
+offset_top = 3057.0
+offset_right = 1387.0
+offset_bottom = 3309.0
+rotation = 0.0839299
+scale = Vector2(1.00031, 0.839309)
+texture = ExtResource("10_1ub6n")
+metadata/_edit_lock_ = true
+
+[node name="TerrainGrass" type="TextureRect" parent="."]
+offset_left = 145.0
+offset_top = 3277.0
+offset_right = 1142.0
+offset_bottom = 3490.0
+texture = ExtResource("9_6tnwl")
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="TerrainGrass2" type="TextureRect" parent="."]
+offset_left = 905.0
+offset_top = 3332.0
+offset_right = 1902.0
+offset_bottom = 3545.0
+rotation = -0.0248205
+texture = ExtResource("9_6tnwl")
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="TerrainGrass3" type="TextureRect" parent="."]
+offset_left = 1927.0
+offset_top = 3316.0
+offset_right = 2924.0
+offset_bottom = 3529.0
+texture = ExtResource("9_6tnwl")
+flip_h = true
+metadata/_edit_lock_ = true
+
 [node name="GameOverScene" parent="." instance=ExtResource("7_jpunb")]
-offset_left = 1629.0
-offset_right = 1629.0
+offset_top = 1937.0
+offset_bottom = 1937.0
+scale = Vector2(0.906802, 0.906802)
+metadata/_edit_lock_ = true
 
 [node name="AddYourNameControl" type="Control" parent="."]
+z_index = 15
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 3041.0
-offset_top = 150.0
-offset_right = 4121.0
-offset_bottom = 2070.0
+offset_left = 1530.0
+offset_top = 2022.0
+offset_right = 2610.0
+offset_bottom = 3942.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.793841, 0.793841)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="RankingScene" parent="AddYourNameControl" instance=ExtResource("8_he2gj")]
 layout_mode = 1
 
+[node name="GrassScene" parent="." instance=ExtResource("13_qfako")]
+z_index = 16
+offset_left = 1855.0
+offset_top = 3723.0
+offset_right = 1855.0
+offset_bottom = 3723.0
+
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(540.125, 960)
+position = Vector2(540, 960)
 position_smoothing_enabled = true
 
 [node name="WorldBoundary" type="StaticBody2D" parent="."]

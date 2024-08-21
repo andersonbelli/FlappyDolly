@@ -1,13 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://bf87aqcygvqp0"]
+[gd_scene load_steps=19 format=3 uid="uid://bf87aqcygvqp0"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_p71cs"]
 [ext_resource type="Texture2D" uid="uid://dqkwqknbmebpn" path="res://assets/images/background/sky_background.png" id="2_1nuqv"]
 [ext_resource type="PackedScene" uid="uid://r3wrdg7oci0u" path="res://scenes/ui/start_screen_scene.tscn" id="2_61nvj"]
 [ext_resource type="Texture2D" uid="uid://drvob3mk5txyv" path="res://assets/images/settings/sound/sound.svg" id="2_bobji"]
+[ext_resource type="Texture2D" uid="uid://livgxe6r2b1n" path="res://assets/images/background/terrain_background_back.png" id="3_m5eqi"]
 [ext_resource type="Texture2D" uid="uid://4c32hmp50hry" path="res://assets/images/settings/sound/soundX.svg" id="3_urci1"]
+[ext_resource type="Texture2D" uid="uid://kahsgka6qxyr" path="res://assets/images/background/terrain_details.svg" id="4_gpfmc"]
+[ext_resource type="Texture2D" uid="uid://c3rhpio2sx4lm" path="res://assets/images/background/grass_terrain.svg" id="5_83e6m"]
 [ext_resource type="PackedScene" uid="uid://bwwpepovp64f4" path="res://scenes/ui/ranking_scene.tscn" id="5_475qg"]
 [ext_resource type="PackedScene" uid="uid://cosawlifrhcf3" path="res://scenes/elements/cloud_scene.tscn" id="7_higxg"]
 [ext_resource type="PackedScene" uid="uid://61ihymdab77s" path="res://scenes/ui/transition_scene.tscn" id="8_cb6dv"]
+[ext_resource type="Shader" path="res://scenes/resources/shaders/wind_shader.gdshader" id="12_mektc"]
 
 [sub_resource type="Animation" id="Animation_kqk8a"]
 length = 0.001
@@ -61,6 +65,21 @@ func _on_animation_player_animation_finished(_anim_name):
 	visible = false
 "
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ly6ik"]
+shader = ExtResource("12_mektc")
+shader_parameter/speed = 2.265
+shader_parameter/minStrength = 0.075
+shader_parameter/maxStrength = 0.362
+shader_parameter/strengthScale = 101.74
+shader_parameter/interval = 3.15
+shader_parameter/detail = 1.0
+shader_parameter/distortion = null
+shader_parameter/heightOffset = null
+shader_parameter/offset = 0.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5c5oi"]
+load_path = "res://.godot/imported/3-grass.svg-6fe58d678e1f036c8ca035c2c254f459.ctex"
+
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_p71cs")
 
@@ -75,6 +94,30 @@ grow_vertical = 2
 pivot_offset = Vector2(1081, 977)
 size_flags_horizontal = 4
 texture = ExtResource("2_1nuqv")
+metadata/_edit_lock_ = true
+
+[node name="TerrainBackground" type="TextureRect" parent="."]
+offset_top = 1920.0
+offset_right = 2160.0
+offset_bottom = 3840.0
+texture = ExtResource("3_m5eqi")
+metadata/_edit_lock_ = true
+
+[node name="TerrainFront" type="TextureRect" parent="."]
+offset_left = -250.0
+offset_top = 3221.0
+offset_right = 1765.0
+offset_bottom = 4128.0
+texture = ExtResource("4_gpfmc")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="TerrainGrass" type="TextureRect" parent="."]
+offset_left = 10.0
+offset_top = 3646.0
+offset_right = 1007.0
+offset_bottom = 3859.0
+texture = ExtResource("5_83e6m")
 metadata/_edit_lock_ = true
 
 [node name="AudioButton" type="TextureButton" parent="."]
@@ -113,28 +156,51 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1629.0
-offset_right = 2709.0
-offset_bottom = 1920.0
+offset_left = -3.0
+offset_top = 1923.0
+offset_right = 1077.0
+offset_bottom = 3843.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+metadata/_edit_group_ = true
 
 [node name="RankingScene" parent="AddYourNameControl" instance=ExtResource("5_475qg")]
 layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00462963
+anchor_top = 0.108333
+anchor_right = 1.00463
+anchor_bottom = 1.10833
+scale = Vector2(0.873996, 0.873996)
 
 [node name="StartScreenScene" parent="." instance=ExtResource("2_61nvj")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(540, 960)
 position_smoothing_enabled = true
-metadata/_edit_lock_ = true
 
 [node name="TransitionScene" parent="." instance=ExtResource("8_cb6dv")]
 visible = false
 top_level = true
 script = SubResource("GDScript_vcugw")
+
+[node name="grass3" type="TextureRect" parent="."]
+z_index = 16
+material = SubResource("ShaderMaterial_ly6ik")
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -194.0
+offset_top = 3771.0
+offset_right = 1522.0
+offset_bottom = 4166.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("CompressedTexture2D_5c5oi")
 
 [connection signal="toggled" from="AudioButton" to="." method="_on_audio_button_toggled"]
 [connection signal="close_pressed" from="AddYourNameControl/RankingScene" to="." method="_on_ranking_scene_close_pressed"]

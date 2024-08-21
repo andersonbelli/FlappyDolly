@@ -23,7 +23,7 @@ func _on_start_screen_scene_ranking_pressed() -> void:
 	else:
 		await SilentWolf.check_scores_ready()
 		rankingScene.render_ranking.emit(Globals.SCORES_RANKING)
-	camera.position.x = 2169
+	camera.position.y = 2880
 
 func _on_ranking_scene_close_pressed() -> void:
-	camera.position.x = 540
+	camera.position.x = 960

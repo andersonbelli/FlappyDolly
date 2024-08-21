@@ -35,7 +35,8 @@ func _physics_process(_delta):
 
 # GameOver
 func _on_bird_scene_bird_is_dead():
-	camera.position.x = 2150
+	camera.position.x = 540
+	camera.position.y = 2650
 	
 	pipes_manager.stop_spawn()
 	score_label.visible = false
@@ -57,9 +58,10 @@ func reset_score():
 
 
 func _on_game_over_scene_ranked_pressed() -> void:
-	camera.position.x = 3585
-	camera.position.y = 1050
-
+	camera.position.x = 1860
+	camera.position.y = 2600
 
 func _on_ranking_scene_close_pressed() -> void:
-	camera.position.x = 2150
+	camera.position.x = 540
+	camera.position.y = 2680
+	#camera.position.x = 3585
