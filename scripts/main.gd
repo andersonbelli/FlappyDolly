@@ -20,7 +20,6 @@ func _on_audio_button_toggled(toggled_on: bool) -> void:
 func _on_start_screen_scene_ranking_pressed() -> void:
 	if Globals.PLAYER_NAME == null or Globals.PLAYER_NAME == "":
 		addYourNameLineEdit.grab_focus()
-		print("grab focus")
 	else:
 		await SilentWolf.check_scores_ready()
 		rankingScene.render_ranking.emit(Globals.SCORES_RANKING)
