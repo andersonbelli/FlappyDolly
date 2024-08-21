@@ -75,92 +75,90 @@ texture = ExtResource("7_clsfu")
 
 [node name="TerrainFront" type="TextureRect" parent="."]
 offset_left = -307.0
-offset_top = 2819.0
+offset_top = 3057.0
 offset_right = 1708.0
-offset_bottom = 3726.0
+offset_bottom = 3964.0
 texture = ExtResource("8_r1iwv")
 metadata/_edit_use_anchors_ = true
-metadata/_edit_lock_ = true
 
 [node name="TerrainFront2" type="TextureRect" parent="."]
 offset_left = 663.0
-offset_top = 2916.0
+offset_top = 3154.0
 offset_right = 2678.0
-offset_bottom = 3823.0
+offset_bottom = 4061.0
 rotation = -0.0275752
 texture = ExtResource("8_r1iwv")
 flip_h = true
-metadata/_edit_lock_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = 571.0
-offset_top = 3057.0
+offset_top = 3295.0
 offset_right = 1387.0
-offset_bottom = 3309.0
+offset_bottom = 3547.0
 rotation = 0.0839299
 scale = Vector2(1.00031, 0.839309)
 texture = ExtResource("10_1ub6n")
-metadata/_edit_lock_ = true
 
 [node name="TerrainGrass" type="TextureRect" parent="."]
 offset_left = 145.0
-offset_top = 3277.0
+offset_top = 3515.0
 offset_right = 1142.0
-offset_bottom = 3490.0
+offset_bottom = 3728.0
 texture = ExtResource("9_6tnwl")
 flip_h = true
-metadata/_edit_lock_ = true
 
 [node name="TerrainGrass2" type="TextureRect" parent="."]
 offset_left = 905.0
-offset_top = 3332.0
+offset_top = 3570.0
 offset_right = 1902.0
-offset_bottom = 3545.0
+offset_bottom = 3783.0
 rotation = -0.0248205
 texture = ExtResource("9_6tnwl")
 flip_h = true
-metadata/_edit_lock_ = true
 
 [node name="TerrainGrass3" type="TextureRect" parent="."]
 offset_left = 1927.0
-offset_top = 3316.0
+offset_top = 3554.0
 offset_right = 2924.0
-offset_bottom = 3529.0
+offset_bottom = 3767.0
 texture = ExtResource("9_6tnwl")
 flip_h = true
-metadata/_edit_lock_ = true
 
 [node name="GameOverScene" parent="." instance=ExtResource("7_jpunb")]
-offset_top = 1937.0
-offset_bottom = 1937.0
+offset_left = 70.0
+offset_top = 2195.0
+offset_right = 70.0
+offset_bottom = 2195.0
 scale = Vector2(0.906802, 0.906802)
-metadata/_edit_lock_ = true
 
-[node name="AddYourNameControl" type="Control" parent="."]
+[node name="AddYourNameControl" type="Control" parent="." node_paths=PackedStringArray("shortcut_context")]
 z_index = 15
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 1530.0
-offset_top = 2022.0
+offset_top = 2260.0
 offset_right = 2610.0
-offset_bottom = 3942.0
+offset_bottom = 4180.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.793841, 0.793841)
 size_flags_horizontal = 3
 size_flags_vertical = 3
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+shortcut_context = NodePath(".")
 
 [node name="RankingScene" parent="AddYourNameControl" instance=ExtResource("8_he2gj")]
 layout_mode = 1
 
 [node name="GrassScene" parent="." instance=ExtResource("13_qfako")]
 z_index = 16
-offset_left = 1855.0
-offset_top = 3723.0
-offset_right = 1855.0
-offset_bottom = 3723.0
+offset_left = 1887.0
+offset_top = 3961.0
+offset_right = 1887.0
+offset_bottom = 3961.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(540, 960)

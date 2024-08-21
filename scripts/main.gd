@@ -18,12 +18,13 @@ func _on_audio_button_toggled(toggled_on: bool) -> void:
 	AudioServer.set_bus_mute(bus_idx, toggled_on)
 
 func _on_start_screen_scene_ranking_pressed() -> void:
-	if Globals.PLAYER_NAME != null and Globals.PLAYER_NAME != "":
+	if Globals.PLAYER_NAME == null or Globals.PLAYER_NAME == "":
 		addYourNameLineEdit.grab_focus()
+		print("grab focus")
 	else:
 		await SilentWolf.check_scores_ready()
 		rankingScene.render_ranking.emit(Globals.SCORES_RANKING)
 	camera.position.y = 2880
 
 func _on_ranking_scene_close_pressed() -> void:
-	camera.position.x = 960
+	camera.position.y = 960

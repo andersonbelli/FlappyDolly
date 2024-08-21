@@ -15,7 +15,8 @@ class_name GameClass
 # Guarantees that the speed will increase only once every 10 pipes
 var speed_increased = false
 
-func _ready():
+func _ready() -> void:
+	print("focus ", get_viewport().gui_get_focus_owner())
 	transition_scene.visible = true
 	reset_score()
 
@@ -36,7 +37,7 @@ func _physics_process(_delta):
 # GameOver
 func _on_bird_scene_bird_is_dead():
 	camera.position.x = 540
-	camera.position.y = 2650
+	camera.position.y = 2950
 	
 	pipes_manager.stop_spawn()
 	score_label.visible = false
@@ -59,9 +60,8 @@ func reset_score():
 
 func _on_game_over_scene_ranked_pressed() -> void:
 	camera.position.x = 1860
-	camera.position.y = 2600
+	camera.position.y = 2900
 
 func _on_ranking_scene_close_pressed() -> void:
-	camera.position.x = 540
-	camera.position.y = 2680
-	#camera.position.x = 3585
+	camera.position.x = 560
+	camera.position.y = 2950
