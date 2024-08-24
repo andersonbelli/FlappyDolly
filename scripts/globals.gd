@@ -48,8 +48,6 @@ var SCORES_RANKING = []:
 			scores_ranking_loaded.emit()
 
 func _ready() -> void:
-	retrieve_player_data()
-	
 	var env_file = FileAccess.open('res://.env', FileAccess.READ)
 	var apiKey = env_file.get_line()
 	env_file.close()

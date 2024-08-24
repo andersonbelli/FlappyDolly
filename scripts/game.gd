@@ -10,12 +10,13 @@ class_name GameClass
 @onready var score_label = $ScoreLabel
 @onready var bird = $BirdScene
 
-@onready var camera = $Camera2D
+var camera: Camera2D
 
 # Guarantees that the speed will increase only once every 10 pipes
 var speed_increased = false
 
 func _ready() -> void:
+	camera = get_parent().get_viewport().get_camera_2d()
 	transition_scene.visible = true
 	reset_score()
 
@@ -46,6 +47,7 @@ func _on_bird_scene_bird_is_dead():
 
 	Globals.PLAYER_HIGHSCORE = Globals.SCORE
 	rankingScene.render_ranking.emit(Globals.SCORES_RANKING)
+	
 
 func reset_score():
 	Globals.SCORE = 0

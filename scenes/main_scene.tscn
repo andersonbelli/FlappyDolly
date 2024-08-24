@@ -1,57 +1,14 @@
-[gd_scene load_steps=19 format=3 uid="uid://bf87aqcygvqp0"]
+[gd_scene load_steps=10 format=3 uid="uid://bf87aqcygvqp0"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_p71cs"]
-[ext_resource type="Texture2D" uid="uid://dqkwqknbmebpn" path="res://assets/images/background/sky_background.png" id="2_1nuqv"]
-[ext_resource type="PackedScene" uid="uid://r3wrdg7oci0u" path="res://scenes/ui/start_screen_scene.tscn" id="2_61nvj"]
+[ext_resource type="AudioStream" uid="uid://b7n36ariu2tjo" path="res://assets/sounds/music/main-theme.wav" id="2_71i6m"]
 [ext_resource type="Texture2D" uid="uid://drvob3mk5txyv" path="res://assets/images/settings/sound/sound.svg" id="2_bobji"]
-[ext_resource type="Texture2D" uid="uid://livgxe6r2b1n" path="res://assets/images/background/terrain_background_back.png" id="3_m5eqi"]
 [ext_resource type="Texture2D" uid="uid://4c32hmp50hry" path="res://assets/images/settings/sound/soundX.svg" id="3_urci1"]
-[ext_resource type="Texture2D" uid="uid://kahsgka6qxyr" path="res://assets/images/background/terrain_details.svg" id="4_gpfmc"]
-[ext_resource type="Texture2D" uid="uid://c3rhpio2sx4lm" path="res://assets/images/background/grass_terrain.svg" id="5_83e6m"]
-[ext_resource type="PackedScene" uid="uid://bwwpepovp64f4" path="res://scenes/ui/ranking_scene.tscn" id="5_475qg"]
-[ext_resource type="PackedScene" uid="uid://cosawlifrhcf3" path="res://scenes/elements/cloud_scene.tscn" id="7_higxg"]
+[ext_resource type="PackedScene" uid="uid://dgovlpensv7o3" path="res://scenes/initial_flow_scene.tscn" id="4_0b70g"]
+[ext_resource type="AudioStream" uid="uid://d0j1gcys631d5" path="res://assets/sounds/music/SIEMPREteRECORDAREMOS-ShinChan.mp3" id="7_1kfbq"]
 [ext_resource type="PackedScene" uid="uid://61ihymdab77s" path="res://scenes/ui/transition_scene.tscn" id="8_cb6dv"]
-[ext_resource type="Shader" path="res://scenes/resources/shaders/wind_shader.gdshader" id="12_mektc"]
 
-[sub_resource type="Animation" id="Animation_kqk8a"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-1230, -937)]
-}
-
-[sub_resource type="Animation" id="Animation_c4omv"]
-resource_name = "moving_clouds"
-length = 25.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 7.13333, 16.6, 24.9333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-1230, -937), Vector2(-104.554, -937), Vector2(657.967, -937), Vector2(3919, -937)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_au5lo"]
-_data = {
-"RESET": SubResource("Animation_kqk8a"),
-"moving_clouds": SubResource("Animation_c4omv")
-}
-
-[sub_resource type="GDScript" id="GDScript_vcugw"]
+[sub_resource type="GDScript" id="GDScript_rq2cu"]
 script/source = "extends Control
 
 @onready var animation_player = $AnimationPlayer
@@ -65,63 +22,44 @@ func _on_animation_player_animation_finished(_anim_name):
 	visible = false
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ly6ik"]
-shader = ExtResource("12_mektc")
-shader_parameter/speed = 2.265
-shader_parameter/minStrength = 0.075
-shader_parameter/maxStrength = 0.362
-shader_parameter/strengthScale = 101.74
-shader_parameter/interval = 3.15
-shader_parameter/detail = 1.0
-shader_parameter/distortion = null
-shader_parameter/heightOffset = null
-shader_parameter/offset = 0.0
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5c5oi"]
-load_path = "res://.godot/imported/3-grass.svg-6fe58d678e1f036c8ca035c2c254f459.ctex"
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_h66ma"]
+clip_count = 2
+clip_0/name = &"main"
+clip_0/stream = ExtResource("2_71i6m")
+clip_0/auto_advance = 0
+clip_1/name = &"death"
+clip_1/stream = ExtResource("7_1kfbq")
+clip_1/auto_advance = 0
+_transitions = {
+Vector2i(1, 0): {
+"fade_beats": 1,
+"fade_mode": 3,
+"from_time": 1,
+"to_time": 0
+}
+}
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_p71cs")
 
-[node name="SkyBackground" type="TextureRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 3852.0
-offset_bottom = 1920.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(1081, 977)
-size_flags_horizontal = 4
-texture = ExtResource("2_1nuqv")
-metadata/_edit_lock_ = true
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_71i6m")
+bus = &"Music"
 
-[node name="TerrainBackground" type="TextureRect" parent="."]
-offset_top = 1920.0
-offset_right = 2160.0
-offset_bottom = 3840.0
-texture = ExtResource("3_m5eqi")
-metadata/_edit_lock_ = true
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(540, 960)
+position_smoothing_enabled = true
 
-[node name="TerrainFront" type="TextureRect" parent="."]
-offset_left = -250.0
-offset_top = 3221.0
-offset_right = 1765.0
-offset_bottom = 4128.0
-texture = ExtResource("4_gpfmc")
-metadata/_edit_use_anchors_ = true
-metadata/_edit_lock_ = true
+[node name="InitialFlowScene" parent="." instance=ExtResource("4_0b70g")]
 
-[node name="TerrainGrass" type="TextureRect" parent="."]
-offset_left = 10.0
-offset_top = 3646.0
-offset_right = 1007.0
-offset_bottom = 3859.0
-texture = ExtResource("5_83e6m")
-metadata/_edit_lock_ = true
+[node name="TransitionScene" parent="." instance=ExtResource("8_cb6dv")]
+visible = false
+top_level = true
+script = SubResource("GDScript_rq2cu")
 
 [node name="AudioButton" type="TextureButton" parent="."]
 top_level = true
+z_index = 99
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -139,69 +77,9 @@ texture_normal = ExtResource("2_bobji")
 texture_pressed = ExtResource("3_urci1")
 texture_disabled = ExtResource("3_urci1")
 
-[node name="CloudScene" parent="." instance=ExtResource("7_higxg")]
-modulate = Color(1, 1, 1, 0.12549)
-position = Vector2(-1230, -937)
-scale = Vector2(1.125, 1.125)
-skew = 0.174533
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CloudScene"]
-libraries = {
-"": SubResource("AnimationLibrary_au5lo")
-}
-autoplay = "moving_clouds"
-
-[node name="AddYourNameControl" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = 1923.0
-offset_right = 1077.0
-offset_bottom = 3843.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-metadata/_edit_group_ = true
-
-[node name="RankingScene" parent="AddYourNameControl" instance=ExtResource("5_475qg")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.00462963
-anchor_top = 0.108333
-anchor_right = 1.00463
-anchor_bottom = 1.10833
-scale = Vector2(0.873996, 0.873996)
-
-[node name="StartScreenScene" parent="." instance=ExtResource("2_61nvj")]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(540, 960)
-position_smoothing_enabled = true
-
-[node name="TransitionScene" parent="." instance=ExtResource("8_cb6dv")]
-visible = false
-top_level = true
-script = SubResource("GDScript_vcugw")
-
-[node name="grass3" type="TextureRect" parent="."]
-z_index = 16
-material = SubResource("ShaderMaterial_ly6ik")
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -194.0
-offset_top = 3771.0
-offset_right = 1522.0
-offset_bottom = 4166.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = SubResource("CompressedTexture2D_5c5oi")
+[node name="MainAudio" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamInteractive_h66ma")
+autoplay = true
+bus = &"Music"
 
 [connection signal="toggled" from="AudioButton" to="." method="_on_audio_button_toggled"]
-[connection signal="close_pressed" from="AddYourNameControl/RankingScene" to="." method="_on_ranking_scene_close_pressed"]
-[connection signal="ranking_pressed" from="StartScreenScene" to="." method="_on_start_screen_scene_ranking_pressed"]

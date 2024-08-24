@@ -160,10 +160,6 @@ offset_top = 3961.0
 offset_right = 1887.0
 offset_bottom = 3961.0
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(540, 960)
-position_smoothing_enabled = true
-
 [node name="WorldBoundary" type="StaticBody2D" parent="."]
 collision_layer = 16
 

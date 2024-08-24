@@ -63,6 +63,7 @@ func die():
 		death_audio.play()
 		is_alive = false
 		play_dead_animation.emit()
+		
 		queue_free()
 
 func hit(impulse_force: int):

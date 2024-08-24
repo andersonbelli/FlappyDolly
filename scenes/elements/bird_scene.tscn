@@ -82,6 +82,10 @@ rotation = 0.0977384
 scale = Vector2(0.413, 0.413)
 script = ExtResource("1_l3g73")
 
+[node name="DeathMusicTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [node name="DeathAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_vng6l")
 bus = &"SFX"
@@ -131,5 +135,6 @@ libraries = {
 "": SubResource("AnimationLibrary_2cm04")
 }
 
+[connection signal="timeout" from="DeathMusicTimer" to="." method="_on_death_music_timer_timeout"]
 [connection signal="play_dead_animation" from="Bird" to="." method="_on_bird_play_dead_animation"]
 [connection signal="animation_finished" from="Dead/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
