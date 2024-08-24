@@ -4,7 +4,7 @@ class_name GameClass
 
 @onready var transition_scene: Control = $TransitionScene
 @onready var game_over_scene = $GameOverScene
-@onready var add_your_name_control: Control = $AddYourNameControl
+@onready var rankingScene = $AddYourNameControl/RankingScene
 
 @onready var pipes_manager = $PipesManager
 @onready var score_label = $ScoreLabel
@@ -16,13 +16,12 @@ class_name GameClass
 var speed_increased = false
 
 func _ready() -> void:
-	print("focus ", get_viewport().gui_get_focus_owner())
 	transition_scene.visible = true
 	reset_score()
 
 func _process(_delta):
 	score_label.text = str(Globals.SCORE)
-	
+
 	# Increase game speed every 10 pipes
 	if (Globals.SCORE % 10 == 0 && Globals.SCORE != 0):
 		if not speed_increased:
@@ -38,25 +37,19 @@ func _physics_process(_delta):
 func _on_bird_scene_bird_is_dead():
 	camera.position.x = 540
 	camera.position.y = 2950
-	
+
 	pipes_manager.stop_spawn()
 	score_label.visible = false
-	
-	print(Globals.PLAYER_NAME == null, " - player")
-	 
-	if Globals.PLAYER_NAME == null:
-		add_your_name_control.visible = true
-	else:
-		game_over_scene.get_node("ScoreLabel").text = score_label.text
-		game_over_scene.visible = true
-	
-		SilentWolf.Scores.save_score(Globals.PLAYER_NAME, Globals.SCORE)
-		
+
+	game_over_scene.get_node("ScoreLabel").text = str(Globals.SCORE)
+	game_over_scene.visible = true
+
+	Globals.PLAYER_HIGHSCORE = Globals.SCORE
+	rankingScene.render_ranking.emit(Globals.SCORES_RANKING)
 
 func reset_score():
 	Globals.SCORE = 0
 	score_label.text = str(Globals.SCORE)
-
 
 func _on_game_over_scene_ranked_pressed() -> void:
 	camera.position.x = 1860

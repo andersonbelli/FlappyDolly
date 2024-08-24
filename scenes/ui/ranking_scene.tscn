@@ -274,7 +274,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -397.0
 offset_top = -429.0
-offset_right = 453.0
+offset_right = 423.0
 offset_bottom = 119.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -289,7 +289,7 @@ alignment = 1
 [node name="rankingListLabel" type="Label" parent="Ranking/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.109804, 0.109804, 0.109804, 1)
+theme_override_colors/font_shadow_color = Color(0.0100903, 0.0100903, 0.0100903, 1)
 theme_override_colors/font_outline_color = Color(0.819608, 0.67451, 0.411765, 1)
 theme_override_constants/shadow_offset_x = 5
 theme_override_constants/shadow_offset_y = 5

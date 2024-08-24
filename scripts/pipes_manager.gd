@@ -59,6 +59,9 @@ func spawn_dolly_pipe():
 		pipe.position.x -= pipe_disaper_at
 		add_child(pipe)
 
+func add_score(score: int = 1):
+	Globals.SCORE += score
+
 func set_spawn_position() -> Vector2:
 	is_pipe_dolly = true if (randi_range(0, 1) % 2 == 0) else false
 	

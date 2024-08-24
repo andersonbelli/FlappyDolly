@@ -10,6 +10,8 @@ extends Node2D
 func _ready() -> void:
 	transition_scene.visible = true
 	
+	printerr("SCORESERSERS -- ",  Globals.get_player_nick())
+	
 	if OS.is_debug_build():
 		_on_audio_button_toggled(true)
 
@@ -18,10 +20,11 @@ func _on_audio_button_toggled(toggled_on: bool) -> void:
 	AudioServer.set_bus_mute(bus_idx, toggled_on)
 
 func _on_start_screen_scene_ranking_pressed() -> void:
-	if Globals.PLAYER_NAME == null or Globals.PLAYER_NAME == "":
+	if Globals.get_player_nick():
 		addYourNameLineEdit.grab_focus()
 	else:
-		await SilentWolf.check_scores_ready()
+		##### START TIMER AFTER check_scores_ready
+		#await SilentWolf.check_scores_ready()
 		rankingScene.render_ranking.emit(Globals.SCORES_RANKING)
 	camera.position.y = 2880
 

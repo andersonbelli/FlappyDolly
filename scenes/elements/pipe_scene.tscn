@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://mq21yswxokgd"]
 
 [ext_resource type="Script" path="res://scripts/pipe.gd" id="1_awqhj"]
-[ext_resource type="Texture2D" uid="uid://2rx3mcycvs0q" path="res://assets/obstacles/pipe.svg" id="1_pwlbu"]
+[ext_resource type="Texture2D" uid="uid://2rx3mcycvs0q" path="res://assets/images/obstacles/pipe.svg" id="1_pwlbu"]
 
 [node name="PipeScene" type="StaticBody2D"]
 scale = Vector2(0.9, 1.2)

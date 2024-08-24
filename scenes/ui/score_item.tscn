@@ -21,7 +21,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "1. Godzilla"
-horizontal_alignment = 1
 vertical_alignment = 1
 text_overrun_behavior = 3
 

@@ -23,6 +23,8 @@ var BottleScene = preload("res://scenes/elements/bottle_scene.tscn")
 @onready var dolly_sprite = $DollySprite
 @onready var pipe_sprite = $Pipe
 
+var pipe_manager: PipesManagerClass
+
 var bottle: BottleClass
 var marker: Marker2D
 var marker_arm: Marker2D
@@ -36,10 +38,10 @@ var is_bottom
 
 # Rotation = Low 7.5 / High -65.5
 func _ready():
-	var piper_manager = (get_parent() as PipesManagerClass)
+	pipe_manager = get_parent()
 	
-	is_bottom = piper_manager.is_bottom
-	disapear_at = piper_manager.pipe_disaper_at
+	is_bottom = pipe_manager.is_bottom
+	disapear_at = pipe_manager.pipe_disaper_at
 	
 	if is_bottom:
 		dolly_arm_right.queue_free()
@@ -86,7 +88,7 @@ func _physics_process(delta):
 	
 	if position.x < -disapear_at:
 		if collided == false:
-			Globals.SCORE += 1
+			pipe_manager.add_score(1)
 		queue_free()
 
 func throw_bottle_randomization(direction: Vector2, ) -> Vector2:

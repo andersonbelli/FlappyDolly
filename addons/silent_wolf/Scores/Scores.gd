@@ -158,11 +158,6 @@ func _on_GetScores_request_completed(result, response_code, headers, body) -> vo
 		Globals.SCORES_RANKING = sw_result["scores"]
 		sw_get_scores_complete.emit(sw_result)
 
-func get_score_result():
-	var asd = sw_get_scores_complete
-	print("result = ", scores_result)
-	return scores_result
-
 func get_scores_by_player(player_name: String, maximum: int=10, ldboard_name: String="main", period_offset: int=0) -> Node:
 	if player_name == null:
 		SWLogger.error("Error in SilentWolf.Scores.get_scores_by_player: provided player_name is null")

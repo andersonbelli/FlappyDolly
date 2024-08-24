@@ -27,7 +27,7 @@ func _process(delta):
 		
 		var collision = move_and_collide(velocity * delta)
 		if collision != null:
-			if collision.get_collider().name == "WorldBoundary":
+			if collision.get_collider().name == "WorldBoundary" or collision.get_collider().name == "PipeScene":
 				die()
 			elif collision.get_collider().name == "Bottle":
 				var bottle = collision.get_collider() as BottleClass

@@ -5,9 +5,11 @@ class_name PipeClass
 var collided = false
 var disapear_at
 
+var pipe_manager: PipesManagerClass
+
 func _ready():
-	var piper_manager = (get_parent() as PipesManagerClass)
-	disapear_at = piper_manager.pipe_disaper_at
+	pipe_manager = get_parent()
+	disapear_at = pipe_manager.pipe_disaper_at
 
 func _physics_process(delta):
 	var collide_with = move_and_collide(Vector2(1,0) * delta * Globals.GAME_SPEED * -1)
@@ -21,5 +23,5 @@ func _physics_process(delta):
 	
 	if position.x < -disapear_at:
 		if collided == false:
-			Globals.SCORE += 1
+			pipe_manager.add_score(1)
 		queue_free()
