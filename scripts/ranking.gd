@@ -18,9 +18,7 @@ var list_index = 0
 
 func _ready() -> void:
 	render_ranking.connect(_on_render_ranking)
-	
-	print("------------------> nickkkkk ", Globals.get_player_nick().is_empty())
-	
+
 	if Globals.get_player_nick().is_empty():
 		ranking.visible = false
 		save_your_score.visible = true

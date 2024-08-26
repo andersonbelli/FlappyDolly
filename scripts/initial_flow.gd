@@ -9,7 +9,7 @@ func _ready() -> void:
 	camera = get_parent().get_viewport().get_camera_2d()
 
 func _on_start_screen_scene_ranking_pressed() -> void:
-	if Globals.get_player_nick():
+	if Globals.get_player_nick().is_empty():
 		addYourNameLineEdit.grab_focus()
 	else:
 		rankingScene.render_ranking.emit(Globals.SCORES_RANKING)

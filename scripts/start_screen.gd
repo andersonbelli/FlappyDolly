@@ -6,7 +6,6 @@ signal ranking_pressed
 @export var save_score_scene: PackedScene
 
 func _on_start_button_pressed() -> void:
-	#get_tree().change_scene_to_packed(game_scene)
 	get_parent().get_parent().add_child(game_scene.instantiate())
 	get_parent().queue_free()
 
