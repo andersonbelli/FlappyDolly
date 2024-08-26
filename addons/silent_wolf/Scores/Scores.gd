@@ -62,7 +62,12 @@ var scores_result = []
 
 # metadata, if included should be a dictionary
 # The score attribute could be either a score_value (int) or score_id (String)
-func save_score(player_name: String, score, ldboard_name: String="main", metadata: Dictionary={}) -> Node:
+func save_score(player_name: String, 
+				score, 
+				should_load_scores: bool=false,
+				ldboard_name: String="main",
+				metadata: Dictionary={}
+				) -> Node:
 	# player_name must be present
 	if player_name == null or player_name == "":
 		SWLogger.error("ERROR in SilentWolf.Scores.persist_score - please enter a valid player name")
@@ -98,6 +103,9 @@ func save_score(player_name: String, score, ldboard_name: String="main", metadat
 		add_to_local_scores(payload)
 		var request_url = "https://api.silentwolf.com/save_score"
 		SilentWolf.send_post_request(SaveScore, request_url, payload)
+		
+		if should_load_scores:
+			get_scores()
 	return self
 
 

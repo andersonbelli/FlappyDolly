@@ -8,8 +8,9 @@ func _ready() -> void:
 	camera.make_current()
 	transition_scene.visible = true
 
-	#if OS.is_debug_build():
-		#_on_audio_button_toggled(true)
+	## Mute game in debug mode
+	if OS.is_debug_build():
+		_on_audio_button_toggled(true)
 
 func _on_audio_button_toggled(toggled_on: bool) -> void:
 	var bus_idx = AudioServer.get_bus_index("Master")

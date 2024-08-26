@@ -34,20 +34,21 @@ var PLAYER_HIGHSCORE = 0:
 				player_file.load("res://" + file_name)
 				player_file.set_value(file_name, player_highscore, value)
 				player_file.save("res://" + file_name)
-				
+
 				# Saving online highscore
-				if PLAYER_HIGHSCORE != 0:
-					SilentWolf.Scores.save_score(Globals.PLAYER_NAME, Globals.SCORE)
-			PLAYER_HIGHSCORE = value
+				if SCORE != 0:
+					await SilentWolf.Scores.save_score(Globals.PLAYER_NAME, Globals.SCORE, true)
+				PLAYER_HIGHSCORE = value
 
 var SCORES_RANKING = []:
 	set(value):
 		if value != null:
 			SCORES_RANKING = value
-			##### START TIMER AFTER check_scores_ready
 			scores_ranking_loaded.emit()
 
 func _ready() -> void:
+	retrieve_player_data()
+	
 	var env_file = FileAccess.open('res://.env', FileAccess.READ)
 	var apiKey = env_file.get_line()
 	env_file.close()
