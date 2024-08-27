@@ -173,6 +173,7 @@ position = Vector2(574, 1992)
 shape = SubResource("WorldBoundaryShape2D_jv78b")
 
 [connection signal="bird_is_dead" from="BirdScene" to="." method="_on_bird_scene_bird_is_dead"]
+[connection signal="is_highscore" from="GameOverScene" to="." method="_on_game_over_scene_is_highscore"]
 [connection signal="ranked_pressed" from="GameOverScene" to="." method="_on_game_over_scene_ranked_pressed"]
 [connection signal="close_pressed" from="AddYourNameControl/RankingScene" to="." method="_on_ranking_scene_close_pressed"]
 [connection signal="render_ranking" from="AddYourNameControl/RankingScene" to="." method="_on_ranking_scene_render_ranking"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dpdrvmamgu0eg"]
+[gd_scene load_steps=24 format=3 uid="uid://dpdrvmamgu0eg"]
 
 [ext_resource type="Script" path="res://scripts/game_over.gd" id="1_j3vhw"]
 [ext_resource type="Texture2D" uid="uid://ok5jkf5injp8" path="res://assets/images/game_over_screen/gameover.png" id="2_b0w6r"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://car212v4oekif" path="res://scenes/elements/grass_scene.tscn" id="5_0tbj3"]
 [ext_resource type="Texture2D" uid="uid://bj622vb8ax6ft" path="res://assets/images/game_over_screen/scoreboard.png" id="8_5tivy"]
 [ext_resource type="Shader" path="res://scenes/resources/shaders/wind_shader.gdshader" id="8_o5cf5"]
+[ext_resource type="Texture2D" uid="uid://b2rf3ueh2sic7" path="res://assets/images/game_over_screen/HighScore.png" id="8_y0pvf"]
 [ext_resource type="Texture2D" uid="uid://dxflg281hc6q5" path="res://assets/images/game_over_screen/try_again_sign.svg" id="9_0ey2x"]
 [ext_resource type="Texture2D" uid="uid://b7ye18qi15ivo" path="res://assets/images/game_over_screen/grass/3-grass.svg" id="10_b40g4"]
 [ext_resource type="Texture2D" uid="uid://c88h500syw2fh" path="res://assets/images/game_over_screen/try_again.svg" id="11_4jf1d"]
@@ -65,6 +66,44 @@ load_path = "res://.godot/imported/umpressed_restart.svg-31b2118d396349601ed10ea
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_505sy"]
 load_path = "res://.godot/imported/pressed_restart.svg-7514d48ea87619da4601f5b545576190.ctex"
+
+[sub_resource type="Animation" id="Animation_8f8s8"]
+resource_name = "highscore"
+length = 6.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.25, 1.25), Vector2(1, 1), Vector2(0.9, 0.9)]
+}
+
+[sub_resource type="Animation" id="Animation_dcl3w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0605w"]
+_data = {
+"RESET": SubResource("Animation_dcl3w"),
+"highscore": SubResource("Animation_8f8s8")
+}
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hlgyl"]
 shader = ExtResource("8_o5cf5")
@@ -135,30 +174,32 @@ offset_right = 4.0
 
 [node name="Scoreboard" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 397.0
-offset_top = 74.0
-offset_right = 1023.0
-offset_bottom = 675.0
+offset_left = 413.0
+offset_top = 60.0
+offset_right = 1039.0
+offset_bottom = 661.0
+pivot_offset = Vector2(365, 357)
 texture = ExtResource("8_5tivy")
 expand_mode = 1
 
-[node name="ScoreLabel" type="Label" parent="."]
+[node name="ScoreLabel" type="Label" parent="Scoreboard"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 32.0
-offset_top = 279.0
-offset_right = 288.0
-offset_bottom = 525.0
+offset_left = -138.0
+offset_top = 198.0
+offset_right = 118.0
+offset_bottom = 444.0
 grow_horizontal = 2
 pivot_offset = Vector2(126, 115)
 theme = SubResource("Theme_4pl6y")
 theme_override_colors/font_color = Color(0.772549, 0.866667, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.0313726, 0.0196078, 0.0352941, 1)
-theme_override_colors/font_outline_color = Color(0.818412, 0.674562, 0.409966, 1)
+theme_override_colors/font_shadow_color = Color(0.616532, 0.265232, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 10
 theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 45
 theme_override_constants/shadow_outline_size = 45
 theme_override_font_sizes/font_size = 251
 text = "10"
@@ -246,6 +287,23 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
+[node name="Highscore" type="TextureRect" parent="."]
+visible = false
+offset_left = 432.0
+offset_top = 450.0
+offset_right = 1047.0
+offset_bottom = 691.0
+pivot_offset = Vector2(307, 119)
+texture = ExtResource("8_y0pvf")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Highscore"]
+active = false
+libraries = {
+"": SubResource("AnimationLibrary_0605w")
+}
+autoplay = "highscore"
+
 [node name="TryAgain" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 552.0
@@ -272,5 +330,6 @@ grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("10_b40g4")
 
+[connection signal="is_highscore" from="." to="." method="_on_is_highscore"]
 [connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="RankingButton" to="." method="_on_ranking_button_pressed"]

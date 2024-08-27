@@ -40,6 +40,11 @@ func _on_close_button_pressed() -> void:
 	close_pressed.emit()
 
 ## Ranking
+func load_online_score():
+	if not Globals.get_player_nick().is_empty():
+		await RankingScores.get_scores()
+		load_ranking()
+
 func load_ranking():
 	add_loading_scores_message()
 	render_board()

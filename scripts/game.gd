@@ -41,19 +41,21 @@ func _on_bird_scene_bird_is_dead():
 
 	pipes_manager.stop_spawn()
 	score_label.visible = false
-
-	game_over_scene.get_node("ScoreLabel").text = str(Globals.SCORE)
+	game_over_scene.get_node("Scoreboard/ScoreLabel").text = str(Globals.SCORE)
 	game_over_scene.visible = true
 
-	Globals.PLAYER_HIGHSCORE = Globals.SCORE
+	if Globals.SCORE > Globals.PLAYER_HIGHSCORE:
+		Globals.PLAYER_HIGHSCORE = Globals.SCORE
+		game_over_scene.emit_signal("is_highscore")
+		
 	rankingScene.render_ranking.emit(Globals.SCORES_RANKING)
-	
 
 func reset_score():
 	Globals.SCORE = 0
 	score_label.text = str(Globals.SCORE)
 
 func _on_game_over_scene_ranked_pressed() -> void:
+	await rankingScene.load_online_score()
 	camera.position.x = 1860
 	camera.position.y = 2900
 
