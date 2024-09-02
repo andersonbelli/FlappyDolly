@@ -60,7 +60,8 @@ func spawn_dolly_pipe():
 		add_child(pipe)
 
 func add_score(score: int = 1):
-	Globals.SCORE += score
+	if can_spawn:
+		Globals.SCORE += score
 
 func set_spawn_position() -> Vector2:
 	is_pipe_dolly = true if (randi_range(0, 1) % 2 == 0) else false
