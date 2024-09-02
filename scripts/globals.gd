@@ -36,8 +36,7 @@ var PLAYER_HIGHSCORE = 0:
 				player_file.save("res://" + file_name)
 
 				# Saving online highscore
-				if SCORE != 0:
-					await SilentWolf.Scores.save_score(Globals.PLAYER_NAME, Globals.SCORE, true)
+				await save_online_score(SCORE)
 				PLAYER_HIGHSCORE = value
 
 var SCORES_RANKING = []:
@@ -58,12 +57,18 @@ func _ready() -> void:
 		"game_id": "FlappyDolly",
 		"log_level": 1
 	})
-	
+
+func save_online_score(_score: int):
+	if _score != 0 && not get_player_nick().is_empty():
+		await SilentWolf.Scores.save_score(Globals.PLAYER_NAME, Globals.SCORE)
+
+func load_online_score():
+	await RankingScores.get_scores()
 	await SilentWolf.check_sw_ready()
 	await SilentWolf.check_scores_ready()
 	await SilentWolf.is_node_ready()
-	
-	await RankingScores.get_scores()
+
+	return SCORES_RANKING
 
 func retrieve_player_data():
 	var err = player_file.load(file_path)

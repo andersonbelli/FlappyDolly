@@ -17,57 +17,52 @@ var ScoreItem = preload("res://scenes/ui/score_item.tscn")
 var list_index = 0
 
 func _ready() -> void:
-	render_ranking.connect(_on_render_ranking)
+	Globals.connect("scores_ranking_loaded", _render_board)
 
 	if Globals.get_player_nick().is_empty():
 		ranking.visible = false
 		save_your_score.visible = true
 	else:
-		load_ranking()
-		
+		clear_board()
+		add_loading_scores_message()
+		if Globals.SCORES_RANKING.is_empty():
+			var _ranking = await Globals.load_online_score()
+			_render_board(_ranking)
+		else:
+			_render_board()
 		save_your_score.visible = false
 		ranking.visible = true
 
 func _on_save_button_pressed() -> void:
+	clear_board()
+	add_loading_scores_message()
+	
 	if line_edit.text.length() > 0:
 		Globals.PLAYER_NAME = line_edit.text
 	save_your_score.queue_free()
 	ranking.visible = true
-	clear_board()
-	load_ranking()
+	
+	Globals.save_online_score(Globals.SCORE)
 
 func _on_close_button_pressed() -> void:
 	close_pressed.emit()
 
 ## Ranking
-func load_online_score():
-	if not Globals.get_player_nick().is_empty():
-		await RankingScores.get_scores()
-		load_ranking()
-
-func load_ranking():
-	add_loading_scores_message()
-	render_board()
-
-func render_board(scores: Array = []) -> void:
+func _render_board(scores: Array = []) -> void:
 	if scores.is_empty():
 		scores = Globals.SCORES_RANKING
-	
+
 	if scores.is_empty():
 		add_no_scores_message()
 	else:
-		ranking_list_label.text = ""
-		
+		clear_board()
+
 		reverse_order(scores)
 		scores.sort_custom(sort_by_score)
-		
+
 		for i in range(len(scores)):
 			var score = scores[i]
 			add_item(score.player_name, str(int(score.score)))
-
-func _on_render_ranking(scores: Array = []) -> void:
-	clear_board()
-	render_board(scores)
 
 ## Order items
 func reverse_order(scores: Array) -> Array:
@@ -86,8 +81,7 @@ func sort_by_score(a: Dictionary, b: Dictionary) -> bool:
 
 ## Board
 func clear_board():
-	if Globals.SCORES_RANKING != null:
-		ranking_list_label.text = ""
+	ranking_list_label.text = ""
 	list_index = 0
 	if vbox_container.get_child_count():
 		for child in vbox_container.get_children():

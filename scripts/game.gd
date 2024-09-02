@@ -4,7 +4,6 @@ class_name GameClass
 
 @onready var transition_scene: Control = $TransitionScene
 @onready var game_over_scene = $GameOverScene
-@onready var rankingScene = $AddYourNameControl/RankingScene
 
 @onready var pipes_manager = $PipesManager
 @onready var score_label = $ScoreLabel
@@ -47,15 +46,12 @@ func _on_bird_scene_bird_is_dead():
 	if Globals.SCORE > Globals.PLAYER_HIGHSCORE:
 		Globals.PLAYER_HIGHSCORE = Globals.SCORE
 		game_over_scene.emit_signal("is_highscore")
-		
-	rankingScene.render_ranking.emit(Globals.SCORES_RANKING)
 
 func reset_score():
 	Globals.SCORE = 0
 	score_label.text = str(Globals.SCORE)
 
 func _on_game_over_scene_ranked_pressed() -> void:
-	await rankingScene.load_online_score()
 	camera.position.x = 1860
 	camera.position.y = 2900
 
