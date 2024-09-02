@@ -71,8 +71,11 @@ func retrieve_player_data():
 	if err != OK:
 		player_file.save(file_path)
 	else:
-		PLAYER_NAME = player_file.get_value(file_name, player_nick)
-		PLAYER_HIGHSCORE = player_file.get_value(file_name, player_highscore)
+		if player_file.has_section_key(file_name, player_nick):
+			PLAYER_NAME = player_file.get_value(file_name, player_nick)
+
+		if player_file.has_section_key(file_name, player_highscore):
+			PLAYER_HIGHSCORE = player_file.get_value(file_name, player_highscore)
 
 func get_player_nick() -> String:
 	if Globals.PLAYER_NAME == null or Globals.PLAYER_NAME == "" or Globals.PLAYER_NAME.is_empty():
