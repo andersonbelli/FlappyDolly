@@ -27,14 +27,10 @@ var scores = []
 var player_scores = []
 var player_top_score = null
 var local_scores = []
-#var custom_local_scores = []
 var score_id = ""
 var position = 0
 var scores_above = []
 var scores_below  = []
-
-#var request_timeout = 3
-#var request_timer = null
 
 # latest number of scores to be fetched from the backend
 var latest_max = 10
@@ -63,8 +59,7 @@ var scores_result = []
 # metadata, if included should be a dictionary
 # The score attribute could be either a score_value (int) or score_id (String)
 func save_score(player_name: String, 
-				score, 
-				should_load_scores: bool=false,
+				score,
 				ldboard_name: String="main",
 				metadata: Dictionary={}
 				) -> Node:
@@ -103,9 +98,6 @@ func save_score(player_name: String,
 		add_to_local_scores(payload)
 		var request_url = "https://api.silentwolf.com/save_score"
 		SilentWolf.send_post_request(SaveScore, request_url, payload)
-		
-		if should_load_scores:
-			get_scores()
 	return self
 
 
@@ -122,6 +114,9 @@ func _on_SaveScore_request_completed(result, response_code, headers, body) -> vo
 		else:
 			SWLogger.error("SilentWolf save score failure: " + str(json_body.error))
 		sw_save_score_complete.emit(sw_result)
+		
+		print("SaveScore - Get Scores Called")
+		get_scores()
 
 
 func get_scores(maximum: int=10, ldboard_name: String="main", period_offset: int=0) -> Node:
