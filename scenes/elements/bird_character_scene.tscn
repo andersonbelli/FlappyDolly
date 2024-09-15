@@ -1,0 +1,225 @@
+[gd_scene load_steps=19 format=3 uid="uid://bgbe6sswfu12e"]
+
+[ext_resource type="Script" path="res://scripts/bird_manager.gd" id="1_bwya6"]
+[ext_resource type="AudioStream" uid="uid://crqkqny7v57b8" path="res://assets/sounds/die/ceci-uh.mp3" id="2_qnkaj"]
+[ext_resource type="AudioStream" uid="uid://bqlkqb2ujbm12" path="res://assets/sounds/flap/slap/slap_4.mp3" id="3_spcms"]
+[ext_resource type="AudioStream" uid="uid://cppik8uyrbbs7" path="res://assets/sounds/flap/slap/slap_3.mp3" id="4_veitf"]
+[ext_resource type="AudioStream" uid="uid://lq5gjihbaly5" path="res://assets/sounds/flap/slap/slap_2.mp3" id="5_src2e"]
+[ext_resource type="AudioStream" uid="uid://ca3kgsxhcyvd8" path="res://assets/sounds/flap/slap/slap_1.mp3" id="6_qh8hn"]
+[ext_resource type="Script" path="res://scripts/bird.gd" id="7_irvj4"]
+[ext_resource type="Texture2D" uid="uid://j8janitre0wl" path="res://assets/images/bird/bird-first/body.svg" id="8_okmai"]
+[ext_resource type="Texture2D" uid="uid://d4bted0r36wei" path="res://assets/images/bird/bird-first/eye.svg" id="9_ja5d1"]
+[ext_resource type="Texture2D" uid="uid://bbmqggyhg3ect" path="res://assets/images/bird/bird-first/wing.svg" id="10_no0dd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6563w"]
+radius = 88.0469
+height = 330.743
+
+[sub_resource type="Animation" id="Animation_3gevn"]
+resource_name = "flap"
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Wing:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.142857, 0.285714, 0.428571, 0.618914, 0.809524, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.429351, -0.34383, 0.472984, 0.881391, 1.24617, -0.34383, -0.429351]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/Wing:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.142857, 0.285714, 0.428471, 0.618914, 0.809524, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.516617, 0.0, -0.34383, -0.516617, -0.602139, 0.0, 0.516617]
+}
+
+[sub_resource type="Animation" id="Animation_55sxo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Wing:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/Wing:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qvylt"]
+_data = {
+"RESET": SubResource("Animation_55sxo"),
+"flap": SubResource("Animation_3gevn")
+}
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1pgxa"]
+load_path = "res://.godot/imported/dead.svg-9fc5a11ab6443d710609b7b2fbee1cfc.ctex"
+
+[sub_resource type="Animation" id="Animation_2wwd2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(24.619, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_x342o"]
+resource_name = "dead"
+length = 3.0
+step = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.576318, 1.16637, 1.70002, 2.42349, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0855211, -0.113446, 0.0785398, -0.113446, 0.0785398]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.00255, 2.01299, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(24.619, 0), Vector2(24.619, -200), Vector2(24.619, -450), Vector2(24.619, -750)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2cm04"]
+_data = {
+"RESET": SubResource("Animation_2wwd2"),
+"dead": SubResource("Animation_x342o")
+}
+
+[node name="BirdPlayerScene" type="Node2D"]
+position = Vector2(34, -27)
+rotation = 0.0977384
+scale = Vector2(0.413, 0.413)
+script = ExtResource("1_bwya6")
+
+[node name="DeathMusicTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="DeathAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_qnkaj")
+bus = &"SFX"
+
+[node name="Slap4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_spcms")
+bus = &"SFX"
+
+[node name="Slap3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_veitf")
+bus = &"SFX"
+
+[node name="Slap2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_src2e")
+bus = &"SFX"
+
+[node name="Slap1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_qh8hn")
+bus = &"SFX"
+
+[node name="Bird" type="CharacterBody2D" parent="."]
+position = Vector2(-34, 27)
+collision_mask = 22
+motion_mode = 1
+script = ExtResource("7_irvj4")
+
+[node name="Node2D" type="Node2D" parent="Bird"]
+
+[node name="BirdBody" type="Sprite2D" parent="Bird/Node2D"]
+position = Vector2(-41.552, 46.0968)
+rotation = -0.22513
+texture = ExtResource("8_okmai")
+offset = Vector2(-30.5444, -24.5066)
+
+[node name="Eye" type="Sprite2D" parent="Bird/Node2D"]
+position = Vector2(59.3729, -65.9816)
+rotation = 2.10252
+scale = Vector2(1, 1)
+texture = ExtResource("9_ja5d1")
+
+[node name="Wing" type="Sprite2D" parent="Bird/Node2D"]
+position = Vector2(-33.8987, -24.7255)
+texture = ExtResource("10_no0dd")
+offset = Vector2(-125.071, -10.1158)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bird"]
+position = Vector2(-20.2899, 14.8169)
+rotation = 1.14955
+shape = SubResource("CapsuleShape2D_6563w")
+
+[node name="FlapAnimationPlayer" type="AnimationPlayer" parent="Bird"]
+libraries = {
+"": SubResource("AnimationLibrary_qvylt")
+}
+
+[node name="Dead" type="Sprite2D" parent="."]
+visible = false
+top_level = true
+rotation = 0.0977384
+scale = Vector2(0.4, 0.4)
+texture = SubResource("CompressedTexture2D_1pgxa")
+offset = Vector2(24.619, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Dead"]
+libraries = {
+"": SubResource("AnimationLibrary_2cm04")
+}
+
+[connection signal="timeout" from="DeathMusicTimer" to="." method="_on_death_music_timer_timeout"]
+[connection signal="play_dead_animation" from="Bird" to="." method="_on_bird_play_dead_animation"]
+[connection signal="animation_finished" from="Bird/FlapAnimationPlayer" to="Bird" method="_on_flap_animation_player_animation_finished"]
+[connection signal="animation_finished" from="Dead/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

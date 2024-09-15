@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_jw6sh"]
 [ext_resource type="PackedScene" uid="uid://cosawlifrhcf3" path="res://scenes/elements/cloud_scene.tscn" id="2_80ei6"]
-[ext_resource type="PackedScene" uid="uid://bsko2g7rl06b2" path="res://scenes/elements/bird_scene.tscn" id="3_e3ykb"]
+[ext_resource type="PackedScene" uid="uid://bgbe6sswfu12e" path="res://scenes/elements/bird_character_scene.tscn" id="4_h0u78"]
 [ext_resource type="FontFile" uid="uid://d14s525nrgj5o" path="res://assets/fonts/Playon-reg.ttf" id="4_kct05"]
 [ext_resource type="PackedScene" uid="uid://61ihymdab77s" path="res://scenes/ui/transition_scene.tscn" id="5_1leyw"]
 [ext_resource type="PackedScene" uid="uid://b5iwqfly4tjmw" path="res://scenes/elements/pipes_manager.tscn" id="6_b5yu3"]
@@ -41,8 +41,9 @@ texture = SubResource("CompressedTexture2D_67vrm")
 
 [node name="CloudScene" parent="." instance=ExtResource("2_80ei6")]
 
-[node name="BirdScene" parent="." instance=ExtResource("3_e3ykb")]
-position = Vector2(232, 955)
+[node name="BirdScene" parent="." instance=ExtResource("4_h0u78")]
+position = Vector2(254, 963)
+scale = Vector2(0.413, 0.413)
 
 [node name="ScoreLabel" type="Label" parent="."]
 top_level = true
