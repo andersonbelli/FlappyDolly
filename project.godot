@@ -11,8 +11,11 @@ config_version=5
 [application]
 
 config/name="FlappyDolly"
+config/description="This is not a usual FlappyBird"
+config/version="1.0"
 run/main_scene="res://scenes/main_scene.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
+boot_splash/image="res://export/icons/icon-512_HEAD_512.png"
 config/icon="res://icon.svg"
 
 [autoload]
