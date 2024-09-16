@@ -143,28 +143,6 @@ offset_right = 70.0
 offset_bottom = 2195.0
 scale = Vector2(0.906802, 0.906802)
 
-[node name="AddYourNameControl" type="Control" parent="GameScene" node_paths=PackedStringArray("shortcut_context")]
-z_index = 15
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1530.0
-offset_top = 2260.0
-offset_right = 2610.0
-offset_bottom = 4180.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.793841, 0.793841)
-size_flags_horizontal = 3
-size_flags_vertical = 3
-focus_next = NodePath(".")
-focus_previous = NodePath(".")
-shortcut_context = NodePath(".")
-
-[node name="RankingScene" parent="GameScene/AddYourNameControl" instance=ExtResource("8_he2gj")]
-layout_mode = 1
-
 [node name="GrassScene" parent="GameScene" instance=ExtResource("13_qfako")]
 z_index = 16
 offset_left = 1887.0
@@ -184,13 +162,31 @@ shape = SubResource("WorldBoundaryShape2D_jv78b")
 position = Vector2(574, 1992)
 shape = SubResource("WorldBoundaryShape2D_jv78b")
 
+[node name="AddYourNameControl" type="Control" parent="." node_paths=PackedStringArray("shortcut_context")]
+z_index = 15
+anchors_preset = 0
+offset_left = 1548.0
+offset_top = 2322.0
+offset_right = 2628.0
+offset_bottom = 4242.0
+scale = Vector2(0.793841, 0.793841)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+shortcut_context = NodePath(".")
+
+[node name="RankingScene" parent="AddYourNameControl" instance=ExtResource("8_he2gj")]
+layout_mode = 1
+
 [node name="TutorialScene" parent="." instance=ExtResource("14_v0srt")]
 layout_mode = 1
 pivot_offset = Vector2(539, 972)
 
+[connection signal="game_over" from="GameScene" to="." method="_on_game_scene_game_over"]
 [connection signal="bird_is_dead" from="GameScene/BirdScene" to="GameScene" method="_on_bird_scene_bird_is_dead"]
 [connection signal="is_highscore" from="GameScene/GameOverScene" to="GameScene" method="_on_game_over_scene_is_highscore"]
-[connection signal="ranked_pressed" from="GameScene/GameOverScene" to="GameScene" method="_on_game_over_scene_ranked_pressed"]
-[connection signal="close_pressed" from="GameScene/AddYourNameControl/RankingScene" to="GameScene" method="_on_ranking_scene_close_pressed"]
-[connection signal="render_ranking" from="GameScene/AddYourNameControl/RankingScene" to="GameScene" method="_on_ranking_scene_render_ranking"]
+[connection signal="ranked_pressed" from="GameScene/GameOverScene" to="." method="_on_game_over_scene_ranked_pressed"]
+[connection signal="close_pressed" from="AddYourNameControl/RankingScene" to="." method="_on_ranking_scene_close_pressed"]
+[connection signal="render_ranking" from="AddYourNameControl/RankingScene" to="GameScene" method="_on_ranking_scene_render_ranking"]
 [connection signal="count_finished" from="TutorialScene" to="." method="_on_tutorial_scene_count_finished"]
