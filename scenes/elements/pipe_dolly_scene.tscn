@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bm3n4ytgm5cmh"]
 
 [ext_resource type="Script" path="res://scripts/pipe_dolly.gd" id="1_ccv0c"]
-[ext_resource type="Texture2D" uid="uid://chql0qi8xmnck" path="res://assets/images/obstacles/dolly/dolly.svg" id="2_lp42o"]
+[ext_resource type="Texture2D" uid="uid://2hu1hn61ajr1" path="res://assets/images/obstacles/dolly/dolly.svg" id="2_lp42o"]
 [ext_resource type="Texture2D" uid="uid://2rx3mcycvs0q" path="res://assets/images/obstacles/pipe.svg" id="3_sgqn2"]
 [ext_resource type="Texture2D" uid="uid://byxa848afoekp" path="res://assets/images/obstacles/dolly/dolly-arm.svg" id="4_1n8u0"]
 [ext_resource type="PackedScene" uid="uid://b2xsdd3ihs3id" path="res://scenes/elements/bottle_scene.tscn" id="5_7be0m"]
@@ -79,7 +79,7 @@ collision_layer = 2
 script = ExtResource("1_ccv0c")
 
 [node name="DollySprite" type="Sprite2D" parent="."]
-position = Vector2(-5.24973, -1040.33)
+position = Vector2(-2, -1008)
 texture = ExtResource("2_lp42o")
 
 [node name="Pipe" type="Sprite2D" parent="."]
