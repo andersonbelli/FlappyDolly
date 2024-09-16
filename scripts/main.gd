@@ -10,7 +10,7 @@ func _ready() -> void:
 
 	## Mute game in debug mode
 	if OS.is_debug_build():
-		_on_audio_button_toggled(false)
+		_on_audio_button_toggled(true)
 
 func _on_audio_button_toggled(toggled_on: bool) -> void:
 	var bus_idx = AudioServer.get_bus_index("Master")

@@ -56,16 +56,16 @@ default_font = ExtResource("4_u1yi4")
 default_font_size = 35
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_273uv"]
-load_path = "res://.godot/imported/umpressed_restart.svg-31b2118d396349601ed10ea28e04409f.ctex"
+load_path = "res://.godot/imported/confirm_umpressed_button.svg-7d1e3befc02f942f439bf9cb84e4aa64.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bvcpb"]
-load_path = "res://.godot/imported/pressed_restart.svg-7514d48ea87619da4601f5b545576190.ctex"
+load_path = "res://.godot/imported/confirm_pressed_button.svg-0432f6b84ca4d38b2ac625cf8ae7fc26.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a6uo3"]
-load_path = "res://.godot/imported/umpressed_restart.svg-31b2118d396349601ed10ea28e04409f.ctex"
+load_path = "res://.godot/imported/warning_umpressed_button.svg-301ed5e9562999a561e766a6d7b98efa.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_505sy"]
-load_path = "res://.godot/imported/pressed_restart.svg-7514d48ea87619da4601f5b545576190.ctex"
+load_path = "res://.godot/imported/warning_pressed_button.svg-077fa6ac70a462f58a4a81cb1fe35451.ctex"
 
 [sub_resource type="Animation" id="Animation_dcl3w"]
 length = 0.001
@@ -244,6 +244,8 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.772549, 0.866667, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
 theme_override_fonts/font = ExtResource("4_u1yi4")
 theme_override_font_sizes/font_size = 86
 text = "RESTART"
@@ -280,6 +282,8 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.772549, 0.866667, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
 theme_override_fonts/font = ExtResource("4_u1yi4")
 theme_override_font_sizes/font_size = 86
 text = "RANKING"

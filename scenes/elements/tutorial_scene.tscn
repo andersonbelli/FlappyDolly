@@ -1,0 +1,296 @@
+[gd_scene load_steps=14 format=3 uid="uid://c34sj3yw6wveo"]
+
+[ext_resource type="Script" path="res://scripts/tutorial.gd" id="1_53a8x"]
+[ext_resource type="Texture2D" uid="uid://by0v3omi1bmnl" path="res://assets/images/elements/buttons/space/umpressed_space.svg" id="1_mhpsp"]
+[ext_resource type="FontFile" uid="uid://mfkkows78cac" path="res://assets/fonts/Jersey10-Regular.ttf" id="2_sf4gl"]
+[ext_resource type="Texture2D" uid="uid://bddyrk1dbk726" path="res://assets/images/elements/buttons/space/dolly_arm.svg" id="3_oja5s"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o6g1h"]
+load_path = "res://.godot/imported/pressed_space.svg-3190f85dc630b7ab0470bc626ae57e26.ctex"
+
+[sub_resource type="Theme" id="Theme_axt72"]
+default_font = ExtResource("2_sf4gl")
+default_font_size = 85
+
+[sub_resource type="Animation" id="Animation_qrlhp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TutorialScene/PressStart/UmpressedButton:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TutorialScene/PressStart/PressedButton:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TutorialScene/PressStart/DollyArm:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(542, 1430)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TutorialScene/PressStart/Label:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 1148)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TutorialScene/PressStart/Label:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TutorialScene/PressStart/Label:size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1070, 92)]
+}
+
+[sub_resource type="Animation" id="Animation_qwexs"]
+resource_name = "press"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TutorialScene/PressStart/UmpressedButton:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TutorialScene/PressStart/PressedButton:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TutorialScene/PressStart/DollyArm:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(542, 1430), Vector2(554, 1532)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TutorialScene/PressStart/Label:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3, 1148), Vector2(3, 1296)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TutorialScene/PressStart/Label:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TutorialScene/PressStart/Label:size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1070, 92), Vector2(1070, 92)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8wgvu"]
+_data = {
+"RESET": SubResource("Animation_qrlhp"),
+"press": SubResource("Animation_qwexs")
+}
+
+[sub_resource type="Theme" id="Theme_ukb4q"]
+default_font = ExtResource("2_sf4gl")
+default_font_size = 350
+
+[sub_resource type="Animation" id="Animation_28yqa"]
+resource_name = "counter"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CountLabel:theme:default_font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [250, 350]
+}
+
+[sub_resource type="Animation" id="Animation_en84m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CountLabel:theme:default_font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [350]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5bncv"]
+_data = {
+"RESET": SubResource("Animation_en84m"),
+"counter": SubResource("Animation_28yqa")
+}
+
+[node name="TutorialScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(534, 964)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_53a8x")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 14.485
+offset_bottom = 270.0
+scale = Vector2(75, 7.22222)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 0.588235)
+
+[node name="PressStart" type="Node2D" parent="."]
+
+[node name="UmpressedButton" type="Sprite2D" parent="PressStart"]
+position = Vector2(542, 1654)
+scale = Vector2(1.8958, 1.8958)
+texture = ExtResource("1_mhpsp")
+
+[node name="PressedButton" type="Sprite2D" parent="PressStart"]
+position = Vector2(542, 1690)
+scale = Vector2(1.896, 1.896)
+texture = SubResource("CompressedTexture2D_o6g1h")
+
+[node name="DollyArm" type="Sprite2D" parent="PressStart"]
+position = Vector2(542, 1430)
+texture = ExtResource("3_oja5s")
+
+[node name="Label" type="Label" parent="PressStart"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 1148.0
+offset_right = 1073.0
+offset_bottom = 1240.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme = SubResource("Theme_axt72")
+theme_override_constants/outline_size = 30
+text = "press space"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PressStart"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_8wgvu")
+}
+autoplay = "press"
+
+[node name="CountLabel" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 430.0
+offset_top = 788.0
+offset_right = 580.0
+offset_bottom = 1164.0
+pivot_offset = Vector2(69, 204)
+theme = SubResource("Theme_ukb4q")
+theme_override_colors/font_color = Color(0.678431, 0.941176, 0, 1)
+theme_override_constants/outline_size = 30
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CounterAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5bncv")
+}
+
+[connection signal="animation_finished" from="CounterAnimationPlayer" to="." method="_on_counter_animation_player_animation_finished"]

@@ -2,7 +2,6 @@ extends Node2D
 
 class_name GameClass
 
-@onready var transition_scene: Control = $TransitionScene
 @onready var game_over_scene = $GameOverScene
 
 @onready var pipes_manager = $PipesManager
@@ -16,7 +15,6 @@ var speed_increased = false
 
 func _ready() -> void:
 	camera = get_parent().get_viewport().get_camera_2d()
-	transition_scene.visible = true
 	reset_score()
 
 func _process(_delta):
