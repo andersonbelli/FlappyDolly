@@ -19,7 +19,6 @@ func _ready() -> void:
 		_on_audio_button_toggled(false)
 		
 	initial_flow = initial_flow_scene.instantiate() as Node2D
-	initial_flow.connect("start_pressed", on_start_pressed)
 	initial_flow.show_behind_parent = true
 	add_child(initial_flow)
 	
@@ -27,6 +26,7 @@ func _ready() -> void:
 
 func on_start_pressed():
 	transition_scene.visible = true
+	
 	game = game_scene.instantiate()
 	add_child(game)
 	
@@ -35,14 +35,21 @@ func on_start_pressed():
 	remove_child(initial_flow)
 
 func on_restart_pressed():
+	$MainAudio["parameters/switch_to_clip"] = "main"
+	audio_button.position.y = 50
 	camera.position.y = 960
+	
 	transition_scene.visible = true
+	
 	initial_flow = initial_flow_scene.instantiate()
 	add_child(initial_flow)
 	
 	audio_button.move_to_front()
 	
 	game.queue_free()
+
+func on_game_over():
+	audio_button.position.y = 2050
 
 func _on_audio_button_toggled(toggled_on: bool) -> void:
 	var bus_idx = AudioServer.get_bus_index("Master")

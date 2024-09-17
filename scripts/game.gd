@@ -14,6 +14,8 @@ signal game_over
 var speed_increased = false
 
 func _ready() -> void:
+	connect("game_over", get_parent().get_parent().on_game_over)
+	
 	reset_score()
 
 func _process(_delta):
