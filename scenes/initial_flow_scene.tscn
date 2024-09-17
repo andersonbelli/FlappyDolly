@@ -64,6 +64,7 @@ shader_parameter/offset = 0.0
 load_path = "res://.godot/imported/3-grass.svg-6fe58d678e1f036c8ca035c2c254f459.ctex"
 
 [node name="InitialFlowScene" type="Node2D"]
+show_behind_parent = true
 script = ExtResource("1_cglif")
 
 [node name="TerrainBackground" type="TextureRect" parent="."]

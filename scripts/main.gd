@@ -1,8 +1,14 @@
 extends Node2D
 
-@onready var camera = $Camera2D
+@export var initial_flow_scene: PackedScene
+@export var game_scene: PackedScene
 
+@onready var camera = $Camera2D
 @onready var transition_scene: Control = $TransitionScene
+@onready var audio_button: TextureButton = $AudioButton
+
+var initial_flow
+var game
 
 func _ready() -> void:
 	camera.make_current()
@@ -11,6 +17,32 @@ func _ready() -> void:
 	## Mute game in debug mode
 	if OS.is_debug_build():
 		_on_audio_button_toggled(false)
+		
+	initial_flow = initial_flow_scene.instantiate() as Node2D
+	initial_flow.connect("start_pressed", on_start_pressed)
+	initial_flow.show_behind_parent = true
+	add_child(initial_flow)
+	
+	audio_button.move_to_front()
+
+func on_start_pressed():
+	transition_scene.visible = true
+	game = game_scene.instantiate()
+	add_child(game)
+	
+	audio_button.move_to_front()
+	
+	remove_child(initial_flow)
+
+func on_restart_pressed():
+	camera.position.y = 960
+	transition_scene.visible = true
+	initial_flow = initial_flow_scene.instantiate()
+	add_child(initial_flow)
+	
+	audio_button.move_to_front()
+	
+	game.queue_free()
 
 func _on_audio_button_toggled(toggled_on: bool) -> void:
 	var bus_idx = AudioServer.get_bus_index("Master")
