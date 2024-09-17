@@ -4,6 +4,7 @@ signal count_finished
 
 @onready var press_start: Node2D = $PressStart
 
+@onready var countdown_audio: AudioStreamPlayer = $CountdownAudio
 @onready var counter_animation_player: AnimationPlayer = $CounterAnimationPlayer
 @onready var count_label: Label = $CountLabel
 
@@ -15,6 +16,7 @@ func _process(delta: float) -> void:
 		press_start.visible = false
 		count_label.visible = true
 		counter_animation_player.play("counter")
+		countdown_audio.play()
 
 func _on_counter_animation_player_animation_finished(anim_name: StringName) -> void:
 	if count_label.text != "GO!":
