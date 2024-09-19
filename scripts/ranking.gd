@@ -8,7 +8,10 @@ var ScoreItem = preload("res://scenes/ui/score_item.tscn")
 ## Add your name
 @onready var save_your_score: Control = $SaveYourScore
 @onready var save_button: BaseButton = $SaveYourScore/HBoxContainer/SaveButton
-@onready var line_edit: LineEdit = $SaveYourScore/VBoxContainer/MarginContainer/LineEdit
+
+@onready var character1: CharacterSelection = $SaveYourScore/VBoxContainer/ChractersNode/CharacterSelectionScene1
+@onready var character2: CharacterSelection = $SaveYourScore/VBoxContainer/ChractersNode/CharacterSelectionScene2
+@onready var character3: CharacterSelection = $SaveYourScore/VBoxContainer/ChractersNode/CharacterSelectionScene3
 
 ## Ranking
 @onready var ranking: Control = $Ranking
@@ -34,26 +37,18 @@ func _ready() -> void:
 		save_your_score.visible = false
 		ranking.visible = true
 
-func _physics_process(delta: float) -> void:
-	if line_edit.text.is_empty():
-		save_button.disabled = true
-	else:
-		save_button.disabled = false
-	
-
 func _on_save_button_pressed() -> void:
 	clear_board()
 	add_loading_scores_message()
+
+	Globals.PLAYER_NAME = str(character1.label.text) + str(character2.label.text) + str(character3.label.text)
+	save_your_score.queue_free()
+	ranking.visible = true
+
+	Globals.save_online_score(Globals.SCORE)
 	
-	if line_edit.text.length() > 0:
-		Globals.PLAYER_NAME = line_edit.text
-		save_your_score.queue_free()
-		ranking.visible = true
-	
-		Globals.save_online_score(Globals.SCORE)
-		
-		var _ranking = await Globals.load_online_score()
-		_render_board(_ranking)
+	var _ranking = await Globals.load_online_score()
+	_render_board(_ranking)
 
 func _on_close_button_pressed() -> void:
 	close_pressed.emit()

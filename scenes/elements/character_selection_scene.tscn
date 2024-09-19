@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://xxtvscobei3h"]
+
+[ext_resource type="Texture2D" uid="uid://dfircvva0u4w1" path="res://assets/images/score_leaderboard/arrow-up-circle.svg" id="1_5ftge"]
+[ext_resource type="Script" path="res://scripts/character_selection.gd" id="1_keusk"]
+[ext_resource type="FontFile" uid="uid://mfkkows78cac" path="res://assets/fonts/Jersey10-Regular.ttf" id="2_jwxjh"]
+[ext_resource type="Texture2D" uid="uid://bw3ghc488wbhx" path="res://assets/images/score_leaderboard/arrow-down-circle.svg" id="3_t0fqn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mastx"]
+font = ExtResource("2_jwxjh")
+font_size = 230
+font_color = Color(0.951826, 0.7984, 3.85046e-07, 1)
+outline_size = 70
+outline_color = Color(0, 0, 0, 1)
+
+[node name="CharacterSelectionScene" type="VBoxContainer"]
+offset_right = 99.0
+offset_bottom = 251.0
+script = ExtResource("1_keusk")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture_normal = ExtResource("1_5ftge")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "a"
+label_settings = SubResource("LabelSettings_mastx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture_normal = ExtResource("3_t0fqn")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="pressed" from="TextureButton" to="." method="on_arrow_up_pressed"]
+[connection signal="pressed" from="TextureButton2" to="." method="on_arrow_down_pressed"]
