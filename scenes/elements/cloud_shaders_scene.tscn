@@ -1,17 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://jg8qy0t1aja4"]
+[gd_scene load_steps=5 format=3 uid="uid://cosawlifrhcf3"]
 
 [ext_resource type="Texture2D" uid="uid://di332lne2uw65" path="res://assets/images/background/cloud_1.svg" id="1_bsys4"]
+[ext_resource type="Material" uid="uid://cesr8kpkci14j" path="res://scenes/resources/shaders/cloud_wind_1.tres" id="1_uk0oe"]
 [ext_resource type="Texture2D" uid="uid://pkv3f8med3b6" path="res://assets/images/background/cloud_2.svg" id="2_e5xcs"]
+[ext_resource type="Material" uid="uid://eqri8j5pyarh" path="res://scenes/resources/shaders/cloud_wind_2.tres" id="3_g620c"]
 
 [node name="CloudScene" type="Node2D"]
 
 [node name="Cloud1" type="Sprite2D" parent="."]
 visibility_layer = 32
+material = ExtResource("1_uk0oe")
 position = Vector2(797, 1469)
 texture = ExtResource("1_bsys4")
 
 [node name="Cloud2" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.545098)
 visibility_layer = 32
+material = ExtResource("3_g620c")
 position = Vector2(330, 1273)
 texture = ExtResource("2_e5xcs")

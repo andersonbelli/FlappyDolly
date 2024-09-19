@@ -1,17 +1,13 @@
-[gd_scene load_steps=23 format=3 uid="uid://bwwpepovp64f4"]
+[gd_scene load_steps=13 format=3 uid="uid://bwwpepovp64f4"]
 
 [ext_resource type="Script" path="res://scripts/ranking.gd" id="1_xb5gn"]
-[ext_resource type="PackedScene" uid="uid://car212v4oekif" path="res://scenes/elements/grass_scene.tscn" id="3_vxjhe"]
-[ext_resource type="Texture2D" uid="uid://bur0uwpn8wifc" path="res://assets/images/score_leaderboard/leaderboard_sign.svg" id="4_7solo"]
+[ext_resource type="PackedScene" uid="uid://4rs8c0tprrq2" path="res://scenes/elements/grass_scene.tscn" id="3_vxjhe"]
 [ext_resource type="Texture2D" uid="uid://c1p4du6k6vcoc" path="res://assets/images/score_leaderboard/sign_stick.svg" id="4_r48mm"]
 [ext_resource type="FontFile" uid="uid://b0saslnjrd1oj" path="res://assets/fonts/Caveat-Regular.ttf" id="5_gggmu"]
 [ext_resource type="Texture2D" uid="uid://cxl032dw44e1e" path="res://assets/images/score_leaderboard/sign_board.svg" id="5_rb7hn"]
 [ext_resource type="FontFile" uid="uid://d4kabkagmfeq" path="res://addons/silent_wolf/assets/fonts/Comfortaa-Bold.ttf" id="6_cs7y4"]
-[ext_resource type="FontFile" uid="uid://mfkkows78cac" path="res://assets/fonts/Jersey10-Regular.ttf" id="7_aw6y0"]
-[ext_resource type="Texture2D" uid="uid://dbrnla7lqit8e" path="res://assets/images/score_leaderboard/add_your_name_texture.svg" id="8_oxlvi"]
 [ext_resource type="PackedScene" uid="uid://c6fr60rxsiw4d" path="res://scenes/ui/button_scene.tscn" id="9_chw64"]
 [ext_resource type="PackedScene" uid="uid://xxtvscobei3h" path="res://scenes/elements/character_selection_scene.tscn" id="10_4ojsk"]
-[ext_resource type="Shader" path="res://scenes/resources/shaders/wind_shader.gdshader" id="10_vgtqc"]
 [ext_resource type="Texture2D" uid="uid://b7ye18qi15ivo" path="res://assets/images/game_over_screen/grass/3-grass.svg" id="11_c7v1q"]
 
 [sub_resource type="Theme" id="Theme_vixhm"]
@@ -20,41 +16,7 @@ default_font_size = 190
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jra3h"]
 
-[sub_resource type="FontVariation" id="FontVariation_vmqad"]
-base_font = ExtResource("7_aw6y0")
-spacing_glyph = 145
-
-[sub_resource type="Theme" id="Theme_ah0ot"]
-default_font = SubResource("FontVariation_vmqad")
-default_font_size = 145
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vebvq"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_573fi"]
-content_margin_top = 15.0
-content_margin_bottom = 20.0
-texture = ExtResource("8_oxlvi")
-
-[sub_resource type="LabelSettings" id="LabelSettings_gyvn2"]
-font = ExtResource("7_aw6y0")
-font_size = 230
-font_color = Color(0.951826, 0.7984, 3.85046e-07, 1)
-outline_size = 70
-outline_color = Color(0, 0, 0, 1)
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qnum6"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xunii"]
-shader = ExtResource("10_vgtqc")
-shader_parameter/speed = 2.265
-shader_parameter/minStrength = 0.075
-shader_parameter/maxStrength = 0.362
-shader_parameter/strengthScale = 101.74
-shader_parameter/interval = 3.15
-shader_parameter/detail = 1.0
-shader_parameter/distortion = null
-shader_parameter/heightOffset = null
-shader_parameter/offset = 0.0
 
 [node name="RankingScene" type="Control"]
 layout_mode = 3
@@ -67,14 +29,12 @@ pivot_offset = Vector2(543, 848)
 script = ExtResource("1_xb5gn")
 metadata/_edit_use_anchors_ = true
 
-[node name="GrassScene" parent="." instance=ExtResource("3_vxjhe")]
-modulate = Color(0.603923, 0.603923, 0.603923, 0.419608)
+[node name="GrassScene2" parent="." instance=ExtResource("3_vxjhe")]
 layout_mode = 1
-offset_left = -128.0
+offset_left = -111.0
 offset_top = 57.0
-offset_right = -128.0
+offset_right = -111.0
 offset_bottom = 57.0
-pivot_offset = Vector2(551, 1733)
 
 [node name="SignStick" type="TextureRect" parent="."]
 layout_mode = 0
@@ -101,23 +61,6 @@ grow_vertical = 2
 texture = ExtResource("5_rb7hn")
 expand_mode = 1
 metadata/_edit_lock_ = true
-
-[node name="SignBackground" type="TextureRect" parent="."]
-visible = false
-z_index = 15
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 100.0
-offset_right = 2.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.994484, 0.822404)
-pivot_offset = Vector2(580.667, 854.667)
-texture = ExtResource("4_7solo")
 
 [node name="SaveYourScore" type="Control" parent="."]
 visible = false
@@ -171,7 +114,7 @@ pivot_offset = Vector2(532.35, 200.359)
 alignment = 1
 
 [node name="add your name" type="Label" parent="SaveYourScore/VBoxContainer"]
-visible = false
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme = SubResource("Theme_vixhm")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -185,50 +128,6 @@ theme_override_font_sizes/font_size = 66
 theme_override_styles/normal = SubResource("StyleBoxEmpty_jra3h")
 text = "add your name"
 horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="SaveYourScore/VBoxContainer"]
-visible = false
-layout_mode = 2
-theme_override_constants/margin_top = 35
-theme_override_constants/margin_bottom = 90
-
-[node name="LineEdit" type="LineEdit" parent="SaveYourScore/VBoxContainer/MarginContainer"]
-layout_mode = 2
-theme = SubResource("Theme_ah0ot")
-theme_override_colors/caret_color = Color(0, 0.630015, 0.872592, 1)
-theme_override_colors/font_placeholder_color = Color(0.560955, 0.560955, 0.560955, 1)
-theme_override_colors/font_selected_color = Color(0.476075, 0.720807, 0.990092, 0.811765)
-theme_override_colors/font_color = Color(0.93, 0.8835, 0, 1)
-theme_override_constants/outline_size = 60
-theme_override_constants/caret_width = 15
-theme_override_styles/focus = SubResource("StyleBoxEmpty_vebvq")
-theme_override_styles/normal = SubResource("StyleBoxTexture_573fi")
-alignment = 1
-max_length = 5
-caret_blink = true
-caret_force_displayed = true
-caret_mid_grapheme = true
-
-[node name="HBoxContainer" type="HBoxContainer" parent="SaveYourScore/VBoxContainer"]
-visible = false
-layout_mode = 2
-theme_override_constants/separation = 250
-alignment = 1
-
-[node name="Label2" type="Label" parent="SaveYourScore/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "a"
-label_settings = SubResource("LabelSettings_gyvn2")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label3" type="Label" parent="SaveYourScore/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "a"
-label_settings = SubResource("LabelSettings_gyvn2")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="ChractersNode" type="HBoxContainer" parent="SaveYourScore/VBoxContainer"]
 layout_mode = 2
@@ -359,19 +258,17 @@ text = "close"
 button_type = 1
 
 [node name="grass3" type="TextureRect" parent="."]
-visible = false
 z_index = 16
-material = SubResource("ShaderMaterial_xunii")
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -840.0
-offset_top = -189.0
-offset_right = 876.0
-offset_bottom = 206.0
+offset_left = -848.0
+offset_top = -94.0
+offset_right = 868.0
+offset_bottom = 301.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("11_c7v1q")
