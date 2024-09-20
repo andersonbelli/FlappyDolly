@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://r3wrdg7oci0u"]
+[gd_scene load_steps=16 format=3 uid="uid://r3wrdg7oci0u"]
 
 [ext_resource type="Texture2D" uid="uid://50fln8op53o3" path="res://assets/images/start_screen/dolly.svg" id="1_2clul"]
 [ext_resource type="Script" path="res://scripts/start_screen.gd" id="1_alvi8"]
@@ -7,56 +7,24 @@
 [ext_resource type="Texture2D" uid="uid://b4sa18e5am2j2" path="res://assets/images/start_screen/start_screen_bottom.svg" id="3_d52wj"]
 [ext_resource type="PackedScene" uid="uid://bwwpepovp64f4" path="res://scenes/ui/ranking_scene.tscn" id="3_f41em"]
 [ext_resource type="Texture2D" uid="uid://dxcmcq2waih7n" path="res://assets/images/start_screen/bird/bird.svg" id="4_8mbej"]
-[ext_resource type="PackedScene" uid="uid://cosawlifrhcf3" path="res://scenes/elements/cloud_scene.tscn" id="5_xnuco"]
 [ext_resource type="PackedScene" uid="uid://c6fr60rxsiw4d" path="res://scenes/ui/button_scene.tscn" id="9_ar5l5"]
 [ext_resource type="StyleBox" uid="uid://dwmpjm5uva26y" path="res://scenes/resources/button_style/start_umpressed_button.tres" id="10_klhca"]
 [ext_resource type="StyleBox" uid="uid://ccceq0jonfh7q" path="res://scenes/resources/button_style/warning_pressed_texture.tres" id="11_rc1e7"]
 [ext_resource type="StyleBox" uid="uid://uwe3pi627kdc" path="res://scenes/resources/button_style/warning_umpressed_texture.tres" id="12_m2i6q"]
-
-[sub_resource type="Animation" id="Animation_hsqbc"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1322, 5)]
-}
-
-[sub_resource type="Animation" id="Animation_vyhp8"]
-resource_name = "moving_clouds"
-length = 15.0
-loop_mode = 1
-step = 1.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1800, 5), Vector2(-1400, 5)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6a0h8"]
-_data = {
-"RESET": SubResource("Animation_hsqbc"),
-"moving_clouds": SubResource("Animation_vyhp8")
-}
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pghyj"]
 load_path = "res://.godot/imported/confirm_pressed_button.svg-0432f6b84ca4d38b2ac625cf8ae7fc26.ctex"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b73tk"]
 texture = SubResource("CompressedTexture2D_pghyj")
+
+[sub_resource type="InputEventKey" id="InputEventKey_vswt5"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_ggv41"]
+events = [SubResource("InputEventKey_vswt5")]
 
 [node name="StartScreenScene" type="Control"]
 layout_mode = 3
@@ -89,18 +57,6 @@ metadata/_edit_lock_ = true
 position = Vector2(841, 626)
 texture = ExtResource("4_8mbej")
 
-[node name="CloudScene" parent="." instance=ExtResource("5_xnuco")]
-visible = false
-modulate = Color(1, 1, 1, 0.12549)
-position = Vector2(1322, 5)
-skew = 0.174533
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CloudScene"]
-libraries = {
-"": SubResource("AnimationLibrary_6a0h8")
-}
-autoplay = "moving_clouds"
-
 [node name="StartButton" parent="." instance=ExtResource("9_ar5l5")]
 layout_mode = 0
 offset_left = 500.0
@@ -109,6 +65,7 @@ offset_right = 1000.0
 offset_bottom = 1634.0
 theme_override_styles/pressed = SubResource("StyleBoxTexture_b73tk")
 theme_override_styles/normal = ExtResource("10_klhca")
+shortcut = SubResource("Shortcut_ggv41")
 text = "START"
 
 [node name="RankingButton" parent="." instance=ExtResource("9_ar5l5")]

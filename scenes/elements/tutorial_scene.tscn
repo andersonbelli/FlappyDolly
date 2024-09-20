@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://c34sj3yw6wveo"]
+[gd_scene load_steps=15 format=3 uid="uid://c34sj3yw6wveo"]
 
 [ext_resource type="Script" path="res://scripts/tutorial.gd" id="1_53a8x"]
 [ext_resource type="Texture2D" uid="uid://by0v3omi1bmnl" path="res://assets/images/elements/buttons/space/umpressed_space.svg" id="1_mhpsp"]
 [ext_resource type="FontFile" uid="uid://mfkkows78cac" path="res://assets/fonts/Jersey10-Regular.ttf" id="2_sf4gl"]
 [ext_resource type="Texture2D" uid="uid://bddyrk1dbk726" path="res://assets/images/elements/buttons/space/dolly_arm.svg" id="3_oja5s"]
+[ext_resource type="AudioStream" uid="uid://e4es4xtcxenx" path="res://assets/sounds/music/countdownSFX.mp3" id="5_t1hu8"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o6g1h"]
 load_path = "res://.godot/imported/pressed_space.svg-3190f85dc630b7ab0470bc626ae57e26.ctex"
@@ -174,21 +175,6 @@ _data = {
 default_font = ExtResource("2_sf4gl")
 default_font_size = 350
 
-[sub_resource type="Animation" id="Animation_28yqa"]
-resource_name = "counter"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CountLabel:theme:default_font_size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [250, 350]
-}
-
 [sub_resource type="Animation" id="Animation_en84m"]
 length = 0.001
 tracks/0/type = "value"
@@ -202,6 +188,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [350]
+}
+
+[sub_resource type="Animation" id="Animation_28yqa"]
+resource_name = "counter"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CountLabel:theme:default_font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [250, 350]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5bncv"]
@@ -223,6 +224,7 @@ size_flags_vertical = 3
 script = ExtResource("1_53a8x")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
 offset_right = 14.485
 offset_bottom = 270.0
 scale = Vector2(75, 7.22222)
@@ -292,5 +294,9 @@ vertical_alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_5bncv")
 }
+
+[node name="CountdownAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_t1hu8")
+bus = &"SFX"
 
 [connection signal="animation_finished" from="CounterAnimationPlayer" to="." method="_on_counter_animation_player_animation_finished"]

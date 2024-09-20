@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://cr18nj8vadq5v"]
+
+[ext_resource type="Texture2D" uid="uid://cs2rtkp2um2li" path="res://assets/images/background/back-background.svg" id="1_0bmuk"]
+[ext_resource type="Texture2D" uid="uid://di332lne2uw65" path="res://assets/images/background/cloud_1.svg" id="1_o4oiu"]
+[ext_resource type="Texture2D" uid="uid://dgw8d06c35f8i" path="res://assets/images/background/front-background.svg" id="1_s50qv"]
+[ext_resource type="Texture2D" uid="uid://pkv3f8med3b6" path="res://assets/images/background/cloud_2.svg" id="2_mwick"]
+
+[node name="BackgroundScene" type="Node2D"]
+
+[node name="Parallax2D3" type="Parallax2D" parent="."]
+repeat_size = Vector2(2600, 0)
+autoscroll = Vector2(-250, 0)
+repeat_times = 2
+
+[node name="Sprite2D5" type="Sprite2D" parent="Parallax2D3"]
+modulate = Color(1, 1, 1, 0.243137)
+position = Vector2(-247, 656)
+scale = Vector2(0.644778, 0.644778)
+texture = ExtResource("1_o4oiu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D3"]
+modulate = Color(1, 1, 1, 0.243137)
+position = Vector2(1415, 57)
+scale = Vector2(0.644778, 0.644778)
+texture = ExtResource("1_o4oiu")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Parallax2D3"]
+modulate = Color(1, 1, 1, 0.0431373)
+position = Vector2(1092, 387)
+scale = Vector2(0.644778, 0.644778)
+texture = ExtResource("1_o4oiu")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D3"]
+modulate = Color(1, 1, 1, 0.0862745)
+position = Vector2(-165, 269)
+scale = Vector2(0.550276, 0.523923)
+texture = ExtResource("2_mwick")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Parallax2D3"]
+modulate = Color(1, 1, 1, 0.0862745)
+position = Vector2(515, 955)
+scale = Vector2(0.550276, 0.523923)
+texture = ExtResource("2_mwick")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(2595, 0)
+autoscroll = Vector2(-200, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+modulate = Color(1, 1, 1, 0.505882)
+position = Vector2(1279, 1695)
+texture = ExtResource("1_s50qv")
+
+[node name="Parallax2D2" type="Parallax2D" parent="."]
+repeat_size = Vector2(2597.8, 0)
+autoscroll = Vector2(-150, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2"]
+modulate = Color(1, 1, 1, 0.25098)
+position = Vector2(1292, 982)
+texture = ExtResource("1_0bmuk")

@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_4i1d6"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_jw6sh"]
-[ext_resource type="PackedScene" uid="uid://cosawlifrhcf3" path="res://scenes/elements/cloud_scene.tscn" id="2_80ei6"]
+[ext_resource type="PackedScene" uid="uid://cr18nj8vadq5v" path="res://scenes/elements/background_scene.tscn" id="2_y7p1l"]
+[ext_resource type="Texture2D" uid="uid://di332lne2uw65" path="res://assets/images/background/cloud_1.svg" id="3_vkh5m"]
 [ext_resource type="PackedScene" uid="uid://bgbe6sswfu12e" path="res://scenes/elements/bird_character_scene.tscn" id="4_h0u78"]
 [ext_resource type="FontFile" uid="uid://d14s525nrgj5o" path="res://assets/fonts/Playon-reg.ttf" id="4_kct05"]
-[ext_resource type="PackedScene" uid="uid://61ihymdab77s" path="res://scenes/ui/transition_scene.tscn" id="5_1leyw"]
+[ext_resource type="Texture2D" uid="uid://pkv3f8med3b6" path="res://assets/images/background/cloud_2.svg" id="4_w8slh"]
 [ext_resource type="PackedScene" uid="uid://b5iwqfly4tjmw" path="res://scenes/elements/pipes_manager.tscn" id="6_b5yu3"]
 [ext_resource type="Texture2D" uid="uid://livgxe6r2b1n" path="res://assets/images/background/terrain_background_back.png" id="7_clsfu"]
 [ext_resource type="PackedScene" uid="uid://dpdrvmamgu0eg" path="res://scenes/ui/game_over_scene.tscn" id="7_jpunb"]
@@ -13,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://kahsgka6qxyr" path="res://assets/images/background/terrain_details.svg" id="8_r1iwv"]
 [ext_resource type="Texture2D" uid="uid://c3rhpio2sx4lm" path="res://assets/images/background/grass_terrain.svg" id="9_6tnwl"]
 [ext_resource type="Texture2D" uid="uid://c4i4u1630twtx" path="res://assets/images/background/terrain_sticks.svg" id="10_1ub6n"]
-[ext_resource type="PackedScene" uid="uid://car212v4oekif" path="res://scenes/elements/grass_scene.tscn" id="13_qfako"]
 [ext_resource type="PackedScene" uid="uid://c34sj3yw6wveo" path="res://scenes/elements/tutorial_scene.tscn" id="14_v0srt"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_67vrm"]
@@ -35,15 +35,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4i1d6")
 
-[node name="TransitionScene" parent="." instance=ExtResource("5_1leyw")]
-visible = false
-top_level = true
+[node name="SkyBackground" type="TextureRect" parent="."]
 layout_mode = 1
-
-[node name="GameScene" type="Node2D" parent="."]
-script = ExtResource("1_jw6sh")
-
-[node name="SkyBackground" type="TextureRect" parent="GameScene"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -55,7 +48,54 @@ pivot_offset = Vector2(1081, 977)
 size_flags_horizontal = 4
 texture = SubResource("CompressedTexture2D_67vrm")
 
-[node name="CloudScene" parent="GameScene" instance=ExtResource("2_80ei6")]
+[node name="TerrainBackground" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = 1920.0
+offset_right = 4779.0
+offset_bottom = 3840.0
+texture = ExtResource("7_clsfu")
+
+[node name="BackgroundScene" parent="." instance=ExtResource("2_y7p1l")]
+
+[node name="Parallax2D3" type="Parallax2D" parent="."]
+scroll_offset = Vector2(1080, 1720)
+repeat_size = Vector2(2700, 0)
+autoscroll = Vector2(-150, 0)
+repeat_times = 2
+
+[node name="Sprite2D5" type="Sprite2D" parent="Parallax2D3"]
+modulate = Color(1, 1, 1, 0.243137)
+position = Vector2(188, 0)
+scale = Vector2(0.644778, 0.644778)
+texture = ExtResource("3_vkh5m")
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D3"]
+modulate = Color(1, 1, 1, 0.243137)
+position = Vector2(1565, 741)
+scale = Vector2(0.644778, 0.644778)
+texture = ExtResource("3_vkh5m")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Parallax2D3"]
+modulate = Color(1, 1, 1, 0.0431373)
+position = Vector2(1156, 187)
+scale = Vector2(0.644778, 0.644778)
+texture = ExtResource("3_vkh5m")
+flip_h = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D3"]
+modulate = Color(1, 1, 1, 0.0862745)
+position = Vector2(-308, 632)
+scale = Vector2(0.550276, 0.523923)
+texture = ExtResource("4_w8slh")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Parallax2D3"]
+modulate = Color(1, 1, 1, 0.0862745)
+position = Vector2(515, 955)
+scale = Vector2(0.550276, 0.523923)
+texture = ExtResource("4_w8slh")
+
+[node name="GameScene" type="Node2D" parent="."]
+script = ExtResource("1_jw6sh")
 
 [node name="BirdScene" parent="GameScene" instance=ExtResource("4_h0u78")]
 position = Vector2(254, 963)
@@ -78,12 +118,6 @@ theme_override_font_sizes/font_size = 106
 text = "10"
 
 [node name="PipesManager" parent="GameScene" instance=ExtResource("6_b5yu3")]
-
-[node name="TerrainBackground" type="TextureRect" parent="GameScene"]
-offset_top = 1920.0
-offset_right = 4779.0
-offset_bottom = 3840.0
-texture = ExtResource("7_clsfu")
 
 [node name="TerrainFront" type="TextureRect" parent="GameScene"]
 offset_left = -307.0
@@ -143,13 +177,6 @@ offset_right = 70.0
 offset_bottom = 2195.0
 scale = Vector2(0.906802, 0.906802)
 
-[node name="GrassScene" parent="GameScene" instance=ExtResource("13_qfako")]
-z_index = 16
-offset_left = 1887.0
-offset_top = 3961.0
-offset_right = 1887.0
-offset_bottom = 3961.0
-
 [node name="WorldBoundary" type="StaticBody2D" parent="GameScene"]
 collision_layer = 16
 
@@ -178,6 +205,11 @@ shortcut_context = NodePath(".")
 
 [node name="RankingScene" parent="AddYourNameControl" instance=ExtResource("8_he2gj")]
 layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0746488
+anchor_top = 0.00262437
+anchor_right = 0.925351
+anchor_bottom = 1.00262
 
 [node name="TutorialScene" parent="." instance=ExtResource("14_v0srt")]
 layout_mode = 1
@@ -187,6 +219,7 @@ pivot_offset = Vector2(539, 972)
 [connection signal="bird_is_dead" from="GameScene/BirdScene" to="GameScene" method="_on_bird_scene_bird_is_dead"]
 [connection signal="is_highscore" from="GameScene/GameOverScene" to="GameScene" method="_on_game_over_scene_is_highscore"]
 [connection signal="ranked_pressed" from="GameScene/GameOverScene" to="." method="_on_game_over_scene_ranked_pressed"]
+[connection signal="restart_pressed" from="GameScene/GameOverScene" to="." method="_on_game_over_scene_restart_pressed"]
 [connection signal="close_pressed" from="AddYourNameControl/RankingScene" to="." method="_on_ranking_scene_close_pressed"]
 [connection signal="render_ranking" from="AddYourNameControl/RankingScene" to="GameScene" method="_on_ranking_scene_render_ranking"]
 [connection signal="count_finished" from="TutorialScene" to="." method="_on_tutorial_scene_count_finished"]
