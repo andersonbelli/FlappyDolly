@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://xxtvscobei3h"]
+[gd_scene load_steps=6 format=3 uid="uid://babds5ibx786"]
 
 [ext_resource type="Texture2D" uid="uid://dfircvva0u4w1" path="res://assets/images/score_leaderboard/arrow-up-circle.svg" id="1_5ftge"]
 [ext_resource type="Script" path="res://scripts/character_selection.gd" id="1_keusk"]
