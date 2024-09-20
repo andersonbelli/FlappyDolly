@@ -10,6 +10,7 @@ func _ready() -> void:
 	game_scene.process_mode = PROCESS_MODE_DISABLED
 
 func _on_tutorial_scene_count_finished() -> void:
+	Globals.can_play = true
 	game_scene.process_mode = PROCESS_MODE_INHERIT
 
 func _on_game_over_scene_ranked_pressed() -> void:

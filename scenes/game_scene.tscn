@@ -49,6 +49,7 @@ size_flags_horizontal = 4
 texture = SubResource("CompressedTexture2D_67vrm")
 
 [node name="TerrainBackground" type="TextureRect" parent="."]
+layout_mode = 0
 offset_top = 1920.0
 offset_right = 4779.0
 offset_bottom = 3840.0

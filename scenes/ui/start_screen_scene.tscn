@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://r3wrdg7oci0u"]
+[gd_scene load_steps=20 format=3 uid="uid://r3wrdg7oci0u"]
 
 [ext_resource type="Texture2D" uid="uid://50fln8op53o3" path="res://assets/images/start_screen/dolly.svg" id="1_2clul"]
 [ext_resource type="Script" path="res://scripts/start_screen.gd" id="1_alvi8"]
@@ -58,6 +58,14 @@ load_path = "res://.godot/imported/confirm_pressed_button.svg-0432f6b84ca4d38b2a
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b73tk"]
 texture = SubResource("CompressedTexture2D_pghyj")
 
+[sub_resource type="InputEventKey" id="InputEventKey_vswt5"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_ggv41"]
+events = [SubResource("InputEventKey_vswt5")]
+
 [node name="StartScreenScene" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -109,6 +117,7 @@ offset_right = 1000.0
 offset_bottom = 1634.0
 theme_override_styles/pressed = SubResource("StyleBoxTexture_b73tk")
 theme_override_styles/normal = ExtResource("10_klhca")
+shortcut = SubResource("Shortcut_ggv41")
 text = "START"
 
 [node name="RankingButton" parent="." instance=ExtResource("9_ar5l5")]

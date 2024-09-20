@@ -39,6 +39,8 @@ func on_restart_pressed():
 	audio_button.position.y = 50
 	camera.position.y = 960
 	
+	Globals.can_play = false
+	
 	transition_scene.visible = true
 	
 	initial_flow = initial_flow_scene.instantiate()

@@ -10,6 +10,9 @@ signal game_over
 @onready var score_label = $ScoreLabel
 @onready var bird = $BirdScene
 
+@onready var restart_button: TextureButton = $GameOverScene/RestartButton
+const RESTART_BUTTON_SHORTCUT_EVENTS = preload("res://scenes/elements/restart_button_shortcut_events.tres")
+
 # Guarantees that the speed will increase only once every 10 pipes
 var speed_increased = false
 
@@ -36,6 +39,8 @@ func _physics_process(_delta):
 func _on_bird_scene_bird_is_dead():
 	game_over.emit()
 
+	_set_restart_shortcut()
+
 	pipes_manager.stop_spawn()
 	score_label.visible = false
 	game_over_scene.get_node("Scoreboard/ScoreLabel").text = str(Globals.SCORE)
@@ -48,3 +53,7 @@ func _on_bird_scene_bird_is_dead():
 func reset_score():
 	Globals.SCORE = 0
 	score_label.text = str(Globals.SCORE)
+
+func _set_restart_shortcut():
+	var button_shortcut: Shortcut = RESTART_BUTTON_SHORTCUT_EVENTS
+	restart_button.set_shortcut(button_shortcut)
