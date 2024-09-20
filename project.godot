@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="FlappyDolly"
-config/description="This is not an usual FlappyBird"
+config/description="Not a normal FlappyBird... as you may find out"
 config/version="1.0"
 run/main_scene="res://scenes/main_scene.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
