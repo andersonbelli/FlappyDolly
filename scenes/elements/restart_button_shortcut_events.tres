@@ -1,0 +1,6 @@
+[gd_resource type="Shortcut" load_steps=2 format=3 uid="uid://dg7ku4qd3sb5p"]
+
+[ext_resource type="InputEventKey" uid="uid://ba2m5gcn8ghg4" path="res://scenes/elements/restart_button_shortcut.tres" id="1_otowe"]
+
+[resource]
+events = [ExtResource("1_otowe")]

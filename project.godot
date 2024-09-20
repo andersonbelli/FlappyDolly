@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="FlappyDolly"
+config/description="Not a normal FlappyBird... as you may find out"
+config/version="1.0"
 run/main_scene="res://scenes/main_scene.tscn"
+run/disable_stdout=true
+run/disable_stderr=true
 config/features=PackedStringArray("4.3", "Mobile")
-config/icon="res://icon.svg"
+boot_splash/image="res://assets/icons/icon-512_HEAD_512.png"
+config/icon="res://assets/icons/icon-512_HEAD_512.png"
 
 [autoload]
 
@@ -84,5 +89,7 @@ flap={
 
 [rendering]
 
-renderer/rendering_method="mobile"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
 viewport/hdr_2d=true

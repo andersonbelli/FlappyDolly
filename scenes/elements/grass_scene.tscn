@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://car212v4oekif"]
+[gd_scene load_steps=3 format=3 uid="uid://4rs8c0tprrq2"]
 
-[ext_resource type="Material" uid="uid://eqri8j5pyarh" path="res://scenes/resources/shaders/cloud_wind_2.tres" id="1_4fx0j"]
-[ext_resource type="Texture2D" uid="uid://clohmfk7fgnf7" path="res://assets/images/game_over_screen/grass/1-grass.svg" id="2_x1nut"]
-[ext_resource type="Material" uid="uid://cesr8kpkci14j" path="res://scenes/resources/shaders/cloud_wind_1.tres" id="3_kmnsk"]
-[ext_resource type="Texture2D" uid="uid://cnw5tutxgn0c1" path="res://assets/images/game_over_screen/grass/2-grass.svg" id="4_r825i"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_218se"]
+load_path = "res://.godot/imported/2-grass.svg-a0b780cd02f55eec9f0bc1098356e54e.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3aduo"]
+load_path = "res://.godot/imported/1-grass.svg-f6506b156902cf0b28e0ea7f4757f489.ctex"
 
 [node name="GrassScene" type="Control"]
 layout_mode = 3
@@ -14,7 +15,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="grass2" type="TextureRect" parent="."]
-material = ExtResource("3_kmnsk")
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -27,10 +27,9 @@ offset_right = 840.0
 offset_bottom = 68.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("4_r825i")
+texture = SubResource("CompressedTexture2D_218se")
 
 [node name="grass1" type="TextureRect" parent="."]
-material = ExtResource("1_4fx0j")
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -43,4 +42,4 @@ offset_right = 684.0
 offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("2_x1nut")
+texture = SubResource("CompressedTexture2D_3aduo")

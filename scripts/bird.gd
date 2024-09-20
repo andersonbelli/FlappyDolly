@@ -23,7 +23,10 @@ func _ready():
 	slaps = [slap_audio_1, slap_audio_2, slap_audio_3, slap_audio_4]
 
 func _process(delta):
-	if is_alive:
+	if !Globals.can_play:
+		flap_animation_player.play("flap")
+	
+	if is_alive and Globals.can_play:
 		flap(delta)
 		
 		var collision = move_and_collide(velocity * delta)
@@ -35,28 +38,30 @@ func _process(delta):
 				hit(bottle.impulse_force)
 
 func _physics_process(delta):
-	# add gravity
-	if not is_on_floor():
-		velocity.y += SPEED * delta
+	if Globals.can_play:
+		# add gravity
+		if not is_on_floor():
+			velocity.y += SPEED * delta
 
 func flap(delta: float):
-	if Input.is_action_just_pressed("flap"):
-		flap_animation_player.play("RESET")
-		flap_animation_player.play("flap")
-		
-		var add_flap = clamp(velocity.y - FLAP_FORCE, -350, 300)
-		velocity.y = add_flap
+	if Globals.can_play:
+		if Input.is_action_just_pressed("flap"):
+			flap_animation_player.play("RESET")
+			flap_animation_player.play("flap")
+			
+			var add_flap = clamp(velocity.y - FLAP_FORCE, -350, 300)
+			velocity.y = add_flap
 
-		var bird_rotation = rotation - 50 * delta
-		bird_rotation = clampf(bird_rotation, -0.45, 5)
+			var bird_rotation = rotation - 50 * delta
+			bird_rotation = clampf(bird_rotation, -0.45, 5)
 
-		rotation = bird_rotation
-		
-		slap_on_flap()
-	else:
-		var bird_rotation = clampf(delta + rotation, -2, 1.2)
-		velocity.y += 5
-		rotation = bird_rotation
+			rotation = bird_rotation
+			
+			slap_on_flap()
+		else:
+			var bird_rotation = clampf(delta + rotation, -2, 1.2)
+			velocity.y += 5
+			rotation = bird_rotation
 
 func slap_on_flap():
 	var rand_slap = randi_range(0, 3)

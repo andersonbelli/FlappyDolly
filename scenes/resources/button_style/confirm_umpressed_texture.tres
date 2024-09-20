@@ -1,7 +1,0 @@
-[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://cks2nkphfn6oh"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bquvp"]
-load_path = "res://.godot/imported/confirm_umpressed_button.svg-7d1e3befc02f942f439bf9cb84e4aa64.ctex"
-
-[resource]
-texture = SubResource("CompressedTexture2D_bquvp")

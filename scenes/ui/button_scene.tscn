@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c6fr60rxsiw4d"]
+[gd_scene load_steps=11 format=3 uid="uid://c6fr60rxsiw4d"]
 
 [ext_resource type="FontFile" uid="uid://d14s525nrgj5o" path="res://assets/fonts/Playon-reg.ttf" id="1_0caok"]
 [ext_resource type="Texture2D" uid="uid://ce7kw0td16jay" path="res://assets/images/elements/buttons/confirm_umpressed_button.svg" id="2_bjywg"]
@@ -6,6 +6,13 @@
 [ext_resource type="Script" path="res://scripts/button_scene.gd" id="4_5h6hj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ilsoe"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_egv4g"]
+load_path = "res://.godot/imported/confirm_umpressed_button.svg-7d1e3befc02f942f439bf9cb84e4aa64.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nwk0v"]
+texture = SubResource("CompressedTexture2D_egv4g")
+modulate_color = Color(0.324203, 0.324203, 0.324203, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2g7k2"]
 texture = ExtResource("2_bjywg")
@@ -30,6 +37,7 @@ theme_override_constants/outline_size = 30
 theme_override_fonts/font = ExtResource("1_0caok")
 theme_override_font_sizes/font_size = 90
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ilsoe")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_nwk0v")
 theme_override_styles/hover = SubResource("StyleBoxTexture_2g7k2")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_pckhm")
 theme_override_styles/normal = SubResource("StyleBoxTexture_slj77")

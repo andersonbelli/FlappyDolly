@@ -10,6 +10,10 @@ var REPEAT_PIPE_COUNT: int = 0
 var LAST_PIPE_IS_BOTTOM: bool = false
 var BIRD_POSITION: Vector2 = Vector2(232, 955)
 
+## Bird
+## Wait until the countdown to finish to release controls to player
+var can_play := false
+
 ## Player
 var player_file = ConfigFile.new()
 
@@ -48,15 +52,21 @@ var SCORES_RANKING = []:
 func _ready() -> void:
 	retrieve_player_data()
 	
-	var env_file = FileAccess.open('res://.env', FileAccess.READ)
-	var apiKey = env_file.get_line()
-	env_file.close()
+	var apiKey = ""
+	
+	if OS.is_debug_build():
+		var env_file = FileAccess.open('res://.env', FileAccess.READ)
+		apiKey = env_file.get_line()
+		env_file.close()
 
 	SilentWolf.configure({
 		"api_key": apiKey,
 		"game_id": "FlappyDolly",
 		"log_level": 1
 	})
+	
+	await get_tree().create_timer(0.1).timeout
+	
 
 func save_online_score(_score: int):
 	if _score != 0 && not get_player_nick().is_empty():
