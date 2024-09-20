@@ -1,0 +1,8 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://c4mllh7w6rb7s"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b8apn"]
+load_path = "res://.godot/imported/confirm_pressed_button.svg-0432f6b84ca4d38b2ac625cf8ae7fc26.ctex"
+
+[resource]
+texture = SubResource("CompressedTexture2D_b8apn")
+modulate_color = Color(0.329648, 0.677633, 0.369194, 1)

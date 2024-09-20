@@ -1,0 +1,7 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://c7skde5narhgf"]
+
+[ext_resource type="Texture2D" uid="uid://dl8mk4l1h1eia" path="res://assets/images/elements/buttons/cancel_pressed_button.svg" id="1_u5sdo"]
+
+[resource]
+texture = ExtResource("1_u5sdo")
+modulate_color = Color(0.329648, 0.677633, 0.369194, 1)
